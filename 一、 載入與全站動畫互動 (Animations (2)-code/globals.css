@@ -1,0 +1,213 @@
+:root {
+  --color-primary: #39ff14;
+  --color-secondary: #2be010;
+  --color-accent: #39ff14;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-muted: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-surface-1: #0a0a0a;
+  --color-surface-2: #111111;
+  --color-surface-3: #1a1a1a;
+  --color-ring: #39ff14;
+  --color-neural-glow: #39ff14;
+  --color-neural-dim: #333333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-space-grotesk), sans-serif;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-instrument-serif), serif;
+}
+
+.font-sans {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* Neural glow effects */
+.neural-glow {
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.4), 0 0 60px rgba(57, 255, 20, 0.2);
+}
+
+.neural-glow-text {
+  text-shadow: 0 0 30px rgba(57, 255, 20, 0.6);
+}
+
+/* Hollow text effect for footer */
+.text-hollow {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #39ff14;
+}
+
+/* Canvas neural network */
+#neural-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grayscale to color transition */
+.grayscale-hover {
+  filter: grayscale(100%) brightness(0.7);
+  cursor: pointer;
+}
+.grayscale-hover:hover {
+  filter: grayscale(0%) brightness(1);
+}
+
+/* Accordion */
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+}
+.accordion-content.open {
+  max-height: 500px;
+}
+
+/* Form inputs dark style */
+.dark-input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  outline: none;
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.dark-input:focus {
+  border-color: #39ff14;
+  box-shadow: 0 0 0 2px rgba(57, 255, 20, 0.2);
+}
+.dark-input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+/* Timeline step */
+.step-active {
+  color: #39ff14;
+  border-color: #39ff14;
+}
+.step-done {
+  background: #39ff14;
+  border-color: #39ff14;
+  color: #000;
+}
+.step-inactive {
+  color: #444;
+  border-color: #333;
+}
+
+/* Pulse animation for the ball */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(57,255,20,0.6), 0 0 60px rgba(57,255,20,0.3), 0 0 100px rgba(57,255,20,0.1); }
+  50% { box-shadow: 0 0 40px rgba(57,255,20,0.9), 0 0 80px rgba(57,255,20,0.5), 0 0 120px rgba(57,255,20,0.2); }
+}
+
+.pulse-ball {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+.float-ball {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes neural-pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+
+.node-pulse {
+  animation: neural-pulse 2s ease-in-out infinite;
+}
+
+@keyframes synaptic-flash {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.synapse-line {
+  animation: synaptic-flash 1.5s ease-out forwards;
+}
+
+@keyframes success-expand {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.success-icon {
+  animation: success-expand 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes number-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+  50% { text-shadow: 0 0 30px rgba(57,255,20,1), 0 0 60px rgba(57,255,20,0.5); }
+}
+
+.booking-number {
+  animation: number-glow 2s ease-in-out infinite;
+}
+
+/* Horizontal scroll */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 2px;
+}
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: #111;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: #39ff14;
+}
+
+/* Domain hover signal effect */
+@keyframes signal-wave {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.signal-ring {
+  animation: signal-wave 1.5s ease-out infinite;
+}
