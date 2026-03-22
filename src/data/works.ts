@@ -12,7 +12,7 @@ export interface Work {
   tags: string[]
   color: string
   accentColor: string
-  images: Array<{ id: string; caption: string }>
+  images: Array<{ id: string; caption: string; url?: string }>
   video: { id: string; caption: string }
   members: string[]
 }
