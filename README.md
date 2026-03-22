@@ -9,6 +9,7 @@
 - **動畫**: Framer Motion + CSS Transitions + IntersectionObserver
 - **3D**: Three.js + React Three Fiber
 - **樣式**: Tailwind CSS 4.1 + Inline Styles
+- **字體**: LINE Seed JP（預約頁標題 Bold / 內文 Regular）、Noto Sans TC、Space Grotesk
 - **平滑滾動**: Lenis
 
 ## 展覽資訊

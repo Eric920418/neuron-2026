@@ -131,7 +131,7 @@ export default function Contact() {
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.5em',
-            color: 'rgba(129,140,248,0.5)',
+            color: 'rgba(102,140,141,0.5)',
             textTransform: 'uppercase',
             marginBottom: '16px',
           }}>
@@ -174,8 +174,8 @@ export default function Contact() {
                     padding: '12px 20px',
                     background: 'none',
                     border: 'none',
-                    borderBottom: activeTab === tab.key ? '2px solid #818cf8' : '2px solid transparent',
-                    color: activeTab === tab.key ? '#818cf8' : 'rgba(255,255,255,0.35)',
+                    borderBottom: activeTab === tab.key ? '2px solid #668C8D' : '2px solid transparent',
+                    color: activeTab === tab.key ? '#668C8D' : 'rgba(255,255,255,0.35)',
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: '13px',
                     letterSpacing: '0.05em',
@@ -192,23 +192,23 @@ export default function Contact() {
             {submitted ? (
               <div style={{
                 padding: '48px 32px',
-                border: '1px solid rgba(129,140,248,0.2)',
+                border: '1px solid rgba(102,140,141,0.2)',
                 borderRadius: '8px',
-                background: 'rgba(99,102,241,0.05)',
+                background: 'rgba(102,140,141,0.05)',
                 textAlign: 'center',
               }}>
                 <div style={{
                   width: '48px',
                   height: '48px',
                   borderRadius: '50%',
-                  background: 'rgba(99,102,241,0.15)',
-                  border: '1px solid rgba(129,140,248,0.4)',
+                  background: 'rgba(102,140,141,0.15)',
+                  border: '1px solid rgba(102,140,141,0.4)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   margin: '0 auto 20px',
                 }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#668C8D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
@@ -227,9 +227,9 @@ export default function Contact() {
                     marginTop: '24px',
                     padding: '10px 24px',
                     background: 'none',
-                    border: '1px solid rgba(129,140,248,0.3)',
-                    borderRadius: '4px',
-                    color: 'rgba(129,140,248,0.8)',
+                    border: '1px solid rgba(102,140,141,0.3)',
+                    borderRadius: '9999px',
+                    color: 'rgba(102,140,141,0.8)',
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: '12px',
                     letterSpacing: '0.1em',
@@ -252,7 +252,7 @@ export default function Contact() {
                       onChange={e => handleChange('name', e.target.value)}
                       placeholder="您的姓名"
                       style={inputStyle(errors.name)}
-                      onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#668C8D' }}
                       onBlur={e => { e.currentTarget.style.borderColor = errors.name ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
                     />
                     {errors.name && <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>{errors.name}</p>}
@@ -267,7 +267,7 @@ export default function Contact() {
                       onChange={e => handleChange('email', e.target.value)}
                       placeholder="your@email.com"
                       style={inputStyle(errors.email)}
-                      onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#668C8D' }}
                       onBlur={e => { e.currentTarget.style.borderColor = errors.email ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
                     />
                     {errors.email && <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>{errors.email}</p>}
@@ -285,7 +285,7 @@ export default function Contact() {
                       onChange={e => handleChange('organization', e.target.value)}
                       placeholder="您的單位或公司名稱"
                       style={inputStyle()}
-                      onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#668C8D' }}
                       onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
                     />
                   </div>
@@ -305,7 +305,7 @@ export default function Contact() {
                       '合作邀約主旨...'
                     }
                     style={inputStyle(errors.subject)}
-                    onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
+                    onFocus={e => { e.currentTarget.style.borderColor = '#668C8D' }}
                     onBlur={e => { e.currentTarget.style.borderColor = errors.subject ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
                   />
                   {errors.subject && <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>{errors.subject}</p>}
@@ -325,7 +325,7 @@ export default function Contact() {
                     }
                     rows={5}
                     style={{ ...inputStyle(errors.message), resize: 'vertical', minHeight: '120px' }}
-                    onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
+                    onFocus={e => { e.currentTarget.style.borderColor = '#668C8D' }}
                     onBlur={e => { e.currentTarget.style.borderColor = errors.message ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
                   />
                   {errors.message && <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>{errors.message}</p>}
@@ -336,10 +336,10 @@ export default function Contact() {
                   disabled={submitting}
                   style={{
                     padding: '16px 32px',
-                    background: submitting ? 'rgba(99,102,241,0.3)' : 'rgba(99,102,241,0.15)',
-                    border: '1px solid rgba(129,140,248,0.4)',
-                    borderRadius: '4px',
-                    color: submitting ? 'rgba(129,140,248,0.5)' : '#818cf8',
+                    background: submitting ? 'rgba(102,140,141,0.3)' : 'rgba(102,140,141,0.15)',
+                    border: '1px solid rgba(102,140,141,0.4)',
+                    borderRadius: '9999px',
+                    color: submitting ? 'rgba(102,140,141,0.5)' : '#668C8D',
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: '13px',
                     letterSpacing: '0.15em',
@@ -392,12 +392,12 @@ export default function Contact() {
                     onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)' }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <span style={{ color: 'rgba(129,140,248,0.7)' }}>{social.icon}</span>
+                      <span style={{ color: 'rgba(102,140,141,0.7)' }}>{social.icon}</span>
                       <div>
                         <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', fontWeight: 500, letterSpacing: '0.02em' }}>
                           {social.name}
                         </p>
-                        <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(129,140,248,0.5)', letterSpacing: '0.05em' }}>
+                        <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(102,140,141,0.5)', letterSpacing: '0.05em' }}>
                           {social.handle}
                         </p>
                       </div>
@@ -416,13 +416,13 @@ export default function Contact() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(129,140,248,0.5)', letterSpacing: '0.1em', marginBottom: '4px' }}>校外展</p>
+                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(102,140,141,0.5)', letterSpacing: '0.1em', marginBottom: '4px' }}>校外展</p>
                   <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>2026.05.08 — 05.11</p>
                   <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>松山文創園區 二號倉庫</p>
                 </div>
                 <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }} />
                 <div>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(129,140,248,0.5)', letterSpacing: '0.1em', marginBottom: '4px' }}>校內展</p>
+                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(102,140,141,0.5)', letterSpacing: '0.1em', marginBottom: '4px' }}>校內展</p>
                   <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>2026.04.24 — 04.26</p>
                   <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>元智大學 圖書館一樓大廳</p>
                 </div>
