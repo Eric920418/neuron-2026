@@ -31,6 +31,7 @@ interface AvailableTeam {
   slug: string
   teamType: string | null
   description: string | null
+  artworkTitle: string | null
   exhibition: {
     id: string
     name: string
@@ -660,7 +661,7 @@ export default function Booking() {
                             transition: "color 0.2s ease",
                           }}
                         >
-                          {team.name}
+                          {team.artworkTitle ?? team.name}
                         </p>
                         {team.description && (
                           <p
