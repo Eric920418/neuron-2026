@@ -26,31 +26,27 @@ const categories = [
 
 const partnerGroups = [
   {
-    category: '指導單位',
+    category: "指導單位",
     items: [
-      { name: '桃園市政府', logo: logoTaoyuanCity, small: true },
-      { name: '桃園市政府青年事務局', logo: logoTaoyuanYouth },
-      { name: '元智大學 資訊學院', logo: logoYzuCollege, small: true },
+      { name: "桃園市政府", logo: logoTaoyuanCity, small: true },
+      { name: "桃園市政府青年事務局", logo: logoTaoyuanYouth },
+      { name: "元智大學 資訊學院", logo: logoYzuCollege, small: true },
     ],
   },
   {
-    category: '主辦單位',
-    items: [
-      { name: '元智大學 資訊傳播學系', logo: logoYzuIc },
-    ],
+    category: "主辦單位",
+    items: [{ name: "元智大學 資訊傳播學系", logo: logoYzuIc }],
   },
   {
-    category: '執行單位',
-    items: [
-      { name: '元智資傳畢籌會', logo: logoBcc },
-    ],
+    category: "執行單位",
+    items: [{ name: "元智資傳畢籌會", logo: logoBcc, large: true }],
   },
   {
-    category: '贊助單位',
+    category: "贊助單位",
     items: [
-      { name: '華視文教基金會', logo: logoCts },
-      { name: 'WeMo', logo: logoWemo, large: true },
-      { name: '大象杯', logo: logoElephant, large: true },
+      { name: "華視文教基金會", logo: logoCts },
+      { name: "WeMo", logo: logoWemo, large: true },
+      { name: "大象杯", logo: logoElephant, large: true },
     ],
   },
 ];
