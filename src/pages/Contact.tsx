@@ -137,7 +137,7 @@ export default function Contact() {
               marginBottom: "16px",
             }}
           >
-            Contact Us
+            Feedback
           </p>
           <h2
             className="font-display"
@@ -149,7 +149,7 @@ export default function Contact() {
               letterSpacing: "-0.02em",
             }}
           >
-            聯絡我們
+            意見回饋
           </h2>
         </div>
 
@@ -574,8 +574,7 @@ export default function Contact() {
                   lineHeight: 1.7,
                 }}
               >
-                {activeTab === "general" &&
-                  "歡迎分享您對「神經元 NEURON 2026」展覽的任何想法、建議或回饋，我們非常重視每一位觀眾的聲音。"}
+                {activeTab === "general" && "神經元 元智資傳29屆畢展"}
                 {activeTab === "technical" &&
                   "如果您在瀏覽本網站時遇到任何技術問題，請詳細描述問題情況，我們的技術團隊將盡快處理。"}
                 {activeTab === "collaboration" &&

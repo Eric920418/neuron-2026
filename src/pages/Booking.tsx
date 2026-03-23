@@ -172,7 +172,7 @@ export default function Booking() {
               fontFamily: "LINE Seed TW, sans-serif",
               fontSize: "11px",
               letterSpacing: "0.5em",
-              color: "rgba(57,255,20,0.5)",
+              color: "rgba(1,255,204,0.5)",
               textTransform: "uppercase",
               marginBottom: "16px",
             }}
@@ -228,8 +228,8 @@ export default function Booking() {
                         width: "28px",
                         height: "28px",
                         borderRadius: "50%",
-                        border: `1px solid ${isDone ? "#39ff14" : isActive ? "#39ff14" : "rgba(255,255,255,0.1)"}`,
-                        background: isDone ? "#39ff14" : "transparent",
+                        border: `1px solid ${isDone ? "#01ffcc" : isActive ? "#01ffcc" : "rgba(255,255,255,0.1)"}`,
+                        background: isDone ? "#01ffcc" : "transparent",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -254,7 +254,7 @@ export default function Booking() {
                             fontFamily: "LINE Seed TW, sans-serif",
                             fontSize: "11px",
                             color: isActive
-                              ? "rgba(57,255,20,0.9)"
+                              ? "rgba(1,255,204,0.9)"
                               : "rgba(255,255,255,0.2)",
                           }}
                         >
@@ -268,7 +268,7 @@ export default function Booking() {
                         fontSize: "10px",
                         letterSpacing: "0.05em",
                         color: isActive
-                          ? "rgba(57,255,20,0.7)"
+                          ? "rgba(1,255,204,0.7)"
                           : isDone
                             ? "rgba(255,255,255,0.4)"
                             : "rgba(255,255,255,0.15)",
@@ -285,7 +285,7 @@ export default function Booking() {
                         height: "1px",
                         background:
                           step > s
-                            ? "rgba(57,255,20,0.4)"
+                            ? "rgba(1,255,204,0.4)"
                             : "rgba(255,255,255,0.06)",
                         margin: "0 12px",
                         marginBottom: "24px",
@@ -344,9 +344,9 @@ export default function Booking() {
                     onClick={() => setExhibitionType(item.type)}
                     style={{
                       background: isSelected
-                        ? "rgba(57,255,20,0.07)"
+                        ? "rgba(1,255,204,0.07)"
                         : "rgba(255,255,255,0.02)",
-                      border: `1px solid ${isSelected ? "rgba(57,255,20,0.4)" : "rgba(255,255,255,0.08)"}`,
+                      border: `1px solid ${isSelected ? "rgba(1,255,204,0.4)" : "rgba(255,255,255,0.08)"}`,
                       padding: "clamp(24px, 3vw, 36px)",
                       cursor: "pointer",
                       textAlign: "left",
@@ -366,9 +366,9 @@ export default function Booking() {
                           width: "8px",
                           height: "8px",
                           borderRadius: "50%",
-                          border: `1px solid ${isSelected ? "rgba(57,255,20,0.8)" : "rgba(255,255,255,0.2)"}`,
+                          border: `1px solid ${isSelected ? "rgba(1,255,204,0.8)" : "rgba(255,255,255,0.2)"}`,
                           background: isSelected
-                            ? "rgba(57,255,20,0.8)"
+                            ? "rgba(1,255,204,0.8)"
                             : "transparent",
                           transition: "all 0.2s ease",
                         }}
@@ -379,7 +379,7 @@ export default function Booking() {
                           fontSize: "10px",
                           letterSpacing: "0.3em",
                           color: isSelected
-                            ? "rgba(57,255,20,0.7)"
+                            ? "rgba(1,255,204,0.7)"
                             : "rgba(255,255,255,0.3)",
                           textTransform: "uppercase",
                           transition: "color 0.2s ease",
@@ -440,15 +440,15 @@ export default function Booking() {
                 style={{
                   padding: "14px 32px",
                   background: exhibitionType
-                    ? "rgba(57,255,20,0.1)"
+                    ? "rgba(1,255,204,0.1)"
                     : "rgba(255,255,255,0.03)",
-                  border: `1px solid ${exhibitionType ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.06)"}`,
+                  border: `1px solid ${exhibitionType ? "rgba(1,255,204,0.35)" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "2px",
                   fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
                   color: exhibitionType
-                    ? "rgba(57,255,20,0.9)"
+                    ? "rgba(1,255,204,0.9)"
                     : "rgba(255,255,255,0.2)",
                   cursor: exhibitionType ? "pointer" : "not-allowed",
                   transition: "all 0.2s ease",
@@ -495,9 +495,9 @@ export default function Booking() {
                     }}
                     style={{
                       background: isSelected
-                        ? "rgba(57,255,20,0.07)"
+                        ? "rgba(1,255,204,0.07)"
                         : "rgba(255,255,255,0.02)",
-                      border: `1px solid ${isSelected ? "rgba(57,255,20,0.4)" : "rgba(255,255,255,0.08)"}`,
+                      border: `1px solid ${isSelected ? "rgba(1,255,204,0.4)" : "rgba(255,255,255,0.08)"}`,
                       padding: "28px 20px",
                       cursor: "pointer",
                       textAlign: "center",
@@ -523,12 +523,12 @@ export default function Booking() {
                         height: "6px",
                         borderRadius: "50%",
                         background: isSelected
-                          ? "rgba(57,255,20,0.8)"
+                          ? "rgba(1,255,204,0.8)"
                           : "rgba(255,255,255,0.1)",
                         margin: "8px auto 0",
                         transition: "background 0.2s ease",
                         boxShadow: isSelected
-                          ? "0 0 8px rgba(57,255,20,0.4)"
+                          ? "0 0 8px rgba(1,255,204,0.4)"
                           : "none",
                       }}
                     />
@@ -602,9 +602,9 @@ export default function Booking() {
                         onClick={() => setSelectedTeam(team)}
                         style={{
                           background: isSelected
-                            ? "rgba(57,255,20,0.07)"
+                            ? "rgba(1,255,204,0.07)"
                             : "rgba(255,255,255,0.02)",
-                          border: `1px solid ${isSelected ? "rgba(57,255,20,0.4)" : "rgba(255,255,255,0.08)"}`,
+                          border: `1px solid ${isSelected ? "rgba(1,255,204,0.4)" : "rgba(255,255,255,0.08)"}`,
                           padding: "clamp(16px, 2vw, 24px)",
                           cursor: "pointer",
                           textAlign: "left",
@@ -624,9 +624,9 @@ export default function Booking() {
                               width: "8px",
                               height: "8px",
                               borderRadius: "50%",
-                              border: `1px solid ${isSelected ? "rgba(57,255,20,0.8)" : "rgba(255,255,255,0.2)"}`,
+                              border: `1px solid ${isSelected ? "rgba(1,255,204,0.8)" : "rgba(255,255,255,0.2)"}`,
                               background: isSelected
-                                ? "rgba(57,255,20,0.8)"
+                                ? "rgba(1,255,204,0.8)"
                                 : "transparent",
                               transition: "all 0.2s ease",
                               flexShrink: 0,
@@ -638,7 +638,7 @@ export default function Booking() {
                               fontSize: "10px",
                               letterSpacing: "0.2em",
                               color: isSelected
-                                ? "rgba(57,255,20,0.6)"
+                                ? "rgba(1,255,204,0.6)"
                                 : "rgba(255,255,255,0.25)",
                               textTransform: "uppercase",
                               transition: "color 0.2s ease",
@@ -681,7 +681,7 @@ export default function Booking() {
                             style={{
                               fontFamily: "LINE Seed TW, sans-serif",
                               fontSize: "11px",
-                              color: "rgba(57,255,20,0.5)",
+                              color: "rgba(1,255,204,0.5)",
                               letterSpacing: "0.04em",
                             }}
                           >
@@ -755,15 +755,15 @@ export default function Booking() {
                 style={{
                   padding: "14px 32px",
                   background: selectedTeam
-                    ? "rgba(57,255,20,0.1)"
+                    ? "rgba(1,255,204,0.1)"
                     : "rgba(255,255,255,0.03)",
-                  border: `1px solid ${selectedTeam ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.06)"}`,
+                  border: `1px solid ${selectedTeam ? "rgba(1,255,204,0.35)" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "2px",
                   fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
                   color: selectedTeam
-                    ? "rgba(57,255,20,0.9)"
+                    ? "rgba(1,255,204,0.9)"
                     : "rgba(255,255,255,0.2)",
                   cursor: selectedTeam ? "pointer" : "not-allowed",
                   transition: "all 0.2s ease",
@@ -783,8 +783,8 @@ export default function Booking() {
               <div
                 style={{
                   padding: "16px 20px",
-                  border: "1px solid rgba(57,255,20,0.15)",
-                  background: "rgba(57,255,20,0.04)",
+                  border: "1px solid rgba(1,255,204,0.15)",
+                  background: "rgba(1,255,204,0.04)",
                   borderRadius: "4px",
                   marginBottom: "32px",
                   display: "flex",
@@ -796,7 +796,7 @@ export default function Booking() {
                   style={{
                     fontFamily: "LINE Seed TW, sans-serif",
                     fontSize: "11px",
-                    color: "rgba(57,255,20,0.5)",
+                    color: "rgba(1,255,204,0.5)",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     flexShrink: 0,
@@ -852,14 +852,14 @@ export default function Booking() {
                         flexShrink: 0,
                         padding: "12px 20px",
                         background: isSelected
-                          ? "rgba(57,255,20,0.1)"
+                          ? "rgba(1,255,204,0.1)"
                           : "rgba(255,255,255,0.02)",
-                        border: `1px solid ${isSelected ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.08)"}`,
+                        border: `1px solid ${isSelected ? "rgba(1,255,204,0.35)" : "rgba(255,255,255,0.08)"}`,
                         borderRadius: "2px",
                         fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "13px",
                         color: isSelected
-                          ? "rgba(57,255,20,0.9)"
+                          ? "rgba(1,255,204,0.9)"
                           : "rgba(255,255,255,0.4)",
                         cursor: "pointer",
                         transition: "all 0.2s ease",
@@ -897,7 +897,7 @@ export default function Booking() {
                   width: "100%",
                   padding: "12px 16px",
                   background: "rgba(255,255,255,0.03)",
-                  border: `1px solid ${visitorName.trim() ? "rgba(57,255,20,0.2)" : "rgba(255,255,255,0.08)"}`,
+                  border: `1px solid ${visitorName.trim() ? "rgba(1,255,204,0.2)" : "rgba(255,255,255,0.08)"}`,
                   borderRadius: "2px",
                   fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "14px",
@@ -907,11 +907,11 @@ export default function Booking() {
                   boxSizing: "border-box",
                 }}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(57,255,20,0.35)";
+                  e.currentTarget.style.borderColor = "rgba(1,255,204,0.35)";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = visitorName.trim()
-                    ? "rgba(57,255,20,0.2)"
+                    ? "rgba(1,255,204,0.2)"
                     : "rgba(255,255,255,0.08)";
                 }}
               />
@@ -944,7 +944,7 @@ export default function Booking() {
                   width: "100%",
                   padding: "12px 16px",
                   background: "rgba(255,255,255,0.03)",
-                  border: `1px solid ${visitorPhone && !/^09\d{8}$/.test(visitorPhone) ? "rgba(255,80,80,0.35)" : visitorPhone ? "rgba(57,255,20,0.2)" : "rgba(255,255,255,0.08)"}`,
+                  border: `1px solid ${visitorPhone && !/^09\d{8}$/.test(visitorPhone) ? "rgba(255,80,80,0.35)" : visitorPhone ? "rgba(1,255,204,0.2)" : "rgba(255,255,255,0.08)"}`,
                   borderRadius: "2px",
                   fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "14px",
@@ -954,14 +954,14 @@ export default function Booking() {
                   boxSizing: "border-box",
                 }}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(57,255,20,0.35)";
+                  e.currentTarget.style.borderColor = "rgba(1,255,204,0.35)";
                 }}
                 onBlur={(e) => {
                   if (visitorPhone && !/^09\d{8}$/.test(visitorPhone)) {
                     e.currentTarget.style.borderColor = "rgba(255,80,80,0.35)";
                   } else {
                     e.currentTarget.style.borderColor = visitorPhone
-                      ? "rgba(57,255,20,0.2)"
+                      ? "rgba(1,255,204,0.2)"
                       : "rgba(255,255,255,0.08)";
                   }
                 }}
@@ -1015,7 +1015,7 @@ export default function Booking() {
                   boxSizing: "border-box",
                 }}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(57,255,20,0.25)";
+                  e.currentTarget.style.borderColor = "rgba(1,255,204,0.25)";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
@@ -1063,15 +1063,15 @@ export default function Booking() {
                 style={{
                   padding: "14px 32px",
                   background: canSubmit
-                    ? "rgba(57,255,20,0.1)"
+                    ? "rgba(1,255,204,0.1)"
                     : "rgba(255,255,255,0.03)",
-                  border: `1px solid ${canSubmit ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.06)"}`,
+                  border: `1px solid ${canSubmit ? "rgba(1,255,204,0.35)" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "2px",
                   fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
                   color: canSubmit
-                    ? "rgba(57,255,20,0.9)"
+                    ? "rgba(1,255,204,0.9)"
                     : "rgba(255,255,255,0.2)",
                   cursor: canSubmit && !submitting ? "pointer" : "not-allowed",
                   transition: "all 0.2s ease",
@@ -1100,7 +1100,7 @@ export default function Booking() {
                 width: "80px",
                 height: "80px",
                 borderRadius: "50%",
-                border: "1px solid rgba(57,255,20,0.4)",
+                border: "1px solid rgba(1,255,204,0.4)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1113,7 +1113,7 @@ export default function Booking() {
                   position: "absolute",
                   inset: "-8px",
                   borderRadius: "50%",
-                  border: "1px solid rgba(57,255,20,0.15)",
+                  border: "1px solid rgba(1,255,204,0.15)",
                 }}
               />
               <svg
@@ -1121,7 +1121,7 @@ export default function Booking() {
                 height="32"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="rgba(57,255,20,0.9)"
+                stroke="rgba(1,255,204,0.9)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               >
@@ -1134,7 +1134,7 @@ export default function Booking() {
                 fontFamily: "LINE Seed TW, sans-serif",
                 fontSize: "11px",
                 letterSpacing: "0.5em",
-                color: "rgba(57,255,20,0.5)",
+                color: "rgba(1,255,204,0.5)",
                 textTransform: "uppercase",
                 marginBottom: "16px",
               }}
@@ -1170,7 +1170,7 @@ export default function Booking() {
               style={{
                 padding: "32px 40px",
                 border: "1px solid rgba(255,255,255,0.08)",
-                background: "rgba(57,255,20,0.03)",
+                background: "rgba(1,255,204,0.03)",
                 marginBottom: "40px",
                 width: "100%",
                 maxWidth: "400px",
@@ -1193,7 +1193,7 @@ export default function Booking() {
                   fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "clamp(40px, 6vw, 64px)",
                   fontWeight: 700,
-                  color: "rgba(57,255,20,0.9)",
+                  color: "rgba(1,255,204,0.9)",
                   letterSpacing: "0.05em",
                   marginBottom: "8px",
                   lineHeight: 1,

@@ -79,7 +79,7 @@ export default function Footer() {
               隱私權政策
             </Link>
             <Link to="/contact" className="hover:text-white">
-              聯絡我們
+              意見回饋
             </Link>
           </div>
         </div>

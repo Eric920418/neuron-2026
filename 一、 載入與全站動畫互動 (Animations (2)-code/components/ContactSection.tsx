@@ -35,7 +35,7 @@ const socialLinks = [
   },
   {
     name: 'LINE 官方帳號',
-    handle: 'NEURON 2026',
+    handle: '元智資傳29屆畢展',
     url: 'https://lin.ee/sFMgbgw',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -145,7 +145,7 @@ export default function ContactSection() {
             lineHeight: 1,
             letterSpacing: '-0.02em',
           }}>
-            聯絡我們
+            意見回饋
           </h2>
         </div>
 
@@ -458,7 +458,7 @@ export default function ContactSection() {
                 color: 'rgba(255,255,255,0.5)',
                 lineHeight: 1.7,
               }}>
-                {activeTab === 'general' && '歡迎分享您對「神經元 NEURON 2026」展覽的任何想法、建議或回饋，我們非常重視每一位觀眾的聲音。'}
+                {activeTab === 'general' && '神經元 元智資傳29屆畢展'}
                 {activeTab === 'technical' && '如果您在瀏覽本網站時遇到任何技術問題，請詳細描述問題情況，我們的技術團隊將盡快處理。'}
                 {activeTab === 'collaboration' && '我們歡迎媒體採訪、品牌合作與各類邀約。請提供您的單位資訊與合作提案，我們將安排專人與您聯繫。'}
               </p>

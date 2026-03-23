@@ -99,12 +99,14 @@ export default function Info() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-white" />
-                  <span>元智大學 五館三樓、六館玻璃屋 (桃園市中壢區遠東路135號)</span>
+                  <span>
+                    元智大學 五館三樓、六館玻璃屋 (桃園市中壢區遠東路135號)
+                  </span>
                 </div>
               </div>
 
               <p className="text-sm leading-relaxed text-gray-500">
-                校內展為神經元展覽的首站，展示學生們在校園環境中孕育的初步創意與實驗性作品。這裡充滿了未經雕琢的原始能量，是探索未來設計趨勢的最佳起點。
+                校內展在正式對外之前，我們先在內部展出，反覆調整與測試，讓每一件作品都能慢慢走到最好的狀態。
               </p>
             </div>
           </div>
@@ -130,14 +132,12 @@ export default function Info() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-white" />
-                  <span>
-                    松山文創園區 二號倉庫 (台北市信義區光復南路133號)
-                  </span>
+                  <span>松山文創園區 二號倉庫 (台北市信義區光復南路133號)</span>
                 </div>
               </div>
 
               <p className="text-sm leading-relaxed text-gray-500">
-                移師台北松山文創園區，作品經過淬鍊與優化，以更成熟的姿態面向大眾。這裡不僅是展示成果的舞台，更是與業界交流、碰撞火花的關鍵節點。
+                校外展當一切準備就緒，作品以完整的樣子對外呈現，並於5/9（六）舉行開幕式，邀請大家一同參與和體驗。
               </p>
             </div>
             <div className="order-1 md:order-2 aspect-[4/3] bg-white/5 overflow-hidden">
@@ -166,14 +166,19 @@ export default function Info() {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.8!2d121.2676!3d24.9700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c2aaf1ced1%3A0x4e44960ab3fe0f73!2z5YWD5pm65aSn5a24!5e0!3m2!1szh-TW!2stw!4v1"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                  style={{
+                    border: 0,
+                    filter: "invert(90%) hue-rotate(180deg)",
+                  }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="元智大學地圖"
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-2">桃園市中壢區遠東路135號</p>
+              <p className="text-sm text-gray-500 mt-2">
+                桃園市中壢區遠東路135號
+              </p>
             </div>
             {/* 校外展 - 松山文創園區 */}
             <div>
@@ -186,14 +191,19 @@ export default function Info() {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.9!2d121.5604!3d25.0441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abcb5e248e09%3A0xd3052ee27530f78f!2z5p2-5bGx5paH5Ym15ZyS5Y2A!5e0!3m2!1szh-TW!2stw!4v1"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                  style={{
+                    border: 0,
+                    filter: "invert(90%) hue-rotate(180deg)",
+                  }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="松山文創園區地圖"
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-2">台北市信義區光復南路133號</p>
+              <p className="text-sm text-gray-500 mt-2">
+                台北市信義區光復南路133號
+              </p>
             </div>
           </div>
         </div>
