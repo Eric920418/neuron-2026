@@ -135,12 +135,13 @@ export default function WorkDetail() {
           </div>
         )}
 
+        {/* Subtle bottom fade */}
         <div style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
-          height: '40%',
+          height: '15%',
           background: 'linear-gradient(to bottom, transparent, #000)',
           pointerEvents: 'none',
         }} />
@@ -203,46 +204,47 @@ export default function WorkDetail() {
           返回作品列表
         </Link>
 
-        <div style={{
-          position: 'absolute',
-          bottom: '32px',
-          left: 'clamp(24px, 6vw, 80px)',
-          right: 'clamp(24px, 6vw, 80px)',
+      </div>
+
+      {/* Title block — below hero image */}
+      <div style={{
+        padding: 'clamp(24px, 4vw, 48px) clamp(24px, 6vw, 80px)',
+        maxWidth: '1100px',
+        margin: '0 auto',
+      }}>
+        <h2 className="font-display" style={{
+          fontFamily: '"LINE Seed TW", sans-serif',
+          fontSize: 'clamp(36px, 6vw, 72px)',
+          fontWeight: 700,
+          color: '#fff',
+          letterSpacing: '-0.02em',
+          lineHeight: 1,
+          marginBottom: '8px',
         }}>
-          <h2 className="font-display" style={{
-            fontFamily: '"LINE Seed TW", sans-serif',
-            fontSize: 'clamp(36px, 6vw, 72px)',
-            fontWeight: 700,
-            color: '#fff',
-            letterSpacing: '-0.02em',
-            lineHeight: 1,
-            marginBottom: '8px',
-          }}>
-            {work.title}
-          </h2>
+          {work.title}
+        </h2>
+        <span style={{
+          fontFamily: '"LINE Seed TW", sans-serif',
+          fontWeight: 400,
+          fontSize: '12px',
+          color: 'rgba(255,255,255,0.25)',
+          letterSpacing: '0.1em',
+        }}>
+          {work.year}
+        </span>
+        {work.team.startsWith('指導老師') && (
           <span style={{
             fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
-            fontSize: '12px',
-            color: 'rgba(255,255,255,0.25)',
-            letterSpacing: '0.1em',
+            fontSize: '13px',
+            color: 'rgba(102,140,141,0.85)',
+            letterSpacing: '0.05em',
+            display: 'block',
+            marginTop: '8px',
           }}>
-            {work.year}
+            {work.team}
           </span>
-          {work.team.startsWith('指導老師') && (
-            <span style={{
-              fontFamily: '"LINE Seed TW", sans-serif',
-              fontWeight: 400,
-              fontSize: '13px',
-              color: 'rgba(102,140,141,0.85)',
-              letterSpacing: '0.05em',
-              display: 'block',
-              marginTop: '8px',
-            }}>
-              {work.team}
-            </span>
-          )}
-        </div>
+        )}
       </div>
 
       {/* Body */}

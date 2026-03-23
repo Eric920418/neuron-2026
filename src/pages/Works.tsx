@@ -1,15 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { filters, type Domain, type Work, type APIResponse, teamToWork } from '../data/works'
 import LazyImage from '../components/LazyImage'
 
+const VALID_FILTERS: Domain[] = ['all', 'interactive', 'game', 'marketing', 'film']
+
 export default function Works() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const urlFilter = searchParams.get('filter') as Domain | null
+  const initialFilter: Domain = urlFilter && VALID_FILTERS.includes(urlFilter) ? urlFilter : 'all'
+
   const [allWorks, setAllWorks] = useState<Work[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const [activeFilter, setActiveFilter] = useState<Domain>('all')
+  const [activeFilter, setActiveFilter] = useState<Domain>(initialFilter)
   const [filteredWorks, setFilteredWorks] = useState<Work[]>([])
   const [animating, setAnimating] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -24,7 +30,8 @@ export default function Works() {
         if (json.success && json.data.teams.length > 0) {
           const mapped = json.data.teams.map((t, i) => teamToWork(t, i))
           setAllWorks(mapped)
-          setFilteredWorks(mapped)
+          const f = initialFilter
+          setFilteredWorks(f === 'all' ? mapped : mapped.filter(w => w.domain === f))
         } else {
           setError('暫無作品資料')
         }
@@ -251,19 +258,16 @@ export default function Works() {
                     </div>
                   )}
 
-                  {/* Domain badge */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '10px',
-                    left: '10px',
-                    padding: '5px 10px 4px',
-                    background: 'rgba(0,0,0,0.6)',
-                    borderRadius: '100px',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}>
+                </div>
+
+                {/* Content */}
+                <div style={{ padding: '20px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    {/* Domain badge */}
                     <span style={{
+                      padding: '4px 10px 3px',
+                      border: `1px solid ${work.accentColor}40`,
+                      borderRadius: '100px',
                       fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
                       fontSize: '10px',
@@ -273,48 +277,6 @@ export default function Works() {
                     }}>
                       {work.domainLabel}
                     </span>
-                  </div>
-
-                  {/* View detail hint */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '10px',
-                    right: '10px',
-                    padding: '4px 10px',
-                    background: 'rgba(0,0,0,0.5)',
-                    borderRadius: '100px',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                  }}>
-                    <span style={{
-                      fontFamily: '"LINE Seed TW", sans-serif',
-                      fontWeight: 400,
-                      fontSize: '10px',
-                      color: 'rgba(255,255,255,0.5)',
-                      letterSpacing: '0.05em',
-                    }}>
-                      查看詳情
-                    </span>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div style={{ padding: '20px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '10px' }}>
-                    <h2 className="font-display" style={{
-                      fontFamily: '"LINE Seed TW", sans-serif',
-                      fontSize: '20px',
-                      fontWeight: 700,
-                      color: 'rgba(255,255,255,0.85)',
-                      letterSpacing: '-0.01em',
-                    }}>
-                      {work.title}
-                    </h2>
                     <span style={{
                       fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
@@ -325,6 +287,16 @@ export default function Works() {
                       {work.year}
                     </span>
                   </div>
+                  <h2 className="font-display" style={{
+                    fontFamily: '"LINE Seed TW", sans-serif',
+                    fontSize: '20px',
+                    fontWeight: 700,
+                    color: 'rgba(255,255,255,0.85)',
+                    letterSpacing: '-0.01em',
+                    marginBottom: '10px',
+                  }}>
+                    {work.title}
+                  </h2>
                   {work.shortDesc && (
                     <p style={{
                       fontFamily: '"LINE Seed TW", sans-serif',

@@ -32,7 +32,7 @@ export interface TeamFromAPI {
     id: string
     title: string
     concept: string | null
-    concept_short: string | null
+    conceptShort: string | null
     thumbnailUrl: string | null
     mediaUrls: string[]
     displayOrder: number
@@ -75,7 +75,7 @@ export function teamToWork(team: TeamFromAPI, idx: number): Work {
     domainLabel: team.teamType ?? '互動',
     year: '2026',
     team: team.advisor ? `指導老師：${team.advisor}` : team.name,
-    shortDesc: team.artworks.find(a => a.concept_short)?.concept_short ?? '',
+    shortDesc: team.artworks.find(a => a.conceptShort)?.conceptShort ?? '',
     fullDesc: (() => {
       const desc = team.description ?? ''
       const concept = team.artworks.find(a => a.concept)?.concept ?? ''
