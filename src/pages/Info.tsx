@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, MapPin, Calendar, Clock } from 'lucide-react';
 import LazyImage from '../components/LazyImage';
+import songshanImg from '../assets/songshan.webp';
+import yzuImg from '../assets/yzu.webp';
 
 const rules = [
   { id: 1, title: '禁止飲食', content: '展區內全面禁止飲食，請將食物與飲料寄放於服務台。' },
@@ -32,7 +34,7 @@ export default function Info() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="aspect-[4/3] bg-white/5 overflow-hidden">
               <LazyImage
-                src="https://picsum.photos/seed/yzu/800/600"
+                src={yzuImg}
                 alt="YZU Campus"
                 containerClassName="w-full h-full"
                 imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
@@ -100,7 +102,7 @@ export default function Info() {
             </div>
             <div className="order-1 md:order-2 aspect-[4/3] bg-white/5 overflow-hidden">
               <LazyImage
-                src="https://picsum.photos/seed/songshan/800/600"
+                src={songshanImg}
                 alt="Songshan Park"
                 containerClassName="w-full h-full"
                 imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
@@ -112,18 +114,47 @@ export default function Info() {
         {/* Map Section */}
         <div className="mb-32">
           <h2 className="text-2xl font-bold mb-8">展場位置</h2>
-          <div className="w-full h-[400px] bg-white/5 border border-white/10 relative overflow-hidden">
-            {/* Placeholder for Dark Mode Google Map */}
-            <div className="absolute inset-0 flex items-center justify-center text-gray-500 tracking-widest uppercase text-sm z-20 pointer-events-none">
-              互動地圖整合
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* 校內展 - 元智大學 */}
+            <div>
+              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[var(--color-neon)]" />
+                校內展 — 元智大學
+              </h3>
+              <div className="w-full h-[350px] border border-white/10 overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.8!2d121.2676!3d24.9700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c2aaf1ced1%3A0x4e44960ab3fe0f73!2z5YWD5pm65aSn5a24!5e0!3m2!1szh-TW!2stw!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="元智大學地圖"
+                />
+              </div>
+              <p className="text-sm text-gray-500 mt-2">桃園市中壢區遠東路135號</p>
             </div>
-            {/* Using a static dark map image as placeholder */}
-            <LazyImage
-              src="https://picsum.photos/seed/mapdark/1200/400?grayscale"
-              alt="Map"
-              containerClassName="absolute inset-0 w-full h-full"
-              imgClassName="w-full h-full object-cover opacity-30"
-            />
+            {/* 校外展 - 松山文創園區 */}
+            <div>
+              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[var(--color-neon)]" />
+                校外展 — 松山文創園區
+              </h3>
+              <div className="w-full h-[350px] border border-white/10 overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.9!2d121.5604!3d25.0441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abcb5e248e09%3A0xd3052ee27530f78f!2z5p2-5bGx5paH5Ym15ZyS5Y2A!5e0!3m2!1szh-TW!2stw!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="松山文創園區地圖"
+                />
+              </div>
+              <p className="text-sm text-gray-500 mt-2">台北市信義區光復南路133號</p>
+            </div>
           </div>
         </div>
 
