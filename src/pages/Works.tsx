@@ -99,6 +99,9 @@ export default function Works() {
                   key={f.key}
                   onClick={() => handleFilter(f.key)}
                   style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     padding: '8px 16px',
                     background: activeFilter === f.key ? 'rgba(102,140,141,0.15)' : 'transparent',
                     border: `1px solid ${activeFilter === f.key ? 'rgba(102,140,141,0.4)' : 'rgba(255,255,255,0.1)'}`,
