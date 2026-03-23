@@ -121,73 +121,84 @@ export default function ContactSection() {
     <section
       id="contact"
       style={{
-        background: '#000',
-        padding: 'clamp(80px, 12vw, 160px) clamp(20px, 6vw, 80px)',
+        background: "#000",
+        padding: "clamp(80px, 12vw, 160px) clamp(20px, 6vw, 80px)",
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ marginBottom: 'clamp(48px, 6vw, 80px)' }}>
-          <p style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontSize: '11px',
-            letterSpacing: '0.5em',
-            color: 'rgba(129,140,248,0.5)',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+        <div style={{ marginBottom: "clamp(48px, 6vw, 80px)" }}>
+          <p
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              fontSize: "11px",
+              letterSpacing: "0.5em",
+              color: "rgba(129,140,248,0.5)",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
             Contact Us
           </p>
-          <h2 className="font-display" style={{
-            fontSize: 'clamp(36px, 5vw, 64px)',
-            fontWeight: 400,
-            color: '#fff',
-            lineHeight: 1,
-            letterSpacing: '-0.02em',
-          }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 400,
+              color: "#fff",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+            }}
+          >
             意見回饋
           </h2>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: 'clamp(40px, 6vw, 80px)',
-          alignItems: 'start',
-        }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "clamp(40px, 6vw, 80px)",
+            alignItems: "start",
+          }}
+        >
           {/* Left: Form */}
           <div>
             {/* Tabs */}
-            <div style={{
-              display: 'flex',
-              gap: '0',
-              marginBottom: '40px',
-              borderBottom: '1px solid rgba(255,255,255,0.08)',
-            }}>
-              {tabs.map(tab => (
+            <div
+              style={{
+                display: "flex",
+                gap: "0",
+                marginBottom: "40px",
+                borderBottom: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              {tabs.map((tab) => (
                 <button
                   key={tab.key}
                   onClick={() => {
-                    setActiveTab(tab.key)
-                    setSubmitted(false)
-                    setErrors({})
+                    setActiveTab(tab.key);
+                    setSubmitted(false);
+                    setErrors({});
                   }}
                   style={{
-                    padding: '12px 20px',
-                    background: 'none',
-                    border: 'none',
-                    borderBottom: activeTab === tab.key
-                      ? '2px solid #818cf8'
-                      : '2px solid transparent',
-                    color: activeTab === tab.key
-                      ? '#818cf8'
-                      : 'rgba(255,255,255,0.35)',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontSize: '13px',
-                    letterSpacing: '0.05em',
-                    cursor: 'pointer',
-                    transition: 'color 0.2s ease, border-color 0.2s ease',
-                    marginBottom: '-1px',
+                    padding: "12px 20px",
+                    background: "none",
+                    border: "none",
+                    borderBottom:
+                      activeTab === tab.key
+                        ? "2px solid #818cf8"
+                        : "2px solid transparent",
+                    color:
+                      activeTab === tab.key
+                        ? "#818cf8"
+                        : "rgba(255,255,255,0.35)",
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "13px",
+                    letterSpacing: "0.05em",
+                    cursor: "pointer",
+                    transition: "color 0.2s ease, border-color 0.2s ease",
+                    marginBottom: "-1px",
                   }}
                 >
                   {tab.label}
@@ -196,212 +207,324 @@ export default function ContactSection() {
             </div>
 
             {submitted ? (
-              <div style={{
-                padding: '48px 32px',
-                border: '1px solid rgba(129,140,248,0.2)',
-                borderRadius: '8px',
-                background: 'rgba(99,102,241,0.05)',
-                textAlign: 'center',
-              }}>
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(99,102,241,0.15)',
-                  border: '1px solid rgba(129,140,248,0.4)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px',
-                }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div
+                style={{
+                  padding: "48px 32px",
+                  border: "1px solid rgba(129,140,248,0.2)",
+                  borderRadius: "8px",
+                  background: "rgba(99,102,241,0.05)",
+                  textAlign: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "50%",
+                    background: "rgba(99,102,241,0.15)",
+                    border: "1px solid rgba(129,140,248,0.4)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 20px",
+                  }}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#818cf8"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <p className="font-display" style={{
-                  fontSize: '24px',
-                  color: '#fff',
-                  marginBottom: '8px',
-                  fontWeight: 400,
-                }}>
+                <p
+                  className="font-display"
+                  style={{
+                    fontSize: "24px",
+                    color: "#fff",
+                    marginBottom: "8px",
+                    fontWeight: 400,
+                  }}
+                >
                   訊息已送出
                 </p>
-                <p style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '13px',
-                  color: 'rgba(255,255,255,0.4)',
-                  lineHeight: 1.6,
-                }}>
+                <p
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "13px",
+                    color: "rgba(255,255,255,0.4)",
+                    lineHeight: 1.6,
+                  }}
+                >
                   感謝您的來信，我們將盡快回覆。
                 </p>
                 <button
                   onClick={() => {
-                    setSubmitted(false)
-                    setFormData({ name: '', email: '', subject: '', message: '', organization: '' })
+                    setSubmitted(false);
+                    setFormData({
+                      name: "",
+                      email: "",
+                      subject: "",
+                      message: "",
+                      organization: "",
+                    });
                   }}
                   style={{
-                    marginTop: '24px',
-                    padding: '10px 24px',
-                    background: 'none',
-                    border: '1px solid rgba(129,140,248,0.3)',
-                    borderRadius: '4px',
-                    color: 'rgba(129,140,248,0.8)',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontSize: '12px',
-                    letterSpacing: '0.1em',
-                    cursor: 'pointer',
+                    marginTop: "24px",
+                    padding: "10px 24px",
+                    background: "none",
+                    border: "1px solid rgba(129,140,248,0.3)",
+                    borderRadius: "4px",
+                    color: "rgba(129,140,248,0.8)",
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "12px",
+                    letterSpacing: "0.1em",
+                    cursor: "pointer",
                   }}
                 >
                   再次送出
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} className="form-row">
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "16px",
+                  }}
+                  className="form-row"
+                >
                   <div>
-                    <label style={{
-                      display: 'block',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontSize: '11px',
-                      letterSpacing: '0.15em',
-                      color: 'rgba(255,255,255,0.4)',
-                      textTransform: 'uppercase',
-                      marginBottom: '8px',
-                    }}>
+                    <label
+                      style={{
+                        display: "block",
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "11px",
+                        letterSpacing: "0.15em",
+                        color: "rgba(255,255,255,0.4)",
+                        textTransform: "uppercase",
+                        marginBottom: "8px",
+                      }}
+                    >
                       姓名 *
                     </label>
                     <input
                       type="text"
                       value={formData.name}
-                      onChange={e => handleChange('name', e.target.value)}
+                      onChange={(e) => handleChange("name", e.target.value)}
                       placeholder="您的姓名"
                       style={inputStyle(errors.name)}
-                      onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
-                      onBlur={e => { e.currentTarget.style.borderColor = errors.name ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "#818cf8";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = errors.name
+                          ? "rgba(239,68,68,0.6)"
+                          : "rgba(255,255,255,0.1)";
+                      }}
                     />
                     {errors.name && (
-                      <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>
+                      <p
+                        style={{
+                          fontFamily: "Space Grotesk, sans-serif",
+                          fontSize: "11px",
+                          color: "rgba(239,68,68,0.8)",
+                          marginTop: "4px",
+                        }}
+                      >
                         {errors.name}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label style={{
-                      display: 'block',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontSize: '11px',
-                      letterSpacing: '0.15em',
-                      color: 'rgba(255,255,255,0.4)',
-                      textTransform: 'uppercase',
-                      marginBottom: '8px',
-                    }}>
+                    <label
+                      style={{
+                        display: "block",
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "11px",
+                        letterSpacing: "0.15em",
+                        color: "rgba(255,255,255,0.4)",
+                        textTransform: "uppercase",
+                        marginBottom: "8px",
+                      }}
+                    >
                       Email *
                     </label>
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={e => handleChange('email', e.target.value)}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       placeholder="your@email.com"
                       style={inputStyle(errors.email)}
-                      onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
-                      onBlur={e => { e.currentTarget.style.borderColor = errors.email ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "#818cf8";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = errors.email
+                          ? "rgba(239,68,68,0.6)"
+                          : "rgba(255,255,255,0.1)";
+                      }}
                     />
                     {errors.email && (
-                      <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>
+                      <p
+                        style={{
+                          fontFamily: "Space Grotesk, sans-serif",
+                          fontSize: "11px",
+                          color: "rgba(239,68,68,0.8)",
+                          marginTop: "4px",
+                        }}
+                      >
                         {errors.email}
                       </p>
                     )}
                   </div>
                 </div>
 
-                {activeTab === 'collaboration' && (
+                {activeTab === "collaboration" && (
                   <div>
-                    <label style={{
-                      display: 'block',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontSize: '11px',
-                      letterSpacing: '0.15em',
-                      color: 'rgba(255,255,255,0.4)',
-                      textTransform: 'uppercase',
-                      marginBottom: '8px',
-                    }}>
+                    <label
+                      style={{
+                        display: "block",
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "11px",
+                        letterSpacing: "0.15em",
+                        color: "rgba(255,255,255,0.4)",
+                        textTransform: "uppercase",
+                        marginBottom: "8px",
+                      }}
+                    >
                       單位 / 公司
                     </label>
                     <input
                       type="text"
                       value={formData.organization}
-                      onChange={e => handleChange('organization', e.target.value)}
+                      onChange={(e) =>
+                        handleChange("organization", e.target.value)
+                      }
                       placeholder="您的單位或公司名稱"
                       style={inputStyle()}
-                      onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
-                      onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "#818cf8";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor =
+                          "rgba(255,255,255,0.1)";
+                      }}
                     />
                   </div>
                 )}
 
                 <div>
-                  <label style={{
-                    display: 'block',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontSize: '11px',
-                    letterSpacing: '0.15em',
-                    color: 'rgba(255,255,255,0.4)',
-                    textTransform: 'uppercase',
-                    marginBottom: '8px',
-                  }}>
+                  <label
+                    style={{
+                      display: "block",
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "11px",
+                      letterSpacing: "0.15em",
+                      color: "rgba(255,255,255,0.4)",
+                      textTransform: "uppercase",
+                      marginBottom: "8px",
+                    }}
+                  >
                     主旨 *
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
-                    onChange={e => handleChange('subject', e.target.value)}
+                    onChange={(e) => handleChange("subject", e.target.value)}
                     placeholder={
-                      activeTab === 'general' ? '展覽相關問題...' :
-                      activeTab === 'technical' ? '請描述遇到的問題...' :
-                      '合作邀約主旨...'
+                      activeTab === "general"
+                        ? "展覽相關問題..."
+                        : activeTab === "technical"
+                          ? "請描述遇到的問題..."
+                          : "合作邀約主旨..."
                     }
                     style={inputStyle(errors.subject)}
-                    onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
-                    onBlur={e => { e.currentTarget.style.borderColor = errors.subject ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "#818cf8";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = errors.subject
+                        ? "rgba(239,68,68,0.6)"
+                        : "rgba(255,255,255,0.1)";
+                    }}
                   />
                   {errors.subject && (
-                    <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>
+                    <p
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "11px",
+                        color: "rgba(239,68,68,0.8)",
+                        marginTop: "4px",
+                      }}
+                    >
                       {errors.subject}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label style={{
-                    display: 'block',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontSize: '11px',
-                    letterSpacing: '0.15em',
-                    color: 'rgba(255,255,255,0.4)',
-                    textTransform: 'uppercase',
-                    marginBottom: '8px',
-                  }}>
+                  <label
+                    style={{
+                      display: "block",
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "11px",
+                      letterSpacing: "0.15em",
+                      color: "rgba(255,255,255,0.4)",
+                      textTransform: "uppercase",
+                      marginBottom: "8px",
+                    }}
+                  >
                     訊息內容 *
                   </label>
                   <textarea
                     value={formData.message}
-                    onChange={e => handleChange('message', e.target.value)}
+                    onChange={(e) => handleChange("message", e.target.value)}
                     placeholder={
-                      activeTab === 'general' ? '請分享您的想法或建議...' :
-                      activeTab === 'technical' ? '請詳細描述問題，包含使用的裝置與瀏覽器...' :
-                      '請說明合作方式與目的...'
+                      activeTab === "general"
+                        ? "請分享您的想法或建議..."
+                        : activeTab === "technical"
+                          ? "請詳細描述問題，包含使用的裝置與瀏覽器..."
+                          : "請說明合作方式與目的..."
                     }
                     rows={5}
                     style={{
                       ...inputStyle(errors.message),
-                      resize: 'vertical',
-                      minHeight: '120px',
+                      resize: "vertical",
+                      minHeight: "120px",
                     }}
-                    onFocus={e => { e.currentTarget.style.borderColor = '#818cf8' }}
-                    onBlur={e => { e.currentTarget.style.borderColor = errors.message ? 'rgba(239,68,68,0.6)' : 'rgba(255,255,255,0.1)' }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "#818cf8";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = errors.message
+                        ? "rgba(239,68,68,0.6)"
+                        : "rgba(255,255,255,0.1)";
+                    }}
                   />
                   {errors.message && (
-                    <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(239,68,68,0.8)', marginTop: '4px' }}>
+                    <p
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "11px",
+                        color: "rgba(239,68,68,0.8)",
+                        marginTop: "4px",
+                      }}
+                    >
                       {errors.message}
                     </p>
                   )}
@@ -411,72 +534,91 @@ export default function ContactSection() {
                   type="submit"
                   disabled={submitting}
                   style={{
-                    padding: '16px 32px',
-                    background: submitting ? 'rgba(99,102,241,0.3)' : 'rgba(99,102,241,0.15)',
-                    border: '1px solid rgba(129,140,248,0.4)',
-                    borderRadius: '4px',
-                    color: submitting ? 'rgba(129,140,248,0.5)' : '#818cf8',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontSize: '13px',
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                    cursor: submitting ? 'not-allowed' : 'pointer',
-                    transition: 'all 0.2s ease',
-                    alignSelf: 'flex-start',
+                    padding: "16px 32px",
+                    background: submitting
+                      ? "rgba(99,102,241,0.3)"
+                      : "rgba(99,102,241,0.15)",
+                    border: "1px solid rgba(129,140,248,0.4)",
+                    borderRadius: "4px",
+                    color: submitting ? "rgba(129,140,248,0.5)" : "#818cf8",
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "13px",
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    cursor: submitting ? "not-allowed" : "pointer",
+                    transition: "all 0.2s ease",
+                    alignSelf: "flex-start",
                   }}
-                  onMouseEnter={e => {
+                  onMouseEnter={(e) => {
                     if (!submitting) {
-                      e.currentTarget.style.background = 'rgba(99,102,241,0.25)'
-                      e.currentTarget.style.borderColor = 'rgba(129,140,248,0.7)'
+                      e.currentTarget.style.background =
+                        "rgba(99,102,241,0.25)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(129,140,248,0.7)";
                     }
                   }}
-                  onMouseLeave={e => {
+                  onMouseLeave={(e) => {
                     if (!submitting) {
-                      e.currentTarget.style.background = 'rgba(99,102,241,0.15)'
-                      e.currentTarget.style.borderColor = 'rgba(129,140,248,0.4)'
+                      e.currentTarget.style.background =
+                        "rgba(99,102,241,0.15)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(129,140,248,0.4)";
                     }
                   }}
                 >
-                  {submitting ? '送出中...' : '送出訊息'}
+                  {submitting ? "送出中..." : "送出訊息"}
                 </button>
               </form>
             )}
           </div>
 
           {/* Right: Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "32px" }}
+          >
             {/* Tab description */}
-            <div style={{
-              padding: '24px',
-              border: '1px solid rgba(255,255,255,0.06)',
-              borderRadius: '8px',
-              background: 'rgba(255,255,255,0.02)',
-            }}>
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '13px',
-                color: 'rgba(255,255,255,0.5)',
-                lineHeight: 1.7,
-              }}>
-                {activeTab === 'general' && '神經元 元智資傳29屆畢展'}
-                {activeTab === 'technical' && '如果您在瀏覽本網站時遇到任何技術問題，請詳細描述問題情況，我們的技術團隊將盡快處理。'}
-                {activeTab === 'collaboration' && '我們歡迎媒體採訪、品牌合作與各類邀約。請提供您的單位資訊與合作提案，我們將安排專人與您聯繫。'}
+            <div
+              style={{
+                padding: "24px",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: "8px",
+                background: "rgba(255,255,255,0.02)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.7,
+                }}
+              >
+                {activeTab === "general" &&
+                  "歡迎分享您對「元智資傳29屆畢展 神經元」展覽的任何想法、建議或回饋，我們非常重視每一位觀眾的聲音。"}
+                {activeTab === "technical" &&
+                  "如果您在瀏覽本網站時遇到任何技術問題，請詳細描述問題情況，我們的技術團隊將盡快處理。"}
+                {activeTab === "collaboration" &&
+                  "我們歡迎媒體採訪、品牌合作與各類邀約。請提供您的單位資訊與合作提案，我們將安排專人與您聯繫。"}
               </p>
             </div>
 
             {/* Social links */}
             <div>
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.3em',
-                color: 'rgba(255,255,255,0.25)',
-                textTransform: 'uppercase',
-                marginBottom: '16px',
-              }}>
+              <p
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "11px",
+                  letterSpacing: "0.3em",
+                  color: "rgba(255,255,255,0.25)",
+                  textTransform: "uppercase",
+                  marginBottom: "16px",
+                }}
+              >
                 社群媒體
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+              <div
+                style={{ display: "flex", flexDirection: "column", gap: "0" }}
+              >
                 {socialLinks.map((social, idx) => (
                   <a
                     key={social.name}
@@ -485,41 +627,70 @@ export default function ContactSection() {
                     rel="noopener noreferrer"
                     aria-label={`${social.name} ${social.handle}`}
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '16px 0',
-                      borderTop: idx === 0 ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(255,255,255,0.06)',
-                      borderBottom: idx === socialLinks.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                      textDecoration: 'none',
-                      color: 'rgba(255,255,255,0.5)',
-                      transition: 'color 0.2s ease',
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "16px 0",
+                      borderTop:
+                        idx === 0
+                          ? "1px solid rgba(255,255,255,0.06)"
+                          : "1px solid rgba(255,255,255,0.06)",
+                      borderBottom:
+                        idx === socialLinks.length - 1
+                          ? "1px solid rgba(255,255,255,0.06)"
+                          : "none",
+                      textDecoration: "none",
+                      color: "rgba(255,255,255,0.5)",
+                      transition: "color 0.2s ease",
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.color = '#fff' }}
-                    onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#fff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "rgba(255,255,255,0.5)";
+                    }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <span style={{ color: 'rgba(129,140,248,0.7)' }}>{social.icon}</span>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                      }}
+                    >
+                      <span style={{ color: "rgba(129,140,248,0.7)" }}>
+                        {social.icon}
+                      </span>
                       <div>
-                        <p style={{
-                          fontFamily: 'Space Grotesk, sans-serif',
-                          fontSize: '13px',
-                          fontWeight: 500,
-                          letterSpacing: '0.02em',
-                        }}>
+                        <p
+                          style={{
+                            fontFamily: "Space Grotesk, sans-serif",
+                            fontSize: "13px",
+                            fontWeight: 500,
+                            letterSpacing: "0.02em",
+                          }}
+                        >
                           {social.name}
                         </p>
-                        <p style={{
-                          fontFamily: 'Space Grotesk, sans-serif',
-                          fontSize: '11px',
-                          color: 'rgba(129,140,248,0.5)',
-                          letterSpacing: '0.05em',
-                        }}>
+                        <p
+                          style={{
+                            fontFamily: "Space Grotesk, sans-serif",
+                            fontSize: "11px",
+                            color: "rgba(129,140,248,0.5)",
+                            letterSpacing: "0.05em",
+                          }}
+                        >
                           {social.handle}
                         </p>
                       </div>
                     </div>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
                       <path d="M7 17L17 7M17 7H7M17 7v10" />
                     </svg>
                   </a>
@@ -528,43 +699,100 @@ export default function ContactSection() {
             </div>
 
             {/* Exhibition quick info */}
-            <div style={{
-              padding: '24px',
-              border: '1px solid rgba(255,255,255,0.06)',
-              borderRadius: '8px',
-              background: 'rgba(255,255,255,0.02)',
-            }}>
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.3em',
-                color: 'rgba(255,255,255,0.25)',
-                textTransform: 'uppercase',
-                marginBottom: '16px',
-              }}>
+            <div
+              style={{
+                padding: "24px",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: "8px",
+                background: "rgba(255,255,255,0.02)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "11px",
+                  letterSpacing: "0.3em",
+                  color: "rgba(255,255,255,0.25)",
+                  textTransform: "uppercase",
+                  marginBottom: "16px",
+                }}
+              >
                 展覽資訊
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
                 <div>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(129,140,248,0.5)', letterSpacing: '0.1em', marginBottom: '4px' }}>
+                  <p
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "11px",
+                      color: "rgba(129,140,248,0.5)",
+                      letterSpacing: "0.1em",
+                      marginBottom: "4px",
+                    }}
+                  >
                     校外展
                   </p>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
+                  <p
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "13px",
+                      color: "rgba(255,255,255,0.7)",
+                      fontWeight: 500,
+                    }}
+                  >
                     2026.05.08 — 05.11
                   </p>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>
+                  <p
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "12px",
+                      color: "rgba(255,255,255,0.35)",
+                    }}
+                  >
                     松山文創園區 二號倉庫
                   </p>
                 </div>
-                <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }} />
+                <div
+                  style={{
+                    height: "1px",
+                    background: "rgba(255,255,255,0.06)",
+                  }}
+                />
                 <div>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(129,140,248,0.5)', letterSpacing: '0.1em', marginBottom: '4px' }}>
+                  <p
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "11px",
+                      color: "rgba(129,140,248,0.5)",
+                      letterSpacing: "0.1em",
+                      marginBottom: "4px",
+                    }}
+                  >
                     校內展
                   </p>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
+                  <p
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "13px",
+                      color: "rgba(255,255,255,0.7)",
+                      fontWeight: 500,
+                    }}
+                  >
                     2026.04.13 — 04.17
                   </p>
-                  <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>
+                  <p
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "12px",
+                      color: "rgba(255,255,255,0.35)",
+                    }}
+                  >
                     元智大學 五館三樓、六館玻璃屋
                   </p>
                 </div>
@@ -580,5 +808,5 @@ export default function ContactSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

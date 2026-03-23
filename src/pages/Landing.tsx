@@ -1,7 +1,7 @@
 import { useState, useRef, useMemo, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial, Stars, Line } from '@react-three/drei';
+import { Sphere, Stars, Line } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
 
@@ -61,7 +61,6 @@ function PulseLine({ target, currentProgress }: { target: THREE.Vector3, current
 }
 
 function Scene({ phase }: { phase: string }) {
-  const centralNodeRef = useRef<any>(null);
   const surroundingNodesRef = useRef<THREE.Group>(null);
   const linesRef = useRef<THREE.Group>(null);
   const groupRef = useRef<THREE.Group>(null);
@@ -104,20 +103,6 @@ function Scene({ phase }: { phase: string }) {
       groupRef.current.position.z = -phaseCProgress * 5;
     }
 
-    if (centralNodeRef.current) {
-      centralNodeRef.current.rotation.x = time * 0.2;
-      centralNodeRef.current.rotation.y = time * 0.3;
-      
-      const pulse = progress > 0.4 ? Math.sin(time * 5) * 0.1 : Math.sin(time * 2) * 0.05;
-      const scale = (1 + pulse + (progress > 0.4 ? 0.2 : 0)) * phase0Progress;
-      centralNodeRef.current.scale.set(scale, scale, scale);
-
-      // Fade in Phase 0, Fade out in Phase C
-      const material = centralNodeRef.current.material;
-      material.opacity = phase0Progress * (1 - phaseCProgress);
-      material.transparent = true;
-    }
-
     if (surroundingNodesRef.current) {
       surroundingNodesRef.current.children.forEach((child, i) => {
         const targetPos = nodesData[i];
@@ -153,19 +138,6 @@ function Scene({ phase }: { phase: string }) {
       <directionalLight position={[10, 10, 5]} intensity={1} />
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
       
-      <Sphere ref={centralNodeRef} args={[1, 64, 64]}>
-        <MeshDistortMaterial
-          color="#00FFCC"
-          envMapIntensity={1}
-          clearcoat={1}
-          clearcoatRoughness={0.1}
-          metalness={0.8}
-          roughness={0.2}
-          distort={0.4}
-          speed={5}
-        />
-      </Sphere>
-
       <group ref={surroundingNodesRef}>
         {nodesData.map((pos, i) => (
           <Sphere key={i} args={[0.15, 16, 16]} position={pos}>

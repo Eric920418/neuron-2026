@@ -24,6 +24,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
 
   const [aiText, setAiText] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [rejected, setRejected] = useState(false);
   const [animationReady, setAnimationReady] = useState(false);
   const aiDoneRef = useRef(false);
 
@@ -50,6 +51,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
         if (data.text) {
           setAiText(data.text);
           setAiError(null);
+          if (data.rejected) setRejected(true);
         } else {
           setAiError(data.error || 'AI 回應格式異常');
         }
@@ -75,14 +77,17 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
   }, [specialty]);
 
   // 動畫就緒 + API 完成 → 顯示文字面板
+  // 被拒絕時不等動畫，API 回來就立即顯示
   useEffect(() => {
-    if (animationReady && (aiText !== null || aiError !== null)) {
+    if (rejected && aiText !== null) {
+      setShowText(true);
+    } else if (animationReady && (aiText !== null || aiError !== null)) {
       setShowText(true);
     }
-  }, [animationReady, aiText, aiError]);
+  }, [animationReady, aiText, aiError, rejected]);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || rejected) return;
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
 
@@ -121,7 +126,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
     return () => {
       simulation.stop();
     };
-  }, [specialty]);
+  }, [specialty, rejected]);
 
   const handlePointerDown = (e: React.PointerEvent, node: any) => {
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -154,60 +159,63 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
       ref={containerRef}
       className="absolute inset-0 w-full h-full overflow-hidden pointer-events-auto"
     >
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        {links.map((link, i) => {
-          // d3-force replaces source/target string IDs with actual node object references
-          const source = link.source as any;
-          const target = link.target as any;
-          if (!source.x || !target.x) return null;
-          return (
-            <motion.line
-              key={i}
-              x1={source.x}
-              y1={source.y}
-              x2={target.x}
-              y2={target.y}
-              stroke="#00FFCC"
-              strokeWidth="2"
-              strokeDasharray="4 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.6 }}
-              transition={{ duration: 1, delay: 1 + i * 0.15, ease: "easeOut" }}
-            />
-          );
-        })}
-      </svg>
-      {nodes.map((node, i) => (
-        <motion.div
-          key={node.id}
-          onPointerDown={(e) => handlePointerDown(e, node)}
-          onPointerMove={(e) => handlePointerMove(e, node)}
-          onPointerUp={(e) => handlePointerUp(e, node)}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: node.isUser ? 0.5 : 1.5 + i * 0.15,
-            type: "spring",
-          }}
-          className={`absolute flex flex-col items-center justify-center rounded-full cursor-grab active:cursor-grabbing backdrop-blur-md transform -translate-x-1/2 -translate-y-1/2 ${
-            node.isUser
-              ? "bg-[#00FFCC]/20 border-2 border-[#00FFCC] text-[#00FFCC] shadow-[0_0_20px_rgba(0,255,204,0.5)] z-20 px-6 py-4"
-              : "bg-white/10 border border-white/30 text-white px-4 py-3 z-10"
-          }`}
-          style={{
-            left: node.x || 0,
-            top: node.y || 0,
-            touchAction: "none", // Prevent scrolling while dragging on mobile
-          }}
-        >
-          <span
-            className={`mt-1 opacity-80 ${node.isUser ? "text-sm" : "text-xs text-gray-300"}`}
-          >
-            {node.role}
-          </span>
-        </motion.div>
-      ))}
+      {!rejected && (
+        <>
+          <svg className="absolute inset-0 w-full h-full pointer-events-none">
+            {links.map((link, i) => {
+              const source = link.source as any;
+              const target = link.target as any;
+              if (!source.x || !target.x) return null;
+              return (
+                <motion.line
+                  key={i}
+                  x1={source.x}
+                  y1={source.y}
+                  x2={target.x}
+                  y2={target.y}
+                  stroke="#00FFCC"
+                  strokeWidth="2"
+                  strokeDasharray="4 4"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 0.6 }}
+                  transition={{ duration: 1, delay: 1 + i * 0.15, ease: "easeOut" }}
+                />
+              );
+            })}
+          </svg>
+          {nodes.map((node, i) => (
+            <motion.div
+              key={node.id}
+              onPointerDown={(e) => handlePointerDown(e, node)}
+              onPointerMove={(e) => handlePointerMove(e, node)}
+              onPointerUp={(e) => handlePointerUp(e, node)}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: node.isUser ? 0.5 : 1.5 + i * 0.15,
+                type: "spring",
+              }}
+              className={`absolute flex flex-col items-center justify-center rounded-full cursor-grab active:cursor-grabbing backdrop-blur-md transform -translate-x-1/2 -translate-y-1/2 ${
+                node.isUser
+                  ? "bg-[#00FFCC]/20 border-2 border-[#00FFCC] text-[#00FFCC] shadow-[0_0_20px_rgba(0,255,204,0.5)] z-20 px-6 py-4"
+                  : "bg-white/10 border border-white/30 text-white px-4 py-3 z-10"
+              }`}
+              style={{
+                left: node.x || 0,
+                top: node.y || 0,
+                touchAction: "none",
+              }}
+            >
+              <span
+                className={`mt-1 opacity-80 ${node.isUser ? "text-sm" : "text-xs text-gray-300"}`}
+              >
+                {node.role}
+              </span>
+            </motion.div>
+          ))}
+        </>
+      )}
 
       <AnimatePresence>
         {showText && (
@@ -218,8 +226,8 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
             transition={{ duration: 0.8 }}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-lg bg-black/40 border border-white/20 backdrop-blur-md p-6 rounded-2xl text-center z-30 shadow-2xl pointer-events-auto"
           >
-            <h3 className="text-[#00FFCC] font-bold text-lg mb-3 tracking-wider">
-              我們之間的訊號
+            <h3 className={`font-bold text-lg mb-3 tracking-wider ${rejected ? 'text-red-400' : 'text-[#00FFCC]'}`}>
+              {rejected ? '訊號中斷' : '我們之間的訊號'}
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
               {aiText || FALLBACK_TEXT(specialty)}
