@@ -18,10 +18,10 @@ import logoBcc from '../assets/sponsors/畢籌會.png';
 const NeuralBackground = lazy(() => import('../components/NeuralBackground'));
 
 const categories = [
-  { id: "interactive", title: "互動設計", desc: "Digital Experience" },
-  { id: "game", title: "遊戲設計", desc: "Game Design" },
-  { id: "marketing", title: "行銷企劃", desc: "Marketing" },
-  { id: "film", title: "影視動畫", desc: "Film and Animation" },
+  { id: "interactive", title: "互動設計", desc: ["突觸之間的連結，", "在回應與反應之中，讓訊號被感知、被改變。"] },
+  { id: "game", title: "遊戲設計", desc: ["神經訊號的傳遞路徑，", "在不同的路徑選擇中，創造不同的結果。"] },
+  { id: "marketing", title: "行銷企劃", desc: ["訊號的放大與擴散，", "在不同的傳遞路徑中，讓一個想法被傳出去，也被更多人接收。"] },
+  { id: "film", title: "影視動畫", desc: ["訊號轉化成影像與聲音，", "把抽象的感受，變成可以被看見的故事。"] },
 ];
 
 const partnerGroups = [
@@ -151,7 +151,9 @@ export default function Home() {
                   {cat.title}
                 </h3>
                 <p className="text-gray-500 text-sm tracking-widest uppercase">
-                  {cat.desc}
+                  {cat.desc.map((line, i) => (
+                    <span key={i}>{line}{i < cat.desc.length - 1 && <br />}</span>
+                  ))}
                 </p>
               </div>
             ))}

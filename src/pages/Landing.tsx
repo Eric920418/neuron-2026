@@ -184,7 +184,7 @@ function Scene({ phase }: { phase: string }) {
 }
 
 export default function Landing() {
-  const [phase, setPhase] = useState<'narrative' | 'input' | 'network' | 'title'>('narrative');
+  const [phase, setPhase] = useState<'narrative' | 'input' | 'network'>('narrative');
   const [specialty, setSpecialty] = useState('');
   const [revealedCount, setRevealedCount] = useState(0);
   const revealedCountRef = useRef(0);
@@ -193,7 +193,7 @@ export default function Landing() {
 
   const revealNext = useCallback(() => {
     setRevealedCount(prev => {
-      const next = Math.min(prev + 1, NARRATIVE_SEQUENCE.length);
+      const next = Math.min(prev + 2, NARRATIVE_SEQUENCE.length);
       revealedCountRef.current = next;
       return next;
     });
@@ -335,32 +335,11 @@ export default function Landing() {
             className="absolute inset-0 z-10"
           >
             <Suspense fallback={<div className="absolute inset-0" />}>
-              <InteractiveNetwork specialty={specialty} onNext={() => setPhase('title')} />
+              <InteractiveNetwork specialty={specialty} onNext={() => navigate('/home', { state: { specialty } })} />
             </Suspense>
           </motion.div>
         )}
 
-        {phase === 'title' && (
-          <motion.div
-            key="title"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-            className="z-20 absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
-          >
-            <h1 className="text-6xl md:text-8xl font-black tracking-widest text-white drop-shadow-[0_0_30px_rgba(0,255,204,0.5)]">
-              神經元
-            </h1>
-            <p className="text-[#00FFCC] tracking-[0.5em] mt-4 text-xl">2026</p>
-            
-            <button
-              onClick={() => navigate('/home', { state: { specialty } })}
-              className="mt-12 px-8 py-3 border border-[#00FFCC] text-[#00FFCC] hover:bg-[#00FFCC] hover:text-black transition-colors tracking-widest uppercase text-sm pointer-events-auto"
-            >
-              進入展覽
-            </button>
-          </motion.div>
-        )}
       </AnimatePresence>
     </div>
   );
