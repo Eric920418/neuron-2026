@@ -63,7 +63,7 @@ export default function WorkDetail() {
         paddingTop: '64px',
       }}>
         <p style={{
-          fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+          fontFamily: '"LINE Seed TW", sans-serif',
           fontSize: '16px',
           color: 'rgba(255,255,255,0.5)',
         }}>
@@ -77,7 +77,7 @@ export default function WorkDetail() {
             border: '1px solid rgba(255,255,255,0.15)',
             borderRadius: '4px',
             color: 'rgba(255,255,255,0.5)',
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontSize: '13px',
             textDecoration: 'none',
           }}
@@ -123,7 +123,7 @@ export default function WorkDetail() {
               <path d="M21 15l-5-5L5 21" />
             </svg>
             <span style={{
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontWeight: 400,
               fontSize: '13px',
               color: work.accentColor,
@@ -156,7 +156,7 @@ export default function WorkDetail() {
           border: '1px solid rgba(102,140,141,0.4)',
         }}>
           <span style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
             fontSize: '11px',
             color: work.accentColor,
@@ -183,7 +183,7 @@ export default function WorkDetail() {
             border: '1px solid rgba(255,255,255,0.12)',
             textDecoration: 'none',
             color: 'rgba(255,255,255,0.55)',
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontSize: '11px',
             letterSpacing: '0.08em',
             transition: 'color 0.2s ease, border-color 0.2s ease',
@@ -210,7 +210,7 @@ export default function WorkDetail() {
           right: 'clamp(24px, 6vw, 80px)',
         }}>
           <h2 className="font-display" style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontSize: 'clamp(36px, 6vw, 72px)',
             fontWeight: 700,
             color: '#fff',
@@ -221,7 +221,7 @@ export default function WorkDetail() {
             {work.title}
           </h2>
           <span style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
             fontSize: '12px',
             color: 'rgba(255,255,255,0.25)',
@@ -231,7 +231,7 @@ export default function WorkDetail() {
           </span>
           {work.team.startsWith('指導老師') && (
             <span style={{
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontWeight: 400,
               fontSize: '13px',
               color: 'rgba(102,140,141,0.85)',
@@ -259,7 +259,7 @@ export default function WorkDetail() {
                 padding: '5px 12px',
                 border: '1px solid rgba(102,140,141,0.35)',
                 borderRadius: '100px',
-                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontFamily: '"LINE Seed TW", sans-serif',
                 fontWeight: 400,
                 fontSize: '11px',
                 color: 'rgba(102,140,141,0.9)',
@@ -275,7 +275,7 @@ export default function WorkDetail() {
         {work.shortDesc && (
           <div style={{ marginBottom: '72px' }}>
             <p style={{
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontWeight: 400,
               fontSize: '10px',
               letterSpacing: '0.4em',
@@ -287,7 +287,7 @@ export default function WorkDetail() {
             </p>
             <div style={{ maxWidth: '720px' }}>
               <p style={{
-                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontFamily: '"LINE Seed TW", sans-serif',
                 fontWeight: 400,
                 fontSize: 'clamp(15px, 1.6vw, 18px)',
                 color: 'rgba(255,255,255,0.75)',
@@ -300,7 +300,7 @@ export default function WorkDetail() {
               </p>
               {work.fullDesc !== work.shortDesc && work.fullDesc.split('\n\n').map((para, i) => (
                 <p key={i} style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: 'clamp(14px, 1.5vw, 16px)',
                   color: 'rgba(255,255,255,0.6)',
@@ -318,7 +318,7 @@ export default function WorkDetail() {
         {work.images.length > 1 && (
           <div style={{ marginBottom: '72px' }}>
             <p style={{
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontWeight: 400,
               fontSize: '10px',
               letterSpacing: '0.4em',
@@ -367,7 +367,7 @@ export default function WorkDetail() {
               background: 'rgba(255,255,255,0.02)',
             }}>
               <p style={{
-                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontFamily: '"LINE Seed TW", sans-serif',
                 fontWeight: 400,
                 fontSize: '10px',
                 letterSpacing: '0.4em',
@@ -392,7 +392,7 @@ export default function WorkDetail() {
                       flexShrink: 0,
                     }}>
                       <span style={{
-                        fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                        fontFamily: '"LINE Seed TW", sans-serif',
                         fontSize: '11px',
                         color: 'rgba(102,140,141,0.8)',
                         fontWeight: 700,
@@ -401,7 +401,7 @@ export default function WorkDetail() {
                       </span>
                     </div>
                     <span style={{
-                      fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                      fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
                       fontSize: '14px',
                       color: 'rgba(255,255,255,0.65)',
@@ -422,7 +422,7 @@ export default function WorkDetail() {
             background: 'rgba(102,140,141,0.05)',
           }}>
             <p style={{
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontWeight: 400,
               fontSize: '10px',
               letterSpacing: '0.4em',
@@ -435,7 +435,7 @@ export default function WorkDetail() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div>
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: '11px',
                   color: 'rgba(102,140,141,0.7)',
@@ -445,7 +445,7 @@ export default function WorkDetail() {
                   校外展
                 </p>
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: '15px',
                   color: 'rgba(255,255,255,0.7)',
@@ -454,7 +454,7 @@ export default function WorkDetail() {
                   2026.05.08 — 05.11
                 </p>
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: '12px',
                   color: 'rgba(255,255,255,0.35)',
@@ -465,7 +465,7 @@ export default function WorkDetail() {
               <div style={{ height: '1px', background: 'rgba(102,140,141,0.15)' }} />
               <div>
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: '11px',
                   color: 'rgba(102,140,141,0.7)',
@@ -475,21 +475,21 @@ export default function WorkDetail() {
                   校內展
                 </p>
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: '15px',
                   color: 'rgba(255,255,255,0.7)',
                   marginBottom: '2px',
                 }}>
-                  2026.04.24 — 04.26
+                  2026.04.13 — 04.17
                 </p>
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: '12px',
                   color: 'rgba(255,255,255,0.35)',
                 }}>
-                  元智大學 圖書館一樓大廳
+                  元智大學 五館三樓、六館玻璃屋
                 </p>
               </div>
             </div>
@@ -505,7 +505,7 @@ export default function WorkDetail() {
               background: 'transparent',
               border: '1px solid rgba(255,255,255,0.15)',
               borderRadius: '100px',
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontWeight: 400,
               fontSize: '13px',
               color: 'rgba(255,255,255,0.5)',

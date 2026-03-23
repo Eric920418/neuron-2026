@@ -193,7 +193,7 @@ export default function InfoSection() {
                   marginBottom: '8px',
                   letterSpacing: '-0.01em',
                 }}>
-                  2026.04.24 — 04.26
+                  2026.04.13 — 04.17
                 </p>
                 <p style={{
                   fontFamily: 'Space Grotesk, sans-serif',
@@ -201,7 +201,7 @@ export default function InfoSection() {
                   color: 'rgba(255,255,255,0.5)',
                   marginBottom: '4px',
                 }}>
-                  元智大學 圖書館一樓大廳
+                  元智大學 五館三樓、六館玻璃屋
                 </p>
                 <p style={{
                   fontFamily: 'Space Grotesk, sans-serif',

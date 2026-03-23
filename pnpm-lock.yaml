@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/line-seed-jp':
-        specifier: ^5.2.1
-        version: 5.2.1
       '@google/genai':
         specifier: ^1.29.0
         version: 1.46.0
@@ -497,9 +494,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource/line-seed-jp@5.2.1':
-    resolution: {integrity: sha512-br1DgoVDZj5ZTzZc/vMtCnQuGFGrQqcAPeRBxY+XS7+ORoh6oR8vWP1fEXQyjTuCOt84I1dPspipsSsDcao8kQ==}
 
   '@google/genai@1.46.0':
     resolution: {integrity: sha512-ewPMN5JkKfgU5/kdco9ZhXBHDPhVqZpMQqIFQhwsHLf8kyZfx1cNpw1pHo1eV6PGEW7EhIBFi3aYZraFndAXqg==}
@@ -2169,8 +2163,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.4':
     optional: true
-
-  '@fontsource/line-seed-jp@5.2.1': {}
 
   '@google/genai@1.46.0':
     dependencies:

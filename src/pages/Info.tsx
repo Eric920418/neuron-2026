@@ -51,15 +51,15 @@ export default function Info() {
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-white" />
-                  <span>2026.05.10 (日) - 05.14 (四)</span>
+                  <span>2026.04.13 (日) - 04.17 (四)</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Clock className="w-5 h-5 text-white" />
-                  <span>10:00 - 18:00</span>
+                  <span>9:00 - 17:00</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-white" />
-                  <span>元智大學 五館三樓 (桃園市中壢區遠東路135號)</span>
+                  <span>元智大學 五館三樓、六館玻璃屋 (桃園市中壢區遠東路135號)</span>
                 </div>
               </div>
 
@@ -82,16 +82,16 @@ export default function Info() {
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-white" />
-                  <span>2026.05.22 (五) - 05.25 (一)</span>
+                  <span>2026.05.08 (五) - 05.11 (一)</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Clock className="w-5 h-5 text-white" />
-                  <span>09:00 - 20:00 (最後一日至 17:00)</span>
+                  <span>09:00 - 17:00</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-white" />
                   <span>
-                    松山文創園區 北向製菸工廠 (台北市信義區光復南路133號)
+                    松山文創園區 二號倉庫 (台北市信義區光復南路133號)
                   </span>
                 </div>
               </div>

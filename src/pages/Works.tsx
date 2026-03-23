@@ -71,7 +71,7 @@ export default function Works() {
           transition: 'opacity 0.7s ease, transform 0.7s ease',
         }}>
           <p style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
             fontSize: '11px',
             letterSpacing: '0.5em',
@@ -83,7 +83,7 @@ export default function Works() {
           </p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
             <h1 className="font-display" style={{
-              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontFamily: '"LINE Seed TW", sans-serif',
               fontSize: 'clamp(40px, 6vw, 72px)',
               fontWeight: 700,
               color: '#fff',
@@ -104,7 +104,7 @@ export default function Works() {
                     background: activeFilter === f.key ? 'rgba(102,140,141,0.15)' : 'transparent',
                     border: `1px solid ${activeFilter === f.key ? 'rgba(102,140,141,0.4)' : 'rgba(255,255,255,0.1)'}`,
                     borderRadius: '100px',
-                    fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                    fontFamily: '"LINE Seed TW", sans-serif',
                     fontWeight: 400,
                     fontSize: '12px',
                     lineHeight: 1,
@@ -164,7 +164,7 @@ export default function Works() {
             textAlign: 'center',
             padding: '80px 0',
             color: 'rgba(255,255,255,0.3)',
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
             fontSize: '14px',
             letterSpacing: '0.05em',
@@ -240,7 +240,7 @@ export default function Works() {
                         <path d="M21 15l-5-5L5 21" />
                       </svg>
                       <span style={{
-                        fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                        fontFamily: '"LINE Seed TW", sans-serif',
                         fontWeight: 400,
                         fontSize: '10px',
                         color: work.accentColor,
@@ -264,7 +264,7 @@ export default function Works() {
                     alignItems: 'center',
                   }}>
                     <span style={{
-                      fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                      fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
                       fontSize: '10px',
                       lineHeight: 1,
@@ -289,7 +289,7 @@ export default function Works() {
                     gap: '4px',
                   }}>
                     <span style={{
-                      fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                      fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
                       fontSize: '10px',
                       color: 'rgba(255,255,255,0.5)',
@@ -307,7 +307,7 @@ export default function Works() {
                 <div style={{ padding: '20px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '10px' }}>
                     <h2 className="font-display" style={{
-                      fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                      fontFamily: '"LINE Seed TW", sans-serif',
                       fontSize: '20px',
                       fontWeight: 700,
                       color: 'rgba(255,255,255,0.85)',
@@ -316,7 +316,7 @@ export default function Works() {
                       {work.title}
                     </h2>
                     <span style={{
-                      fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                      fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
                       fontSize: '11px',
                       color: 'rgba(255,255,255,0.2)',
@@ -327,7 +327,7 @@ export default function Works() {
                   </div>
                   {work.shortDesc && (
                     <p style={{
-                      fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                      fontFamily: '"LINE Seed TW", sans-serif',
                       fontWeight: 400,
                       fontSize: '13px',
                       color: 'rgba(255,255,255,0.4)',
@@ -344,7 +344,7 @@ export default function Works() {
                           padding: '3px 8px',
                           border: '1px solid rgba(255,255,255,0.08)',
                           borderRadius: '100px',
-                          fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                          fontFamily: '"LINE Seed TW", sans-serif',
                           fontWeight: 400,
                           fontSize: '10px',
                           color: 'rgba(255,255,255,0.3)',

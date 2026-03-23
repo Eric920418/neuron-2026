@@ -561,7 +561,7 @@ export default function WorkDetailClient({ work }: WorkDetailClientProps) {
                       marginBottom: '2px',
                     }}
                   >
-                    2026.04.24 — 04.26
+                    2026.04.13 — 04.17
                   </p>
                   <p
                     style={{
@@ -570,7 +570,7 @@ export default function WorkDetailClient({ work }: WorkDetailClientProps) {
                       color: 'rgba(255,255,255,0.25)',
                     }}
                   >
-                    元智大學 圖書館一樓大廳
+                    元智大學 五館三樓、六館玻璃屋
                   </p>
                 </div>
               </div>

@@ -18,10 +18,10 @@ import logoBcc from '../assets/sponsors/畢籌會.png';
 const NeuralBackground = lazy(() => import('../components/NeuralBackground'));
 
 const categories = [
-  { id: 'interactive', title: '互動設計', desc: '沉浸體驗' },
-  { id: 'game', title: '遊戲設計', desc: '虛擬世界' },
-  { id: 'marketing', title: '行銷企劃', desc: '創意發想' },
-  { id: 'film', title: '影視動畫', desc: '視覺敘事' },
+  { id: "interactive", title: "互動設計", desc: "Digital Experience" },
+  { id: "game", title: "遊戲設計", desc: "Game Design" },
+  { id: "marketing", title: "行銷企劃", desc: "Marketing" },
+  { id: "film", title: "影視動畫", desc: "Film and Animation" },
 ];
 
 const partnerGroups = [

@@ -169,7 +169,7 @@ export default function Booking() {
         <div style={{ marginBottom: "clamp(48px, 6vw, 80px)" }}>
           <p
             style={{
-              fontFamily: "Space Grotesk, sans-serif",
+              fontFamily: "LINE Seed TW, sans-serif",
               fontSize: "11px",
               letterSpacing: "0.5em",
               color: "rgba(57,255,20,0.5)",
@@ -251,7 +251,7 @@ export default function Booking() {
                       ) : (
                         <span
                           style={{
-                            fontFamily: "Space Grotesk, sans-serif",
+                            fontFamily: "LINE Seed TW, sans-serif",
                             fontSize: "11px",
                             color: isActive
                               ? "rgba(57,255,20,0.9)"
@@ -264,7 +264,7 @@ export default function Booking() {
                     </div>
                     <span
                       style={{
-                        fontFamily: "Space Grotesk, sans-serif",
+                        fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "10px",
                         letterSpacing: "0.05em",
                         color: isActive
@@ -304,7 +304,7 @@ export default function Booking() {
           <div>
             <p
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: "LINE Seed TW, sans-serif",
                 fontSize: "13px",
                 color: "rgba(255,255,255,0.4)",
                 marginBottom: "24px",
@@ -375,7 +375,7 @@ export default function Booking() {
                       />
                       <span
                         style={{
-                          fontFamily: "Space Grotesk, sans-serif",
+                          fontFamily: "LINE Seed TW, sans-serif",
                           fontSize: "10px",
                           letterSpacing: "0.3em",
                           color: isSelected
@@ -403,7 +403,7 @@ export default function Booking() {
                     </p>
                     <p
                       style={{
-                        fontFamily: "Space Grotesk, sans-serif",
+                        fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "13px",
                         color: isSelected
                           ? "rgba(255,255,255,0.6)"
@@ -416,7 +416,7 @@ export default function Booking() {
                     </p>
                     <p
                       style={{
-                        fontFamily: "Space Grotesk, sans-serif",
+                        fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "12px",
                         color: "rgba(255,255,255,0.2)",
                       }}
@@ -444,7 +444,7 @@ export default function Booking() {
                     : "rgba(255,255,255,0.03)",
                   border: `1px solid ${exhibitionType ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
                   color: exhibitionType
@@ -465,7 +465,7 @@ export default function Booking() {
           <div>
             <p
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: "LINE Seed TW, sans-serif",
                 fontSize: "13px",
                 color: "rgba(255,255,255,0.4)",
                 marginBottom: "24px",
@@ -543,7 +543,7 @@ export default function Booking() {
                 style={{
                   marginTop: "32px",
                   textAlign: "center",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   color: "rgba(255,255,255,0.3)",
                   letterSpacing: "0.05em",
@@ -562,7 +562,7 @@ export default function Booking() {
                   border: "1px solid rgba(255,80,80,0.2)",
                   background: "rgba(255,80,80,0.05)",
                   borderRadius: "4px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   color: "rgba(255,120,120,0.8)",
                 }}
@@ -576,7 +576,7 @@ export default function Booking() {
               <div style={{ marginTop: "32px" }}>
                 <p
                   style={{
-                    fontFamily: "Space Grotesk, sans-serif",
+                    fontFamily: "LINE Seed TW, sans-serif",
                     fontSize: "11px",
                     letterSpacing: "0.3em",
                     color: "rgba(255,255,255,0.2)",
@@ -634,7 +634,7 @@ export default function Booking() {
                           />
                           <span
                             style={{
-                              fontFamily: "Space Grotesk, sans-serif",
+                              fontFamily: "LINE Seed TW, sans-serif",
                               fontSize: "10px",
                               letterSpacing: "0.2em",
                               color: isSelected
@@ -665,7 +665,7 @@ export default function Booking() {
                         {team.description && (
                           <p
                             style={{
-                              fontFamily: "Space Grotesk, sans-serif",
+                              fontFamily: "LINE Seed TW, sans-serif",
                               fontSize: "12px",
                               color: "rgba(255,255,255,0.3)",
                               lineHeight: 1.5,
@@ -679,7 +679,7 @@ export default function Booking() {
                         <div style={{ display: "flex", gap: "12px" }}>
                           <span
                             style={{
-                              fontFamily: "Space Grotesk, sans-serif",
+                              fontFamily: "LINE Seed TW, sans-serif",
                               fontSize: "11px",
                               color: "rgba(57,255,20,0.5)",
                               letterSpacing: "0.04em",
@@ -690,7 +690,7 @@ export default function Booking() {
                           {team.queueStats.estimatedWaitMinutes > 0 && (
                             <span
                               style={{
-                                fontFamily: "Space Grotesk, sans-serif",
+                                fontFamily: "LINE Seed TW, sans-serif",
                                 fontSize: "11px",
                                 color: "rgba(255,255,255,0.2)",
                                 letterSpacing: "0.04em",
@@ -716,7 +716,7 @@ export default function Booking() {
                   style={{
                     marginTop: "32px",
                     textAlign: "center",
-                    fontFamily: "Space Grotesk, sans-serif",
+                    fontFamily: "LINE Seed TW, sans-serif",
                     fontSize: "13px",
                     color: "rgba(255,255,255,0.25)",
                     letterSpacing: "0.05em",
@@ -741,7 +741,7 @@ export default function Booking() {
                   background: "transparent",
                   border: "1px solid rgba(255,255,255,0.08)",
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   color: "rgba(255,255,255,0.3)",
                   cursor: "pointer",
@@ -759,7 +759,7 @@ export default function Booking() {
                     : "rgba(255,255,255,0.03)",
                   border: `1px solid ${selectedTeam ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
                   color: selectedTeam
@@ -794,7 +794,7 @@ export default function Booking() {
               >
                 <span
                   style={{
-                    fontFamily: "Space Grotesk, sans-serif",
+                    fontFamily: "LINE Seed TW, sans-serif",
                     fontSize: "11px",
                     color: "rgba(57,255,20,0.5)",
                     letterSpacing: "0.1em",
@@ -821,7 +821,7 @@ export default function Booking() {
             <div style={{ marginBottom: "32px" }}>
               <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "11px",
                   letterSpacing: "0.3em",
                   color: "rgba(255,255,255,0.2)",
@@ -856,7 +856,7 @@ export default function Booking() {
                           : "rgba(255,255,255,0.02)",
                         border: `1px solid ${isSelected ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.08)"}`,
                         borderRadius: "2px",
-                        fontFamily: "Space Grotesk, sans-serif",
+                        fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "13px",
                         color: isSelected
                           ? "rgba(57,255,20,0.9)"
@@ -877,7 +877,7 @@ export default function Booking() {
             <div style={{ marginBottom: "20px" }}>
               <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "11px",
                   letterSpacing: "0.3em",
                   color: "rgba(255,255,255,0.2)",
@@ -899,7 +899,7 @@ export default function Booking() {
                   background: "rgba(255,255,255,0.03)",
                   border: `1px solid ${visitorName.trim() ? "rgba(57,255,20,0.2)" : "rgba(255,255,255,0.08)"}`,
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "14px",
                   color: "rgba(255,255,255,0.8)",
                   outline: "none",
@@ -921,7 +921,7 @@ export default function Booking() {
             <div style={{ marginBottom: "20px" }}>
               <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "11px",
                   letterSpacing: "0.3em",
                   color: "rgba(255,255,255,0.2)",
@@ -946,7 +946,7 @@ export default function Booking() {
                   background: "rgba(255,255,255,0.03)",
                   border: `1px solid ${visitorPhone && !/^09\d{8}$/.test(visitorPhone) ? "rgba(255,80,80,0.35)" : visitorPhone ? "rgba(57,255,20,0.2)" : "rgba(255,255,255,0.08)"}`,
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "14px",
                   color: "rgba(255,255,255,0.8)",
                   outline: "none",
@@ -969,7 +969,7 @@ export default function Booking() {
               {visitorPhone && !/^09\d{8}$/.test(visitorPhone) && (
                 <p
                   style={{
-                    fontFamily: "Space Grotesk, sans-serif",
+                    fontFamily: "LINE Seed TW, sans-serif",
                     fontSize: "11px",
                     color: "rgba(255,80,80,0.7)",
                     marginTop: "6px",
@@ -985,7 +985,7 @@ export default function Booking() {
             <div style={{ marginBottom: "40px" }}>
               <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "11px",
                   letterSpacing: "0.3em",
                   color: "rgba(255,255,255,0.2)",
@@ -1006,7 +1006,7 @@ export default function Booking() {
                   background: "rgba(255,255,255,0.03)",
                   border: "1px solid rgba(255,255,255,0.08)",
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   color: "rgba(255,255,255,0.6)",
                   outline: "none",
@@ -1032,7 +1032,7 @@ export default function Booking() {
                   border: "1px solid rgba(255,80,80,0.25)",
                   background: "rgba(255,80,80,0.05)",
                   borderRadius: "4px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   color: "rgba(255,120,120,0.8)",
                 }}
@@ -1049,7 +1049,7 @@ export default function Booking() {
                   background: "transparent",
                   border: "1px solid rgba(255,255,255,0.08)",
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   color: "rgba(255,255,255,0.3)",
                   cursor: "pointer",
@@ -1067,7 +1067,7 @@ export default function Booking() {
                     : "rgba(255,255,255,0.03)",
                   border: `1px solid ${canSubmit ? "rgba(57,255,20,0.35)" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "2px",
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
                   color: canSubmit
@@ -1131,7 +1131,7 @@ export default function Booking() {
 
             <p
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: "LINE Seed TW, sans-serif",
                 fontSize: "11px",
                 letterSpacing: "0.5em",
                 color: "rgba(57,255,20,0.5)",
@@ -1157,7 +1157,7 @@ export default function Booking() {
 
             <p
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: "LINE Seed TW, sans-serif",
                 fontSize: "14px",
                 color: "rgba(255,255,255,0.35)",
                 marginBottom: "48px",
@@ -1178,7 +1178,7 @@ export default function Booking() {
             >
               <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "11px",
                   letterSpacing: "0.3em",
                   color: "rgba(255,255,255,0.2)",
@@ -1190,7 +1190,7 @@ export default function Booking() {
               </p>
               <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "LINE Seed TW, sans-serif",
                   fontSize: "clamp(40px, 6vw, 64px)",
                   fontWeight: 700,
                   color: "rgba(57,255,20,0.9)",
@@ -1204,7 +1204,7 @@ export default function Booking() {
               {bookingResult.estimatedWaitMinutes > 0 && (
                 <p
                   style={{
-                    fontFamily: "Space Grotesk, sans-serif",
+                    fontFamily: "LINE Seed TW, sans-serif",
                     fontSize: "13px",
                     color: "rgba(255,255,255,0.3)",
                     marginBottom: "24px",
@@ -1244,7 +1244,7 @@ export default function Booking() {
                   >
                     <span
                       style={{
-                        fontFamily: "Space Grotesk, sans-serif",
+                        fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "11px",
                         color: "rgba(255,255,255,0.2)",
                         letterSpacing: "0.05em",
@@ -1254,7 +1254,7 @@ export default function Booking() {
                     </span>
                     <span
                       style={{
-                        fontFamily: "Space Grotesk, sans-serif",
+                        fontFamily: "LINE Seed TW, sans-serif",
                         fontSize: "13px",
                         color: "rgba(255,255,255,0.6)",
                       }}
@@ -1273,7 +1273,7 @@ export default function Booking() {
                 background: "transparent",
                 border: "1px solid rgba(255,255,255,0.1)",
                 borderRadius: "2px",
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: "LINE Seed TW, sans-serif",
                 fontSize: "12px",
                 letterSpacing: "0.1em",
                 color: "rgba(255,255,255,0.3)",

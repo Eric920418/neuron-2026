@@ -123,7 +123,7 @@ export default function GallerySection() {
       }}>
         <div>
           <p style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
             fontSize: '11px',
             letterSpacing: '0.5em',
@@ -134,7 +134,7 @@ export default function GallerySection() {
             Selected Works
           </p>
           <h2 className="font-display" style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontSize: 'clamp(36px, 5vw, 64px)',
             fontWeight: 700,
             color: '#fff',
@@ -147,7 +147,7 @@ export default function GallerySection() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <span style={{
-            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
             fontSize: '12px',
             color: 'rgba(255,255,255,0.25)',
@@ -218,7 +218,7 @@ export default function GallerySection() {
               borderRadius: '100px', border: `1px solid rgba(102,140,141,0.4)`,
             }}>
               <span style={{
-                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontFamily: '"LINE Seed TW", sans-serif',
                 fontWeight: 400,
                 fontSize: '10px',
                 color: 'rgb(102,140,141)',
@@ -233,7 +233,7 @@ export default function GallerySection() {
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 'clamp(16px, 2vw, 32px) 0' }}>
             <div>
               <p style={{
-                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontFamily: '"LINE Seed TW", sans-serif',
                 fontWeight: 400,
                 fontSize: '11px',
                 letterSpacing: '0.3em',
@@ -247,7 +247,7 @@ export default function GallerySection() {
               <h3
                 className="font-display"
                 style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontSize: 'clamp(28px, 4vw, 52px)',
                   fontWeight: 700,
                   color: '#fff',
@@ -265,7 +265,7 @@ export default function GallerySection() {
               </h3>
               {current.shortDesc && (
                 <p style={{
-                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontFamily: '"LINE Seed TW", sans-serif',
                   fontWeight: 400,
                   fontSize: 'clamp(13px, 1.4vw, 15px)',
                   color: 'rgba(255,255,255,0.45)',
@@ -303,7 +303,7 @@ export default function GallerySection() {
                 }} />
               </div>
               <p style={{
-                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontFamily: '"LINE Seed TW", sans-serif',
                 fontWeight: 400,
                 fontSize: '10px',
                 color: 'rgba(255,255,255,0.18)',
@@ -340,7 +340,7 @@ export default function GallerySection() {
                 </div>
               )}
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '6px 8px', background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)' }}>
-                <p style={{ fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif', fontWeight: 400, fontSize: '9px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.04em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <p style={{ fontFamily: '"LINE Seed TW", sans-serif', fontWeight: 400, fontSize: '9px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.04em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {item.title}
                 </p>
               </div>
@@ -382,7 +382,7 @@ function WorkImage({ work }: { work: Work }) {
       <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(102,140,141,0.25)', border: '1px solid rgba(102,140,141,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: 'rgb(102,140,141)' }} />
       </div>
-      <span style={{ fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif', fontWeight: 400, fontSize: '10px', color: 'rgb(102,140,141)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+      <span style={{ fontFamily: '"LINE Seed TW", sans-serif', fontWeight: 400, fontSize: '10px', color: 'rgb(102,140,141)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
         作品圖片
       </span>
     </div>

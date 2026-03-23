@@ -2,14 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as d3 from 'd3-force';
 
+const FALLBACK_TEXT = (specialty: string) =>
+  `「${specialty}」正是資訊傳播領域跨域整合的核心之一。在這裡，你的專業將與程式開發、視覺設計、行銷企劃等不同節點產生緊密連結，共同激盪出全新的數位體驗與互動火花。`;
+
 const mockPeople = [
-  { name: '小明', role: '前端開發' },
-  { name: '小華', role: '3D動畫' },
-  { name: '小美', role: '行銷企劃' },
-  { name: '阿強', role: '視覺設計' },
-  { name: '阿志', role: '遊戲程式' },
-  { name: '小雅', role: 'UI/UX' },
-  { name: '阿文', role: '後端開發' },
+  {  role: '前端開發' },
+  {  role: '3D動畫' },
+  {  role: '行銷企劃' },
+  {  role: '視覺設計' },
+  {  role: '遊戲程式' },
+  {  role: 'UI/UX' },
+  {  role: '後端開發' },
 ];
 
 export default function InteractiveNetwork({ specialty, onNext }: { specialty: string, onNext: () => void }) {
@@ -19,11 +22,57 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
   const [showText, setShowText] = useState(false);
   const simulationRef = useRef<d3.Simulation<any, any> | null>(null);
 
+  const [aiText, setAiText] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [animationReady, setAnimationReady] = useState(false);
+
+  // 3.5 秒後動畫就緒
   useEffect(() => {
-    // Show the explanation text after the network forms
-    const timer = setTimeout(() => setShowText(true), 3500);
+    const timer = setTimeout(() => setAnimationReady(true), 3500);
     return () => clearTimeout(timer);
   }, []);
+
+  // API 呼叫：元件 mount 時立即發起，與動畫並行
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch('/api/ai/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ specialty }),
+      signal: controller.signal,
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.text) {
+          setAiText(data.text);
+        } else {
+          setAiError(data.error || 'AI 回應格式異常');
+        }
+      })
+      .catch(err => {
+        if (err.name !== 'AbortError') {
+          setAiError(err.message || '網路連線失敗');
+        }
+      });
+
+    // 5 秒超時保護
+    const timeout = setTimeout(() => {
+      setAiError(prev => prev ?? '回應超時，使用預設文案');
+    }, 5000);
+
+    return () => {
+      controller.abort();
+      clearTimeout(timeout);
+    };
+  }, [specialty]);
+
+  // 動畫就緒 + API 完成 → 顯示文字面板
+  useEffect(() => {
+    if (animationReady && (aiText !== null || aiError !== null)) {
+      setShowText(true);
+    }
+  }, [animationReady, aiText, aiError]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -32,11 +81,11 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
 
     const initialNodes = [
       { id: 'user', name: '您', role: specialty, isUser: true, x: width / 2, y: height / 2 },
-      ...mockPeople.map((p, i) => ({ 
-        ...p, 
+      ...mockPeople.map((p, i) => ({
+        ...p,
         id: `node-${i}`,
-        x: width / 2 + (Math.random() - 0.5) * 400, 
-        y: height / 2 + (Math.random() - 0.5) * 400 
+        x: width / 2 + (Math.random() - 0.5) * 400,
+        y: height / 2 + (Math.random() - 0.5) * 400
       }))
     ];
 
@@ -126,14 +175,14 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
           onPointerUp={(e) => handlePointerUp(e, node)}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ 
-            duration: 0.5, 
-            delay: node.isUser ? 0.5 : 1.5 + i * 0.15, 
-            type: "spring" 
+          transition={{
+            duration: 0.5,
+            delay: node.isUser ? 0.5 : 1.5 + i * 0.15,
+            type: "spring"
           }}
           className={`absolute flex flex-col items-center justify-center rounded-full cursor-grab active:cursor-grabbing backdrop-blur-md transform -translate-x-1/2 -translate-y-1/2 ${
-            node.isUser 
-              ? 'bg-[#00FFCC]/20 border-2 border-[#00FFCC] text-[#00FFCC] shadow-[0_0_20px_rgba(0,255,204,0.5)] z-20 px-6 py-4' 
+            node.isUser
+              ? 'bg-[#00FFCC]/20 border-2 border-[#00FFCC] text-[#00FFCC] shadow-[0_0_20px_rgba(0,255,204,0.5)] z-20 px-6 py-4'
               : 'bg-white/10 border border-white/30 text-white px-4 py-3 z-10'
           }`}
           style={{
@@ -142,9 +191,6 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
             touchAction: 'none' // Prevent scrolling while dragging on mobile
           }}
         >
-          <span className={`font-bold ${node.isUser ? 'text-lg' : 'text-sm text-[#00FFCC]'}`}>
-            {node.name}
-          </span>
           <span className={`mt-1 opacity-80 ${node.isUser ? 'text-sm' : 'text-xs text-gray-300'}`}>
             {node.role}
           </span>
@@ -161,9 +207,12 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
             className="absolute top-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-lg bg-black/40 border border-white/20 backdrop-blur-md p-6 rounded-2xl text-center z-30 shadow-2xl pointer-events-auto"
           >
             <h3 className="text-[#00FFCC] font-bold text-lg mb-3 tracking-wider">與資傳領域的連結</h3>
-            <p className="text-gray-300 text-sm leading-relaxed mb-6">
-              「<span className="text-white font-bold">{specialty}</span>」正是資訊傳播領域跨域整合的核心之一。在這裡，你的專業將與程式開發、視覺設計、行銷企劃等不同節點產生緊密連結，共同激盪出全新的數位體驗與互動火花。
+            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+              {aiText || FALLBACK_TEXT(specialty)}
             </p>
+            {aiError && (
+              <p className="text-red-400/70 text-xs mb-4">{aiError}</p>
+            )}
             <button
               onClick={onNext}
               className="px-6 py-2 border border-[#00FFCC] text-[#00FFCC] hover:bg-[#00FFCC] hover:text-black transition-colors tracking-widest uppercase text-sm rounded-full"

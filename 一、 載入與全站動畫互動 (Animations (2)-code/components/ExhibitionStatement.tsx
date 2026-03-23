@@ -134,7 +134,7 @@ export default function ExhibitionStatement() {
               fontSize: '14px',
               color: 'rgba(255,255,255,0.85)',
             }}>
-              2026.04.24 — 04.26
+              2026.04.13 — 04.17
             </p>
             <p style={{
               fontFamily: 'Space Grotesk, sans-serif',
@@ -142,7 +142,7 @@ export default function ExhibitionStatement() {
               color: 'rgba(255,255,255,0.4)',
               marginTop: '4px',
             }}>
-              元智大學圖書館一樓
+              元智大學五館三樓、六館玻璃屋
             </p>
           </div>
         </motion.div>

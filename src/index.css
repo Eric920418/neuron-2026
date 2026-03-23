@@ -1,9 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: "LINE Seed TW";
+  src: url("/fonts/LINESeedTW_OTF_Th.woff2") format("woff2"),
+       url("/fonts/LINESeedTW_OTF_Th.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LINE Seed TW";
+  src: url("/fonts/LINESeedTW_OTF_Rg.woff2") format("woff2"),
+       url("/fonts/LINESeedTW_OTF_Rg.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LINE Seed TW";
+  src: url("/fonts/LINESeedTW_OTF_Bd.woff2") format("woff2"),
+       url("/fonts/LINESeedTW_OTF_Bd.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LINE Seed TW";
+  src: url("/fonts/LINESeedTW_OTF_Eb.woff2") format("woff2"),
+       url("/fonts/LINESeedTW_OTF_Eb.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-sans: "Noto Sans TC", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "LINE Seed TW", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "LINE Seed TW", ui-sans-serif, system-ui, sans-serif;
   --color-neon: #00FFCC;
   --color-ink: #000000;
   --color-paper: #FFFFFF;

@@ -562,10 +562,10 @@ export default function ContactSection() {
                     校內展
                   </p>
                   <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
-                    2026.04.24 — 04.26
+                    2026.04.13 — 04.17
                   </p>
                   <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>
-                    元智大學 圖書館一樓大廳
+                    元智大學 五館三樓、六館玻璃屋
                   </p>
                 </div>
               </div>

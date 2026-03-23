@@ -200,8 +200,8 @@ export default function BookingSection() {
                 {
                   type: 'indoor' as ExhibitionType,
                   label: '校內展',
-                  date: '2026.04.24 — 04.26',
-                  venue: '元智大學 圖書館一樓大廳',
+                  date: '2026.04.13 — 04.17',
+                  venue: '元智大學 五館三樓、六館玻璃屋',
                   desc: '桃園市中壢區，元智大學校園內',
                 },
               ].map((item) => {

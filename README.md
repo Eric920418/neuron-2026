@@ -9,8 +9,9 @@
 - **動畫**: Framer Motion + CSS Transitions + IntersectionObserver
 - **3D**: Three.js + React Three Fiber
 - **樣式**: Tailwind CSS 4.1 + Inline Styles
-- **字體**: LINE Seed JP（預約頁標題 Bold / 內文 Regular）、Noto Sans TC、Space Grotesk
+- **字體**: LINE Seed TW（本地 WOFF2，支援 Thin/Regular/Bold/Extra Bold 四字重）
 - **平滑滾動**: Lenis
+- **AI 文案生成**: MiniMax API (MiniMax-M2.7) — Landing 頁面根據使用者專長動態生成跨域共創文案
 
 ## 展覽資訊
 
@@ -45,17 +46,28 @@
 - **Three.js 動態載入**: NeuralBackground、InteractiveNetwork 按需載入
 - **Bundle 分割**: Three.js / Framer Motion / d3-force 獨立打包為 vendor chunks
 
+## 環境變數
+
+複製 `.env.example` 為 `.env` 並填入：
+
+| 變數 | 說明 |
+|------|------|
+| `MINIMAX_API_KEY` | MiniMax 平台 API 金鑰（[取得方式](https://platform.minimaxi.com)） |
+| `GEMINI_API_KEY` | Gemini AI API 金鑰（選填） |
+
 ## 本地開發
 
 **前置條件**: Node.js 18+, pnpm
 
 ```bash
+cp .env.example .env  # 填入 API key
 pnpm install
 pnpm dev
 ```
 
-## 建置
+## 建置與生產部署
 
 ```bash
 pnpm build
+pnpm start    # Express server 同時服務靜態檔案 + AI API
 ```
