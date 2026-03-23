@@ -60,7 +60,8 @@ export default function LazyImage({
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           {...(priority && { fetchPriority: 'high' as const })}
-          className={`w-full h-full object-contain transition-opacity duration-700 z-10 relative ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imgClassName}`}
+          className={`w-full h-full transition-opacity duration-700 z-10 relative ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imgClassName}`}
+          style={{ objectFit: 'contain' }}
           onLoad={() => setIsLoaded(true)}
           referrerPolicy="no-referrer"
           {...props}
