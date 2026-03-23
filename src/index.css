@@ -33,3 +33,20 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-stroke: 0px;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
+
+.footer-logo-svg path,
+.footer-logo-svg rect,
+.footer-logo-svg polygon {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1px;
+  transition: all 0.3s ease;
+}
+
+.group:hover .footer-logo-svg path,
+.group:hover .footer-logo-svg rect,
+.group:hover .footer-logo-svg polygon {
+  fill: var(--color-paper);
+  stroke: var(--color-paper);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}

@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchTeamsPublic, type Work } from '../data/works'
+import LazyImage from './LazyImage'
 
 const DOMAIN_EN: Record<string, string> = {
   interactive: 'Interactive',
@@ -330,7 +331,7 @@ export default function GallerySection() {
                 transition: 'opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease',
               }}>
               {item.images[0]?.url ? (
-                <img src={item.images[0].url} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <LazyImage src={item.images[0].url} alt={item.title} containerClassName="w-full h-full" imgClassName="w-full h-full object-cover" />
               ) : (
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'rgba(102,140,141,0.3)', border: '1px solid rgba(102,140,141,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -367,10 +368,12 @@ export default function GallerySection() {
 function WorkImage({ work }: { work: Work }) {
   if (work.images[0]?.url) {
     return (
-      <img
+      <LazyImage
         src={work.images[0].url}
         alt={work.title}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        containerClassName="w-full h-full"
+        imgClassName="w-full h-full object-cover"
+        priority
       />
     )
   }

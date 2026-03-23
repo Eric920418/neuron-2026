@@ -1,10 +1,11 @@
-import { useState, useRef, useMemo, useEffect } from 'react';
+import { useState, useRef, useMemo, useEffect, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, MeshDistortMaterial, Stars, Line } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
-import InteractiveNetwork from '../components/InteractiveNetwork';
+
+const InteractiveNetwork = lazy(() => import('../components/InteractiveNetwork'));
 
 function PulseLine({ target, currentProgress }: { target: THREE.Vector3, currentProgress: React.MutableRefObject<number> }) {
   const lineRef = useRef<any>(null);
@@ -214,7 +215,9 @@ export default function Landing() {
             transition={{ duration: 1 }}
             className="absolute inset-0 z-10"
           >
-            <InteractiveNetwork specialty={specialty} onNext={() => setPhase('title')} />
+            <Suspense fallback={<div className="absolute inset-0" />}>
+              <InteractiveNetwork specialty={specialty} onNext={() => setPhase('title')} />
+            </Suspense>
           </motion.div>
         )}
 

@@ -31,19 +31,21 @@ export default function Info() {
           {/* Block 1: Internal */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="aspect-[4/3] bg-white/5 overflow-hidden">
-              <LazyImage 
-                src="https://picsum.photos/seed/yzu/800/600" 
-                alt="YZU Campus" 
+              <LazyImage
+                src="https://picsum.photos/seed/yzu/800/600"
+                alt="YZU Campus"
                 containerClassName="w-full h-full"
-                imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700" 
+                imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
               />
             </div>
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold mb-2">校內展</h2>
-                <p className="text-[var(--color-neon)] tracking-widest uppercase text-sm">元智大學</p>
+                <p className="text-[var(--color-neon)] tracking-widest uppercase text-sm">
+                  元智大學
+                </p>
               </div>
-              
+
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-white" />
@@ -58,7 +60,7 @@ export default function Info() {
                   <span>元智大學 五館三樓 (桃園市中壢區遠東路135號)</span>
                 </div>
               </div>
-              
+
               <p className="text-sm leading-relaxed text-gray-500">
                 校內展為神經元展覽的首站，展示學生們在校園環境中孕育的初步創意與實驗性作品。這裡充滿了未經雕琢的原始能量，是探索未來設計趨勢的最佳起點。
               </p>
@@ -70,9 +72,11 @@ export default function Info() {
             <div className="order-2 md:order-1 space-y-8">
               <div>
                 <h2 className="text-3xl font-bold mb-2">校外展</h2>
-                <p className="text-[var(--color-neon)] tracking-widest uppercase text-sm">松山文創園區</p>
+                <p className="text-[var(--color-neon)] tracking-widest uppercase text-sm">
+                  松山文創園區
+                </p>
               </div>
-              
+
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-white" />
@@ -84,20 +88,22 @@ export default function Info() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-white" />
-                  <span>松山文創園區 北向製菸工廠 (台北市信義區光復南路133號)</span>
+                  <span>
+                    松山文創園區 北向製菸工廠 (台北市信義區光復南路133號)
+                  </span>
                 </div>
               </div>
-              
+
               <p className="text-sm leading-relaxed text-gray-500">
                 移師台北松山文創園區，作品經過淬鍊與優化，以更成熟的姿態面向大眾。這裡不僅是展示成果的舞台，更是與業界交流、碰撞火花的關鍵節點。
               </p>
             </div>
             <div className="order-1 md:order-2 aspect-[4/3] bg-white/5 overflow-hidden">
-              <LazyImage 
-                src="https://picsum.photos/seed/songshan/800/600" 
-                alt="Songshan Park" 
+              <LazyImage
+                src="https://picsum.photos/seed/songshan/800/600"
+                alt="Songshan Park"
                 containerClassName="w-full h-full"
-                imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700" 
+                imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
               />
             </div>
           </div>
@@ -112,11 +118,11 @@ export default function Info() {
               互動地圖整合
             </div>
             {/* Using a static dark map image as placeholder */}
-            <LazyImage 
-              src="https://picsum.photos/seed/mapdark/1200/400?grayscale" 
-              alt="Map" 
+            <LazyImage
+              src="https://picsum.photos/seed/mapdark/1200/400?grayscale"
+              alt="Map"
               containerClassName="absolute inset-0 w-full h-full"
-              imgClassName="w-full h-full object-cover opacity-30" 
+              imgClassName="w-full h-full object-cover opacity-30"
             />
           </div>
         </div>
@@ -128,11 +134,15 @@ export default function Info() {
             {rules.map((rule) => (
               <div key={rule.id} className="border-b border-white/10">
                 <button
-                  onClick={() => setOpenRule(openRule === rule.id ? null : rule.id)}
+                  onClick={() =>
+                    setOpenRule(openRule === rule.id ? null : rule.id)
+                  }
                   className="w-full py-6 flex justify-between items-center text-left hover:text-[var(--color-neon)] transition-colors"
                 >
                   <span className="text-lg font-medium">
-                    <span className="text-gray-500 mr-4 text-sm">{String(rule.id).padStart(2, '0')}</span>
+                    <span className="text-gray-500 mr-4 text-sm">
+                      {String(rule.id).padStart(2, "0")}
+                    </span>
                     {rule.title}
                   </span>
                   <motion.div
@@ -146,14 +156,12 @@ export default function Info() {
                   {openRule === rule.id && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
+                      animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 text-gray-400 pl-10">
-                        {rule.content}
-                      </p>
+                      <p className="pb-6 text-gray-400 pl-10">{rule.content}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

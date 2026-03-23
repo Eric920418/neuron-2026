@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { fetchTeamsPublic, type Work } from '../data/works'
+import LazyImage from '../components/LazyImage'
 
 export default function WorkDetail() {
   const { slug } = useParams()
@@ -101,15 +102,12 @@ export default function WorkDetail() {
         overflow: 'hidden',
       }}>
         {work.images[0]?.url ? (
-          <img
+          <LazyImage
             src={work.images[0].url}
             alt={work.title}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-            }}
+            containerClassName="w-full h-full"
+            imgClassName="w-full h-full object-cover"
+            priority
           />
         ) : (
           <div style={{
@@ -342,15 +340,11 @@ export default function WorkDetail() {
                   borderRadius: '4px',
                   background: work.color,
                 }}>
-                  <img
+                  <LazyImage
                     src={img.url}
                     alt={img.caption}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
+                    containerClassName="w-full h-full"
+                    imgClassName="w-full h-full object-cover"
                   />
                 </div>
               ))}

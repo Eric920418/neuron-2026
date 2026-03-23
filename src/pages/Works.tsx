@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { filters, type Domain, type Work, type APIResponse, teamToWork } from '../data/works'
+import LazyImage from '../components/LazyImage'
 
 export default function Works() {
   const navigate = useNavigate()
@@ -219,15 +220,11 @@ export default function Works() {
                   overflow: 'hidden',
                 }}>
                   {work.images[0]?.url ? (
-                    <img
+                    <LazyImage
                       src={work.images[0].url}
                       alt={work.title}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
-                      }}
+                      containerClassName="w-full h-full"
+                      imgClassName="w-full h-full object-cover"
                     />
                   ) : (
                     <div style={{

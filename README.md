@@ -38,6 +38,13 @@
 - 行銷企劃
 - 影視動畫
 
+## 效能優化
+
+- **路由級代碼分割**: 除 Landing 外所有頁面使用 React.lazy + Suspense 動態載入
+- **圖片延遲載入**: LazyImage 元件（IntersectionObserver + 200px rootMargin + 瀏覽器原生 loading/decoding/fetchPriority）
+- **Three.js 動態載入**: NeuralBackground、InteractiveNetwork 按需載入
+- **Bundle 分割**: Three.js / Framer Motion / d3-force 獨立打包為 vendor chunks
+
 ## 本地開發
 
 **前置條件**: Node.js 18+, pnpm
