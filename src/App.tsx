@@ -29,7 +29,7 @@ function AnimatedRoutes() {
         <Route path="/home" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/info" element={<PageTransition><Info /></PageTransition>} />
         <Route path="/works" element={<PageTransition><Works /></PageTransition>} />
-        <Route path="/works/:id" element={<PageTransition><WorkDetail /></PageTransition>} />
+        <Route path="/works/:slug" element={<PageTransition><WorkDetail /></PageTransition>} />
         <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
       </Routes>

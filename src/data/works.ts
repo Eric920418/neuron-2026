@@ -2,6 +2,7 @@ export type Domain = 'all' | 'interactive' | 'game' | 'marketing' | 'film'
 
 export interface Work {
   id: number
+  slug: string
   title: string
   domain: Exclude<Domain, 'all'>
   domainLabel: string
@@ -17,6 +18,89 @@ export interface Work {
   members: string[]
 }
 
+// API 回傳的組別格式
+export interface TeamFromAPI {
+  id: string
+  name: string
+  slug: string
+  teamType: string | null
+  description: string | null
+  advisor: string | null
+  displayOrder: number
+  members: Array<{ id: string; name: string; role: string | null }>
+  artworks: Array<{
+    id: string
+    title: string
+    thumbnailUrl: string | null
+    mediaUrls: string[]
+    displayOrder: number
+  }>
+  _count: { members: number }
+}
+
+export interface APIResponse {
+  success: boolean
+  data: {
+    teams: TeamFromAPI[]
+    exhibition: { id: string; name: string; year: number; slug: string } | null
+  }
+}
+
+// teamType 中文 → domain 英文
+const TEAM_TYPE_TO_DOMAIN: Record<string, Exclude<Domain, 'all'>> = {
+  '互動': 'interactive',
+  '遊戲': 'game',
+  '行銷': 'marketing',
+  '影視': 'film',
+}
+
+// domain 對應顏色（統一 teal）
+const DOMAIN_COLORS: Record<string, { color: string; accentColor: string }> = {
+  interactive: { color: 'rgba(102,140,141,0.12)', accentColor: 'rgb(102,140,141)' },
+  game:        { color: 'rgba(102,140,141,0.10)', accentColor: 'rgb(102,140,141)' },
+  marketing:   { color: 'rgba(102,140,141,0.08)', accentColor: 'rgb(102,140,141)' },
+  film:        { color: 'rgba(102,140,141,0.08)', accentColor: 'rgb(102,140,141)' },
+}
+
+export function teamToWork(team: TeamFromAPI, idx: number): Work {
+  const domain = TEAM_TYPE_TO_DOMAIN[team.teamType ?? ''] ?? 'interactive'
+  const { color, accentColor } = DOMAIN_COLORS[domain]
+  return {
+    id: idx + 1,
+    slug: team.slug || team.id,
+    title: team.name,
+    domain,
+    domainLabel: team.teamType ?? '互動',
+    year: '2026',
+    team: team.advisor ? `指導老師：${team.advisor}` : team.name,
+    shortDesc: team.description ?? '',
+    fullDesc: team.description ?? '',
+    tags: [],
+    color,
+    accentColor,
+    images: team.artworks.flatMap(a => [
+      ...(a.thumbnailUrl ? [{ id: a.id + '_thumb', caption: a.title, url: a.thumbnailUrl }] : []),
+      ...a.mediaUrls.map((url, i) => ({ id: a.id + '_' + i, caption: a.title, url })),
+    ]),
+    video: { id: 'vid1', caption: '作品影片' },
+    members: team.members.length > 0
+      ? team.members.map(m => m.name)
+      : team._count.members > 0
+        ? [`共 ${team._count.members} 位成員`]
+        : [],
+  }
+}
+
+export async function fetchTeamsPublic(): Promise<Work[]> {
+  const apiUrl = import.meta.env.VITE_API_URL ?? '/api'
+  const res = await fetch(`${apiUrl}/teams/public`)
+  const json: APIResponse = await res.json()
+  if (json.success && json.data.teams.length > 0) {
+    return json.data.teams.map((t, i) => teamToWork(t, i))
+  }
+  throw new Error('暫無作品資料')
+}
+
 export const filters: { key: Domain; label: string }[] = [
   { key: 'all', label: '全部' },
   { key: 'interactive', label: '互動' },
@@ -28,6 +112,7 @@ export const filters: { key: Domain; label: string }[] = [
 export const works: Work[] = [
   {
     id: 1,
+    slug: 'its-mine',
     title: "It's Mine",
     domain: 'game',
     domainLabel: '遊戲',
@@ -52,6 +137,7 @@ export const works: Work[] = [
   },
   {
     id: 2,
+    slug: 'perception-boundary',
     title: '感知邊界',
     domain: 'interactive',
     domainLabel: '互動',
@@ -76,6 +162,7 @@ export const works: Work[] = [
   },
   {
     id: 3,
+    slug: 'signal',
     title: '訊號',
     domain: 'film',
     domainLabel: '影視',
@@ -100,6 +187,7 @@ export const works: Work[] = [
   },
   {
     id: 4,
+    slug: 'brand-neuron',
     title: '品牌神經',
     domain: 'marketing',
     domainLabel: '行銷',
@@ -124,6 +212,7 @@ export const works: Work[] = [
   },
   {
     id: 5,
+    slug: 'echo',
     title: '迴響',
     domain: 'interactive',
     domainLabel: '互動',
@@ -148,6 +237,7 @@ export const works: Work[] = [
   },
   {
     id: 6,
+    slug: 'last-frame',
     title: '最後一格',
     domain: 'film',
     domainLabel: '影視',
@@ -172,6 +262,7 @@ export const works: Work[] = [
   },
   {
     id: 7,
+    slug: 'neuro-market',
     title: '神經市場',
     domain: 'marketing',
     domainLabel: '行銷',
@@ -196,6 +287,7 @@ export const works: Work[] = [
   },
   {
     id: 8,
+    slug: 'pixel-dream',
     title: '像素夢境',
     domain: 'game',
     domainLabel: '遊戲',

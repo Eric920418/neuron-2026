@@ -26,8 +26,8 @@
 | `/` | Landing | 互動落地頁 — 輸入專長 |
 | `/home` | Home | 展覽首頁 — Hero、概念、分類、精選作品輪播、合作單位 |
 | `/info` | Info | 展覽資訊 — 場地、規則 |
-| `/works` | Works | 作品列表 — 8 件作品、篩選、Modal 詳情 |
-| `/works/:id` | WorkDetail | 單一作品詳情 — 兩欄式佈局 |
+| `/works` | Works | 作品列表 — 篩選、卡片導航至詳情頁 |
+| `/works/:slug` | WorkDetail | 單一作品詳情 — 獨立頁面，從 API 取得資料 |
 | `/booking` | Booking | 4 步驟預約流程 |
 | `/contact` | Contact | 聯絡表單 — 三分類 Tab + 社群連結 |
 
