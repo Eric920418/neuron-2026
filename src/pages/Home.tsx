@@ -13,7 +13,7 @@ import logoTaoyuanYouth from '../assets/sponsors/桃園市政府青年事務局.
 import logoCts from '../assets/sponsors/華視文教基金會.png';
 import logoElephant from '../assets/sponsors/大象杯.png';
 import logoWemo from '../assets/sponsors/wemo.png';
-import logoBcc from "../assets/sponsors/292.webp";
+import logoBcc from "../assets/sponsors/image (1).webp";
 import llll from "../assets/sponsors/858c5a49ec9c548b.webp";
 
 const NeuralBackground = lazy(() => import('../components/NeuralBackground'));
@@ -40,7 +40,7 @@ const partnerGroups = [
   },
   {
     category: "執行單位",
-    items: [{ name: "元智資傳畢籌會", logo: logoBcc, extraLarge: true }],
+    items: [{ name: "元智資傳畢籌會", logo: logoBcc,  }],
   },
   {
     category: "贊助單位",
