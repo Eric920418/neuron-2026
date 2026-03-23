@@ -8,6 +8,7 @@ export interface Work {
   domainLabel: string
   year: string
   team: string
+  orgName: string
   shortDesc: string
   fullDesc: string
   tags: string[]
@@ -70,11 +71,12 @@ export function teamToWork(team: TeamFromAPI, idx: number): Work {
   return {
     id: idx + 1,
     slug: team.slug || team.id,
-    title: team.name,
+    title: team.artworks[0]?.title ?? team.name,
     domain,
     domainLabel: team.teamType ?? '互動',
     year: '2026',
     team: team.advisor ? `指導老師：${team.advisor}` : team.name,
+    orgName: team.name,
     shortDesc: team.artworks.find(a => a.conceptShort)?.conceptShort ?? '',
     fullDesc: (() => {
       const desc = team.description ?? ''
@@ -125,6 +127,7 @@ export const works: Work[] = [
     domainLabel: '遊戲',
     year: '2026',
     team: '遊戲組 Team A',
+    orgName: '遊戲組 Team A',
     shortDesc: '多人派對遊戲，最多 6 人同場競技，搶奪資源、建立同盟，在混亂中尋找勝機。',
     fullDesc: `《It's Mine》是一款支援最多 6 人同場競技的多人派對遊戲。玩家在一個充滿資源的島嶼上展開激烈的搶奪戰，透過建立同盟、設置陷阱、搶奪資源等策略，在混亂中尋找勝機。
 
@@ -150,6 +153,7 @@ export const works: Work[] = [
     domainLabel: '互動',
     year: '2026',
     team: '互動組 Team B',
+    orgName: '互動組 Team B',
     shortDesc: '以身體動作為介面的沉浸式裝置，探索感知的極限與數位空間的可能性。',
     fullDesc: `《感知邊界》是一件以人體動作為核心介面的沉浸式互動裝置。觀眾進入裝置空間後，身體的每一個動作都會即時影響周圍的視覺與聲音環境，創造出獨一無二的感知體驗。
 
@@ -175,6 +179,7 @@ export const works: Work[] = [
     domainLabel: '影視',
     year: '2026',
     team: '影視組 Team C',
+    orgName: '影視組 Team C',
     shortDesc: '一部關於溝通與誤解的短片，在數位噪音中尋找真實的人際連結。',
     fullDesc: `《訊號》是一部時長約 15 分鐘的劇情短片，講述在資訊爆炸的時代，兩個陌生人透過一系列的誤解與巧合，最終找到真實連結的故事。
 
@@ -200,6 +205,7 @@ export const works: Work[] = [
     domainLabel: '行銷',
     year: '2026',
     team: '行銷組 Team D',
+    orgName: '行銷組 Team D',
     shortDesc: '整合品牌識別系統設計，建立完整的視覺語言與數位行銷策略。',
     fullDesc: `《品牌神經》是一個完整的品牌識別系統設計專案，以神經科學為靈感，為一個虛構的科技新創公司建立從品牌策略到視覺執行的完整系統。
 
@@ -225,6 +231,7 @@ export const works: Work[] = [
     domainLabel: '互動',
     year: '2026',
     team: '互動組 Team E',
+    orgName: '互動組 Team E',
     shortDesc: '聲音視覺化裝置，將環境音轉化為即時流動的光影神經網絡。',
     fullDesc: `《迴響》是一件聲音視覺化互動裝置，透過麥克風陣列即時捕捉展場環境中的聲音，並將其轉化為流動的光影神經網絡投影於牆面上。
 
@@ -250,6 +257,7 @@ export const works: Work[] = [
     domainLabel: '影視',
     year: '2026',
     team: '影視組 Team F',
+    orgName: '影視組 Team F',
     shortDesc: '紀錄片，記錄畢業前最後一個學期的集體記憶、友誼與告別。',
     fullDesc: `《最後一格》是一部時長約 25 分鐘的紀錄片，跟拍元智大學資訊傳播學系第 29 屆學生在畢業前最後一個學期的生活。
 
@@ -275,6 +283,7 @@ export const works: Work[] = [
     domainLabel: '行銷',
     year: '2026',
     team: '行銷組 Team G',
+    orgName: '行銷組 Team G',
     shortDesc: '以神經科學為靈感的消費者行為研究，結合數據分析與創意內容策略。',
     fullDesc: `《神經市場》是一個結合神經科學研究方法與數位行銷實務的整合性專案。我們以「神經行銷學」為理論基礎，探討消費者在面對不同行銷刺激時的決策機制。
 
@@ -300,6 +309,7 @@ export const works: Work[] = [
     domainLabel: '遊戲',
     year: '2026',
     team: '遊戲組 Team H',
+    orgName: '遊戲組 Team H',
     shortDesc: '像素風格解謎冒險遊戲，在夢境與現實交錯的世界中尋找記憶的碎片。',
     fullDesc: `《像素夢境》是一款像素風格的解謎冒險遊戲，玩家扮演一位能夠進入他人夢境的偵探，透過解開謎題來尋找失蹤者留下的記憶碎片。
 

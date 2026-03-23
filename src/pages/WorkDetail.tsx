@@ -232,11 +232,24 @@ export default function WorkDetail() {
         }}>
           {work.year}
         </span>
+        {work.orgName && (
+          <span style={{
+            fontFamily: '"LINE Seed TW", sans-serif',
+            fontWeight: 400,
+            fontSize: '15px',
+            color: 'rgba(255,255,255,0.5)',
+            letterSpacing: '0.05em',
+            display: 'block',
+            marginTop: '8px',
+          }}>
+            {work.orgName}
+          </span>
+        )}
         {work.team.startsWith('指導老師') && (
           <span style={{
             fontFamily: '"LINE Seed TW", sans-serif',
             fontWeight: 400,
-            fontSize: '13px',
+            fontSize: '18px',
             color: 'rgba(102,140,141,0.85)',
             letterSpacing: '0.05em',
             display: 'block',
