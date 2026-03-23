@@ -31,6 +31,7 @@ export interface TeamFromAPI {
   artworks: Array<{
     id: string
     title: string
+    concept: string | null
     thumbnailUrl: string | null
     mediaUrls: string[]
     displayOrder: number
@@ -73,8 +74,13 @@ export function teamToWork(team: TeamFromAPI, idx: number): Work {
     domainLabel: team.teamType ?? '互動',
     year: '2026',
     team: team.advisor ? `指導老師：${team.advisor}` : team.name,
-    shortDesc: team.description ?? '',
-    fullDesc: team.description ?? '',
+    shortDesc: team.description ?? team.artworks.find(a => a.concept)?.concept ?? '',
+    fullDesc: (() => {
+      const desc = team.description ?? ''
+      const concept = team.artworks.find(a => a.concept)?.concept ?? ''
+      if (desc && concept) return `${desc}\n\n${concept}`
+      return desc || concept
+    })(),
     tags: [],
     color,
     accentColor,

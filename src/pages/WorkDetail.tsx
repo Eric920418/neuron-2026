@@ -9,6 +9,10 @@ export default function WorkDetail() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
+  useEffect(() => {
     fetchTeamsPublic()
       .then(works => {
         const found = works.find(w => w.slug === slug)
@@ -227,6 +231,19 @@ export default function WorkDetail() {
           }}>
             {work.year}
           </span>
+          {work.team.startsWith('指導老師') && (
+            <span style={{
+              fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+              fontWeight: 400,
+              fontSize: '13px',
+              color: 'rgba(102,140,141,0.85)',
+              letterSpacing: '0.05em',
+              display: 'block',
+              marginTop: '8px',
+            }}>
+              {work.team}
+            </span>
+          )}
         </div>
       </div>
 

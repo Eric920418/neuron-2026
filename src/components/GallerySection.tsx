@@ -1,20 +1,21 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { fetchTeamsPublic, type Work } from '../data/works'
 
-const galleryItems = [
-  { id: 1, title: "It's Mine", domain: '遊戲', domainEn: 'Game', year: '2026', desc: '多人派對遊戲，搶奪資源、建立同盟，在混亂中尋找勝機。', color: 'rgba(57,255,20,0.08)', accentColor: '#39ff14' },
-  { id: 2, title: '感知邊界', domain: '互動', domainEn: 'Interactive', year: '2026', desc: '以身體為介面的沉浸式裝置，探索感知的極限與可能。', color: 'rgba(57,255,20,0.06)', accentColor: '#39ff14' },
-  { id: 3, title: '訊號', domain: '影視', domainEn: 'Film', year: '2026', desc: '一部關於溝通與誤解的短片，在數位噪音中尋找真實的連結。', color: 'rgba(57,255,20,0.05)', accentColor: '#39ff14' },
-  { id: 4, title: '品牌神經', domain: '行銷', domainEn: 'Marketing', year: '2026', desc: '整合品牌識別系統，讓每一個觸點都成為記憶的神經節點。', color: 'rgba(57,255,20,0.07)', accentColor: '#39ff14' },
-  { id: 5, title: '迴響', domain: '互動', domainEn: 'Interactive', year: '2026', desc: '聲音視覺化裝置，將環境音轉化為流動的光影神經網絡。', color: 'rgba(57,255,20,0.06)', accentColor: '#39ff14' },
-  { id: 6, title: '最後一格', domain: '影視', domainEn: 'Film', year: '2026', desc: '紀錄片，記錄畢業前最後一個學期的集體記憶與告別。', color: 'rgba(57,255,20,0.05)', accentColor: '#39ff14' },
-]
+const DOMAIN_EN: Record<string, string> = {
+  interactive: 'Interactive',
+  game: 'Game',
+  marketing: 'Marketing',
+  film: 'Film',
+}
 
 const SLIDE_DURATION = 4000
 const TRANSITION_DURATION = 700
 
 export default function GallerySection() {
   const navigate = useNavigate()
+  const [items, setItems] = useState<Work[]>([])
+  const [loading, setLoading] = useState(true)
   const [activeIdx, setActiveIdx] = useState(0)
   const [prevIdx, setPrevIdx] = useState<number | null>(null)
   const [transitioning, setTransitioning] = useState(false)
@@ -25,16 +26,24 @@ export default function GallerySection() {
   const transitionRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
+    fetchTeamsPublic()
+      .then(works => setItems(works))
+      .catch(err => console.error('[GallerySection] fetch error:', err))
+      .finally(() => setLoading(false))
+  }, [])
+
+  useEffect(() => {
+    if (!sectionRef.current) return
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true) },
       { threshold: 0.1 }
     )
-    if (sectionRef.current) observer.observe(sectionRef.current)
+    observer.observe(sectionRef.current)
     return () => observer.disconnect()
-  }, [])
+  }, [loading])
 
   const goTo = useCallback((idx: number) => {
-    if (transitioning) return
+    if (transitioning || items.length === 0) return
     setPrevIdx(activeIdx)
     setTransitioning(true)
     setActiveIdx(idx)
@@ -43,24 +52,50 @@ export default function GallerySection() {
       setPrevIdx(null)
       setTransitioning(false)
     }, TRANSITION_DURATION)
-  }, [activeIdx, transitioning])
+  }, [activeIdx, transitioning, items.length])
 
   const goNext = useCallback(() => {
-    goTo((activeIdx + 1) % galleryItems.length)
-  }, [activeIdx, goTo])
+    if (items.length === 0) return
+    goTo((activeIdx + 1) % items.length)
+  }, [activeIdx, goTo, items.length])
 
   const goPrev = useCallback(() => {
-    goTo((activeIdx - 1 + galleryItems.length) % galleryItems.length)
-  }, [activeIdx, goTo])
+    if (items.length === 0) return
+    goTo((activeIdx - 1 + items.length) % items.length)
+  }, [activeIdx, goTo, items.length])
 
   useEffect(() => {
-    if (paused) return
+    if (paused || items.length === 0) return
     timerRef.current = setTimeout(() => { goNext() }, SLIDE_DURATION)
     return () => { if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [activeIdx, paused, goNext])
+  }, [activeIdx, paused, goNext, items.length])
 
-  const current = galleryItems[activeIdx]
-  const prev = prevIdx !== null ? galleryItems[prevIdx] : null
+  if (!loading && items.length === 0) return null
+
+  const current = items[activeIdx]
+  const prev = prevIdx !== null ? items[prevIdx] : null
+
+  // 載入中顯示 skeleton
+  if (loading || !current) return (
+    <section style={{ background: '#000', padding: 'clamp(80px, 12vw, 160px) 0', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+      <div style={{ padding: '0 clamp(20px, 6vw, 80px)' }}>
+        <div style={{ height: '14px', width: '120px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '20px' }} />
+        <div style={{ height: '56px', width: '260px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: 'clamp(40px, 5vw, 64px)' }} />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(24px, 4vw, 56px)', minHeight: 'clamp(320px, 45vw, 520px)' }} className="gallery-carousel-grid">
+          <div style={{ borderRadius: '8px', background: 'rgba(255,255,255,0.04)', animation: 'gallery-pulse 1.5s ease-in-out infinite' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: 'clamp(16px, 2vw, 32px) 0' }}>
+            <div style={{ height: '12px', width: '140px', background: 'rgba(255,255,255,0.04)', borderRadius: '4px' }} />
+            <div style={{ height: '48px', width: '80%', background: 'rgba(255,255,255,0.04)', borderRadius: '4px' }} />
+            <div style={{ height: '60px', width: '100%', background: 'rgba(255,255,255,0.03)', borderRadius: '4px' }} />
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @keyframes gallery-pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        @media (max-width: 768px) { .gallery-carousel-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </section>
+  )
 
   return (
     <section
@@ -86,23 +121,47 @@ export default function GallerySection() {
         transition: 'opacity 0.7s ease, transform 0.7s ease',
       }}>
         <div>
-          <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', letterSpacing: '0.5em', color: 'rgba(57,255,20,0.5)', textTransform: 'uppercase', marginBottom: '16px' }}>
+          <p style={{
+            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontWeight: 400,
+            fontSize: '11px',
+            letterSpacing: '0.5em',
+            color: 'rgba(102,140,141,0.5)',
+            textTransform: 'uppercase',
+            marginBottom: '16px',
+          }}>
             Selected Works
           </p>
-          <h2 className="font-display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 400, color: '#fff', lineHeight: 1, letterSpacing: '-0.02em' }}>
+          <h2 className="font-display" style={{
+            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontSize: 'clamp(36px, 5vw, 64px)',
+            fontWeight: 700,
+            color: '#fff',
+            lineHeight: 1,
+            letterSpacing: '-0.02em',
+          }}>
             精選作品
           </h2>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', fontVariantNumeric: 'tabular-nums' }}>
-            {String(activeIdx + 1).padStart(2, '0')} / {String(galleryItems.length).padStart(2, '0')}
+          <span style={{
+            fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+            fontWeight: 400,
+            fontSize: '12px',
+            color: 'rgba(255,255,255,0.25)',
+            letterSpacing: '0.15em',
+            fontVariantNumeric: 'tabular-nums',
+          }}>
+            {String(activeIdx + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
           </span>
-          <button onClick={goPrev} aria-label="上一個作品" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
+          <button onClick={goPrev} aria-label="上一個作品"
+            onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
             style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.12)', background: 'transparent', color: 'rgba(255,255,255,0.55)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s ease, color 0.2s ease' }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
           </button>
-          <button onClick={goNext} aria-label="下一個作品" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
+          <button onClick={goNext} aria-label="下一個作品"
+            onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
             style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.12)', background: 'transparent', color: 'rgba(255,255,255,0.55)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s ease, color 0.2s ease' }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </button>
@@ -123,112 +182,164 @@ export default function GallerySection() {
           position: 'relative',
         }} className="gallery-carousel-grid">
 
+          {/* Image panel */}
           <div
             style={{ position: 'relative', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer' }}
-            onClick={() => navigate(`/works/${current.id}`)}
+            onClick={() => navigate(`/works/${current.slug}`)}
           >
             {prev && (
               <div key={`prev-${prevIdx}`} style={{
-                position: 'absolute', inset: 0, background: prev.color, borderRadius: '8px',
-                opacity: transitioning ? 0 : 1, transition: `opacity ${TRANSITION_DURATION}ms ease`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1,
+                position: 'absolute', inset: 0, borderRadius: '8px',
+                background: prev.color,
+                opacity: transitioning ? 0 : 1,
+                transition: `opacity ${TRANSITION_DURATION}ms ease`,
+                zIndex: 1, overflow: 'hidden',
               }}>
-                <ImagePlaceholder item={prev} />
+                <WorkImage work={prev} />
               </div>
             )}
             <div key={`curr-${activeIdx}`} style={{
-              position: 'absolute', inset: 0, background: current?.color, borderRadius: '8px',
-              opacity: transitioning ? 0 : 1, transition: `opacity ${TRANSITION_DURATION}ms ease`,
-              display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2,
+              position: 'absolute', inset: 0, borderRadius: '8px',
+              background: current.color,
+              opacity: transitioning ? 0 : 1,
+              transition: `opacity ${TRANSITION_DURATION}ms ease`,
+              zIndex: 2, overflow: 'hidden',
             }}>
-              <ImagePlaceholder item={current} />
+              <WorkImage work={current} />
             </div>
-            <div style={{ width: '100%', height: '100%', background: current?.color, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', visibility: 'hidden' }}>
-              <ImagePlaceholder item={current} />
-            </div>
+            {/* spacer to give the panel its height */}
+            <div style={{ width: '100%', height: '100%', background: current.color, borderRadius: '8px', visibility: 'hidden' }} />
+
+            {/* Domain badge */}
             <div style={{
               position: 'absolute', top: '16px', left: '16px', zIndex: 10,
               padding: '5px 12px', background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(8px)',
-              borderRadius: '100px', border: `1px solid ${current?.accentColor}40`,
-              transition: `border-color ${TRANSITION_DURATION}ms ease`,
+              borderRadius: '100px', border: `1px solid rgba(102,140,141,0.4)`,
             }}>
-              <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: current?.accentColor, letterSpacing: '0.12em', transition: `color ${TRANSITION_DURATION}ms ease` }}>
-                {current?.domain}
+              <span style={{
+                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontWeight: 400,
+                fontSize: '10px',
+                color: 'rgb(102,140,141)',
+                letterSpacing: '0.12em',
+              }}>
+                {current.domainLabel}
               </span>
             </div>
           </div>
 
+          {/* Info panel */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 'clamp(16px, 2vw, 32px) 0' }}>
             <div>
-              <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', letterSpacing: '0.3em', color: `${current?.accentColor}70`, textTransform: 'uppercase', marginBottom: '20px', transition: `color ${TRANSITION_DURATION}ms ease` }}>
-                {current?.domainEn} · {current?.year}
+              <p style={{
+                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontWeight: 400,
+                fontSize: '11px',
+                letterSpacing: '0.3em',
+                color: 'rgba(102,140,141,0.7)',
+                textTransform: 'uppercase',
+                marginBottom: '20px',
+                transition: `color ${TRANSITION_DURATION}ms ease`,
+              }}>
+                {DOMAIN_EN[current.domain] ?? current.domainLabel} · {current.year}
               </p>
               <h3
                 className="font-display"
                 style={{
-                  fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 400, color: '#fff', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '20px',
-                  opacity: transitioning ? 0 : 1, transform: transitioning ? 'translateY(8px)' : 'none',
+                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontSize: 'clamp(28px, 4vw, 52px)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  lineHeight: 1.05,
+                  letterSpacing: '-0.02em',
+                  marginBottom: '20px',
+                  opacity: transitioning ? 0 : 1,
+                  transform: transitioning ? 'translateY(8px)' : 'none',
                   transition: `opacity ${TRANSITION_DURATION}ms ease, transform ${TRANSITION_DURATION}ms ease`,
                   cursor: 'pointer',
                 }}
-                onClick={() => navigate(`/works/${current.id}`)}
+                onClick={() => navigate(`/works/${current.slug}`)}
               >
-                {current?.title}
+                {current.title}
               </h3>
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(13px, 1.4vw, 15px)', color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, maxWidth: '400px',
-                opacity: transitioning ? 0 : 1, transform: transitioning ? 'translateY(6px)' : 'none',
-                transition: `opacity ${TRANSITION_DURATION}ms ease 0.05s, transform ${TRANSITION_DURATION}ms ease 0.05s`,
-              }}>
-                {current?.desc}
-              </p>
+              {current.shortDesc && (
+                <p style={{
+                  fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                  fontWeight: 400,
+                  fontSize: 'clamp(13px, 1.4vw, 15px)',
+                  color: 'rgba(255,255,255,0.45)',
+                  lineHeight: 1.8,
+                  maxWidth: '400px',
+                  opacity: transitioning ? 0 : 1,
+                  transform: transitioning ? 'translateY(6px)' : 'none',
+                  transition: `opacity ${TRANSITION_DURATION}ms ease 0.05s, transform ${TRANSITION_DURATION}ms ease 0.05s`,
+                }}>
+                  {current.shortDesc}
+                </p>
+              )}
             </div>
 
             <div>
+              {/* Dot indicators */}
               <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', flexWrap: 'wrap' }}>
-                {galleryItems.map((item, idx) => (
-                  <button key={item.id} onClick={() => goTo(idx)} aria-label={`切換至 ${item.title}`}
+                {items.map((_, idx) => (
+                  <button key={idx} onClick={() => goTo(idx)} aria-label={`切換至 ${items[idx].title}`}
                     style={{
                       width: idx === activeIdx ? '28px' : '6px', height: '6px', borderRadius: '3px',
-                      background: idx === activeIdx ? current?.accentColor : 'rgba(255,255,255,0.15)',
+                      background: idx === activeIdx ? 'rgb(102,140,141)' : 'rgba(255,255,255,0.15)',
                       border: 'none', cursor: 'pointer', padding: 0,
                       transition: 'width 0.3s ease, background 0.3s ease',
                     }}
                   />
                 ))}
               </div>
+              {/* Progress bar */}
               <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.06)', borderRadius: '1px', overflow: 'hidden' }}>
                 <div key={`progress-${activeIdx}`} style={{
-                  height: '100%', background: current?.accentColor, borderRadius: '1px',
+                  height: '100%', background: 'rgb(102,140,141)', borderRadius: '1px',
                   animation: paused ? 'none' : `gallery-progress ${SLIDE_DURATION}ms linear forwards`,
                   opacity: paused ? 0.3 : 1,
                 }} />
               </div>
-              <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.18)', letterSpacing: '0.1em', marginTop: '10px' }}>
+              <p style={{
+                fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
+                fontWeight: 400,
+                fontSize: '10px',
+                color: 'rgba(255,255,255,0.18)',
+                letterSpacing: '0.1em',
+                marginTop: '10px',
+              }}>
                 {paused ? '已暫停' : '自動播放中'}
               </p>
             </div>
           </div>
         </div>
 
+        {/* Thumbnails */}
         <div style={{ display: 'flex', gap: '12px', marginTop: 'clamp(20px, 3vw, 36px)', overflowX: 'auto', paddingBottom: '4px' }} className="gallery-thumbs">
-          {galleryItems.map((item, idx) => (
+          {items.map((item, idx) => (
             <button key={item.id} onClick={() => goTo(idx)} aria-label={`切換至 ${item.title}`}
               onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
               style={{
                 flexShrink: 0, width: 'clamp(80px, 12vw, 120px)', aspectRatio: '4/3',
-                background: item.color, border: `1px solid ${idx === activeIdx ? item.accentColor + '60' : 'rgba(255,255,255,0.06)'}`,
+                background: item.color,
+                border: `1px solid ${idx === activeIdx ? 'rgba(102,140,141,0.6)' : 'rgba(255,255,255,0.06)'}`,
                 borderRadius: '6px', cursor: 'pointer', padding: 0, position: 'relative', overflow: 'hidden',
-                opacity: idx === activeIdx ? 1 : 0.45, transform: idx === activeIdx ? 'scale(1)' : 'scale(0.96)',
+                opacity: idx === activeIdx ? 1 : 0.45,
+                transform: idx === activeIdx ? 'scale(1)' : 'scale(0.96)',
                 transition: 'opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease',
               }}>
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: `${item.accentColor}30`, border: `1px solid ${item.accentColor}50`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: item.accentColor, opacity: 0.8 }} />
+              {item.images[0]?.url ? (
+                <img src={item.images[0].url} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              ) : (
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'rgba(102,140,141,0.3)', border: '1px solid rgba(102,140,141,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'rgb(102,140,141)', opacity: 0.8 }} />
+                  </div>
                 </div>
-              </div>
+              )}
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '6px 8px', background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)' }}>
-                <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '9px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.04em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <p style={{ fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif', fontWeight: 400, fontSize: '9px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.04em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {item.title}
                 </p>
               </div>
@@ -247,19 +358,28 @@ export default function GallerySection() {
         }
         .gallery-thumbs::-webkit-scrollbar { height: 2px; }
         .gallery-thumbs::-webkit-scrollbar-track { background: #111; }
-        .gallery-thumbs::-webkit-scrollbar-thumb { background: #39ff14; border-radius: 1px; }
+        .gallery-thumbs::-webkit-scrollbar-thumb { background: rgb(102,140,141); border-radius: 1px; }
       `}</style>
     </section>
   )
 }
 
-function ImagePlaceholder({ item }: { item: typeof galleryItems[0] }) {
+function WorkImage({ work }: { work: Work }) {
+  if (work.images[0]?.url) {
+    return (
+      <img
+        src={work.images[0].url}
+        alt={work.title}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+    )
+  }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', opacity: 0.35, pointerEvents: 'none', userSelect: 'none' }}>
-      <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: `${item.accentColor}25`, border: `1px solid ${item.accentColor}50`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: item.accentColor }} />
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', opacity: 0.35, userSelect: 'none' }}>
+      <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(102,140,141,0.25)', border: '1px solid rgba(102,140,141,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: 'rgb(102,140,141)' }} />
       </div>
-      <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: item.accentColor, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+      <span style={{ fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif', fontWeight: 400, fontSize: '10px', color: 'rgb(102,140,141)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
         作品圖片
       </span>
     </div>
