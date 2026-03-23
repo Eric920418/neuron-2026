@@ -114,13 +114,25 @@ export default function Works() {
     return () => observer.disconnect()
   }, [])
 
+  // 鎖住背景捲動（iOS 相容做法）
   useEffect(() => {
     if (selectedWork) {
-      document.body.style.overflow = 'hidden'
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
     } else {
-      document.body.style.overflow = ''
+      const scrollY = parseInt(document.body.style.top || '0') * -1
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      window.scrollTo(0, scrollY)
     }
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+    }
   }, [selectedWork])
 
   const handleFilter = (key: Domain) => {
@@ -453,20 +465,22 @@ export default function Works() {
           aria-label={`${selectedWork.title} 作品詳情`}
           style={{
             position: 'fixed',
-            inset: 0,
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
             zIndex: 200,
-            background: '#000',
-            overflowY: 'auto',
           }}
         >
+          {/* Close button — stays on top, outside scroll container */}
           <button
             onClick={() => setSelectedWork(null)}
             aria-label="關閉"
             style={{
-              position: 'fixed',
+              position: 'absolute',
               top: '24px',
               right: '24px',
-              zIndex: 210,
+              zIndex: 10,
               width: '40px',
               height: '40px',
               borderRadius: '50%',
@@ -486,6 +500,15 @@ export default function Works() {
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
+
+          {/* Scrollable content container */}
+          <div style={{
+            width: '100%',
+            height: '100%',
+            overflowY: 'scroll',
+            background: '#000',
+            WebkitOverflowScrolling: 'touch' as any,
+          }}>
 
           {/* Hero */}
           <div style={{
@@ -888,6 +911,7 @@ export default function Works() {
               </button>
             </div>
           </div>
+          </div>{/* end scrollable container */}
         </div>
       )}
 
