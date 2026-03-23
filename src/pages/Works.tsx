@@ -99,16 +99,14 @@ export default function Works() {
                   key={f.key}
                   onClick={() => handleFilter(f.key)}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '8px 16px',
+                    padding: '10px 16px 8px',
                     background: activeFilter === f.key ? 'rgba(102,140,141,0.15)' : 'transparent',
                     border: `1px solid ${activeFilter === f.key ? 'rgba(102,140,141,0.4)' : 'rgba(255,255,255,0.1)'}`,
                     borderRadius: '100px',
                     fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
                     fontWeight: 400,
                     fontSize: '12px',
+                    lineHeight: 1,
                     color: activeFilter === f.key ? 'rgb(102,140,141)' : 'rgba(255,255,255,0.4)',
                     cursor: 'pointer',
                     letterSpacing: '0.05em',
@@ -261,15 +259,18 @@ export default function Works() {
                     position: 'absolute',
                     top: '10px',
                     left: '10px',
-                    padding: '3px 8px',
+                    padding: '5px 10px 4px',
                     background: 'rgba(0,0,0,0.6)',
                     borderRadius: '100px',
                     border: '1px solid rgba(255,255,255,0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
                   }}>
                     <span style={{
                       fontFamily: '"LINE Seed JP", "Noto Sans TC", sans-serif',
                       fontWeight: 400,
                       fontSize: '10px',
+                      lineHeight: 1,
                       color: work.accentColor,
                       letterSpacing: '0.08em',
                     }}>
