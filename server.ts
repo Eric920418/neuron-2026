@@ -37,7 +37,7 @@ app.post('/api/ai/generate', async (req, res) => {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'MiniMax-M2.7-highspeed',
+        model: 'MiniMax-M2.5-highspeed',
         messages: [
           { role: 'system', content: MINIMAX_SYSTEM_PROMPT },
           { role: 'user', content: `今天，你遇到的專長是「${specialty.trim()}」。` },

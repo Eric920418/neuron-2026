@@ -46,6 +46,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
       .then(data => {
         if (data.text) {
           setAiText(data.text);
+          setAiError(null);
         } else {
           setAiError(data.error || 'AI 回應格式異常');
         }
@@ -56,10 +57,10 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
         }
       });
 
-    // 5 秒超時保護
+    // 30 秒超時保護
     const timeout = setTimeout(() => {
       setAiError(prev => prev ?? '回應超時，使用預設文案');
-    }, 5000);
+    }, 30000);
 
     return () => {
       controller.abort();
