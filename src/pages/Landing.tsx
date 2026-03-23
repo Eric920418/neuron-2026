@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useEffect, lazy, Suspense } from 'react';
+import { useState, useRef, useMemo, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, MeshDistortMaterial, Stars, Line } from '@react-three/drei';
@@ -6,6 +6,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
 
 const InteractiveNetwork = lazy(() => import('../components/InteractiveNetwork'));
+
+type NarrativeItem = { type: 'line'; text: string } | { type: 'divider' };
+
+const NARRATIVE_SEQUENCE: NarrativeItem[] = [
+  { type: 'line', text: '一開始，我們都是各自閃爍的點。' },
+  { type: 'line', text: '在不同的時間，做著不同的事，走著不同的路。' },
+  { type: 'divider' },
+  { type: 'line', text: '有時候會覺得，' },
+  { type: 'line', text: '好像沒有人真的注意到自己。' },
+  { type: 'divider' },
+  { type: 'line', text: '但其實，' },
+  { type: 'line', text: '也許只是還沒連在一起而已。' },
+  { type: 'divider' },
+  { type: 'line', text: '當不同的人湊在一起，' },
+  { type: 'line', text: '很多東西就會慢慢變得有意義。' },
+  { type: 'divider' },
+  { type: 'line', text: '那你呢？' },
+  { type: 'line', text: '你能告訴我，你擅長做什麼嗎？' },
+];
 
 function PulseLine({ target, currentProgress }: { target: THREE.Vector3, currentProgress: React.MutableRefObject<number> }) {
   const lineRef = useRef<any>(null);
@@ -47,7 +66,7 @@ function Scene({ phase }: { phase: string }) {
   const linesRef = useRef<THREE.Group>(null);
   const groupRef = useRef<THREE.Group>(null);
 
-  const targetProgress = phase === 'input' ? 0 : (phase === 'network' ? 0.8 : 1);
+  const targetProgress = (phase === 'narrative' || phase === 'input') ? 0 : (phase === 'network' ? 0.8 : 1);
   const currentProgress = useRef(0);
 
   const nodesData = useMemo(() => {
@@ -165,15 +184,58 @@ function Scene({ phase }: { phase: string }) {
 }
 
 export default function Landing() {
-  const [phase, setPhase] = useState<'input' | 'network' | 'title'>('input');
+  const [phase, setPhase] = useState<'narrative' | 'input' | 'network' | 'title'>('narrative');
   const [specialty, setSpecialty] = useState('');
+  const [revealedCount, setRevealedCount] = useState(0);
+  const revealedCountRef = useRef(0);
+  const cooldownRef = useRef(false);
   const navigate = useNavigate();
+
+  const revealNext = useCallback(() => {
+    setRevealedCount(prev => {
+      const next = Math.min(prev + 1, NARRATIVE_SEQUENCE.length);
+      revealedCountRef.current = next;
+      return next;
+    });
+  }, []);
+
+  // 進入頁面 1.2 秒後自動顯示第一行
+  useEffect(() => {
+    if (phase === 'narrative' && revealedCount === 0) {
+      const timer = setTimeout(() => revealNext(), 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [phase, revealedCount, revealNext]);
+
+  // Wheel 事件控制敘事推進
+  useEffect(() => {
+    if (phase !== 'narrative') return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (cooldownRef.current || e.deltaY <= 0) return;
+
+      if (revealedCountRef.current >= NARRATIVE_SEQUENCE.length) {
+        setPhase('input');
+        return;
+      }
+
+      cooldownRef.current = true;
+      revealNext();
+      setTimeout(() => { cooldownRef.current = false; }, 600);
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [phase, revealNext]);
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && specialty.trim()) {
       setPhase('network');
     }
   };
+
+  const narrativeComplete = revealedCount >= NARRATIVE_SEQUENCE.length;
 
   return (
     <div className="w-full h-screen bg-black relative overflow-hidden">
@@ -184,6 +246,63 @@ export default function Landing() {
       </div>
 
       <AnimatePresence mode="wait">
+        {phase === 'narrative' && (
+          <motion.div
+            key="narrative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, filter: 'blur(8px)' }}
+            transition={{ duration: 0.8 }}
+            className="z-10 absolute inset-0 flex flex-col items-center justify-center px-6"
+          >
+            <div className="flex flex-col items-center gap-1 max-w-lg">
+              {NARRATIVE_SEQUENCE.slice(0, revealedCount).map((item, i) => (
+                item.type === 'divider' ? (
+                  <motion.div
+                    key={`divider-${i}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="h-8"
+                  />
+                ) : (
+                  <motion.p
+                    key={`line-${i}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="text-white/90 text-lg md:text-xl tracking-widest leading-relaxed text-center font-light"
+                  >
+                    {item.text}
+                  </motion.p>
+                )
+              ))}
+            </div>
+
+            {!narrativeComplete && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.3, 0.7, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute bottom-12 text-white/30 text-xs tracking-widest"
+              >
+                ↓ 滾動繼續
+              </motion.div>
+            )}
+
+            {narrativeComplete && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.4, 0.8, 0.4] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 1 }}
+                className="absolute bottom-12 text-[#00FFCC]/50 text-xs tracking-widest"
+              >
+                ↓ 繼續
+              </motion.div>
+            )}
+          </motion.div>
+        )}
+
         {phase === 'input' && (
           <motion.div
             key="input"
@@ -193,7 +312,7 @@ export default function Landing() {
             transition={{ duration: 0.8 }}
             className="z-10 absolute inset-0 flex flex-col items-center justify-center"
           >
-            <p className="text-gray-400 mb-4 tracking-widest uppercase text-sm">輸入您的專長以建立連結</p>
+            <p className="text-gray-400 mb-4 tracking-widest text-sm">你能告訴我，你擅長做什麼嗎？</p>
             <input
               type="text"
               value={specialty}
