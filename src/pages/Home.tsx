@@ -13,7 +13,8 @@ import logoTaoyuanYouth from '../assets/sponsors/桃園市政府青年事務局.
 import logoCts from '../assets/sponsors/華視文教基金會.png';
 import logoElephant from '../assets/sponsors/大象杯.png';
 import logoWemo from '../assets/sponsors/wemo.png';
-import logoBcc from '../assets/sponsors/畢籌會.png';
+import logoBcc from "../assets/sponsors/292.webp";
+import llll from "../assets/sponsors/858c5a49ec9c548b.webp";
 
 const NeuralBackground = lazy(() => import('../components/NeuralBackground'));
 
@@ -39,11 +40,12 @@ const partnerGroups = [
   },
   {
     category: "執行單位",
-    items: [{ name: "元智資傳畢籌會", logo: logoBcc, large: true }],
+    items: [{ name: "元智資傳畢籌會", logo: logoBcc, extraLarge: true }],
   },
   {
     category: "贊助單位",
     items: [
+      { name: "元智大學 資訊學院", logo: llll },
       { name: "華視文教基金會", logo: logoCts },
       { name: "WeMo", logo: logoWemo, large: true },
       { name: "大象杯", logo: logoElephant, large: true },
@@ -73,7 +75,11 @@ export default function Home() {
           style={{ y }}
           className="z-10 text-center px-6 pointer-events-none"
         >
-          <img src={neuronLogo} alt="神經元" className="h-16 md:h-24 mb-6 mx-auto" />
+          <img
+            src={neuronLogo}
+            alt="神經元"
+            className="h-16 md:h-24 mb-6 mx-auto"
+          />
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 text-sm tracking-widest uppercase text-gray-400">
             <div className="flex flex-col items-center">
               <span className="text-white mb-1">校內展</span>
@@ -101,7 +107,7 @@ export default function Home() {
         >
           <div className="w-px h-16 bg-gradient-to-b from-[var(--color-neon)] to-transparent mx-auto mb-8 animate-pulse"></div>
           <h2 className="text-xl md:text-2xl font-light tracking-widest text-[var(--color-neon)] mb-4">
-            準備進入下一個階段
+            對你來說什麼是跨域？什麼是連結？
           </h2>
           <p className="text-gray-400 text-sm tracking-widest uppercase">
             向下探索更多展覽資訊與作品
@@ -110,24 +116,24 @@ export default function Home() {
       </section>
 
       {/* Concept Section */}
-      <section className="py-32 px-6 w-full mx-auto">
+      <section className="py-16 px-6 w-full mx-auto">
         <div className="flex flex-col items-center justify-center">
           <div>
             <h2 className="text-3xl font-bold mb-8">跨域、連結</h2>
           </div>
           <div className="text-gray-400 leading-relaxed text-lg font-light">
-            <p className="mb-6">
-              神經元就像一座橋，在訊號的傳遞與轉換之間，讓理性的結構與感性的溫度彼此流動。
-            </p>
-            <p>
-              當兩者被串連，我們不只是在傳遞資訊，而是在建構理解、產生共鳴，進而誕生創意。
+            <p className="mb-6 px-0 lg:px-32 text-center text-sm lg:text-lg" >
+              跨域、連結，一直都在發生。 神經元就像一座橋，
+              在訊號之間流動，讓理性跟感性慢慢接在一起。 這次展覽分成四個展區：
+              互動設計、遊戲設計、行銷企劃、影視動畫。 每個作品都是一個點，
+              在連結之中，慢慢拼出屬於我們資傳的樣子。 創意，也就在這之中發生。
             </p>
           </div>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section className="py-32 border-y border-white/10 relative overflow-hidden">
+      <section className="py-16 border-y border-white/10 relative overflow-hidden">
         {/* Abstract background effect based on hover */}
         <div
           className="absolute inset-0 z-0 transition-opacity duration-700 pointer-events-none"
@@ -152,7 +158,10 @@ export default function Home() {
                 </h3>
                 <p className="text-gray-500 text-sm tracking-widest uppercase">
                   {cat.desc.map((line, i) => (
-                    <span key={i}>{line}{i < cat.desc.length - 1 && <br />}</span>
+                    <span key={i}>
+                      {line}
+                      {i < cat.desc.length - 1 && <br />}
+                    </span>
                   ))}
                 </p>
               </div>
@@ -166,7 +175,7 @@ export default function Home() {
 
       {/* Partners Section */}
       <section className="py-16 max-w-7xl mx-auto px-6">
-        <div className="space-y-16">
+        <div className="space-y-8">
           {partnerGroups.map((group) => (
             <div key={group.category}>
               <h3 className="text-sm tracking-widest text-gray-500 text-center mb-8">
@@ -174,12 +183,15 @@ export default function Home() {
               </h3>
               <div className="flex flex-wrap justify-center items-center gap-10">
                 {group.items.map((item) => (
-                  <div key={item.name} className="flex flex-col items-center gap-3">
+                  <div
+                    key={item.name}
+                    className="flex flex-col items-center gap-3"
+                  >
                     {item.logo ? (
                       <img
                         src={item.logo}
                         alt={item.name}
-                        className={`${item.large ? 'h-24' : item.small ? 'h-9' : 'h-14'} w-auto object-contain opacity-60 hover:opacity-100 transition-opacity`}
+                        className={`${item.extraLarge ? "h-48" : item.large ? "h-24" : item.small ? "h-9" : "h-14"} w-auto object-contain opacity-60 hover:opacity-100 transition-opacity`}
                       />
                     ) : (
                       <span className="text-sm text-gray-400">{item.name}</span>

@@ -36,6 +36,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
   // API 呼叫：元件 mount 時立即發起，與動畫並行
   useEffect(() => {
     const controller = new AbortController();
+    aiDoneRef.current = false;
 
     fetch('/api/ai/generate', {
       method: 'POST',
@@ -45,6 +46,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
     })
       .then(res => res.json())
       .then(data => {
+        aiDoneRef.current = true;
         if (data.text) {
           setAiText(data.text);
           setAiError(null);
@@ -54,13 +56,16 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
       })
       .catch(err => {
         if (err.name !== 'AbortError') {
+          aiDoneRef.current = true;
           setAiError(err.message || '網路連線失敗');
         }
       });
 
-    // 30 秒超時保護
+    // 30 秒超時保護（僅在 API 尚未完成時觸發）
     const timeout = setTimeout(() => {
-      setAiError(prev => prev ?? '回應超時，使用預設文案');
+      if (!aiDoneRef.current) {
+        setAiError('回應超時，使用預設文案');
+      }
     }, 30000);
 
     return () => {
@@ -145,7 +150,10 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
   };
 
   return (
-    <div ref={containerRef} className="absolute inset-0 w-full h-full overflow-hidden pointer-events-auto">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full overflow-hidden pointer-events-auto"
+    >
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
         {links.map((link, i) => {
           // d3-force replaces source/target string IDs with actual node object references
@@ -180,20 +188,22 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
           transition={{
             duration: 0.5,
             delay: node.isUser ? 0.5 : 1.5 + i * 0.15,
-            type: "spring"
+            type: "spring",
           }}
           className={`absolute flex flex-col items-center justify-center rounded-full cursor-grab active:cursor-grabbing backdrop-blur-md transform -translate-x-1/2 -translate-y-1/2 ${
             node.isUser
-              ? 'bg-[#00FFCC]/20 border-2 border-[#00FFCC] text-[#00FFCC] shadow-[0_0_20px_rgba(0,255,204,0.5)] z-20 px-6 py-4'
-              : 'bg-white/10 border border-white/30 text-white px-4 py-3 z-10'
+              ? "bg-[#00FFCC]/20 border-2 border-[#00FFCC] text-[#00FFCC] shadow-[0_0_20px_rgba(0,255,204,0.5)] z-20 px-6 py-4"
+              : "bg-white/10 border border-white/30 text-white px-4 py-3 z-10"
           }`}
           style={{
             left: node.x || 0,
             top: node.y || 0,
-            touchAction: 'none' // Prevent scrolling while dragging on mobile
+            touchAction: "none", // Prevent scrolling while dragging on mobile
           }}
         >
-          <span className={`mt-1 opacity-80 ${node.isUser ? 'text-sm' : 'text-xs text-gray-300'}`}>
+          <span
+            className={`mt-1 opacity-80 ${node.isUser ? "text-sm" : "text-xs text-gray-300"}`}
+          >
             {node.role}
           </span>
         </motion.div>
@@ -206,9 +216,11 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8 }}
-            className="absolute top-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-lg bg-black/40 border border-white/20 backdrop-blur-md p-6 rounded-2xl text-center z-30 shadow-2xl pointer-events-auto"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-lg bg-black/40 border border-white/20 backdrop-blur-md p-6 rounded-2xl text-center z-30 shadow-2xl pointer-events-auto"
           >
-            <h3 className="text-[#00FFCC] font-bold text-lg mb-3 tracking-wider">與資傳領域的連結</h3>
+            <h3 className="text-[#00FFCC] font-bold text-lg mb-3 tracking-wider">
+              我們之間的訊號
+            </h3>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
               {aiText || FALLBACK_TEXT(specialty)}
             </p>
@@ -219,7 +231,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
               onClick={onNext}
               className="px-6 py-2 border border-[#00FFCC] text-[#00FFCC] hover:bg-[#00FFCC] hover:text-black transition-colors tracking-widest uppercase text-sm rounded-full"
             >
-              繼續探索
+              進入神經元
             </button>
           </motion.div>
         )}

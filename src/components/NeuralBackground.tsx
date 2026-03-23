@@ -169,7 +169,7 @@ export default function NeuralBackground({ specialty }: { specialty: string }) {
           <lineBasicMaterial color="#00FFCC" transparent opacity={0.3} depthWrite={false} blending={THREE.AdditiveBlending} />
         </lineSegments>
       </group>
-      <group ref={textGroupRef}>
+      {/* <group ref={textGroupRef}>
         <Html center style={{ pointerEvents: 'none' }}>
           <div 
             ref={textDivRef}
@@ -179,7 +179,7 @@ export default function NeuralBackground({ specialty }: { specialty: string }) {
             {specialty || '跨域整合'}
           </div>
         </Html>
-      </group>
+      </group> */}
     </>
   );
 }

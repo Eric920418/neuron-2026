@@ -48,7 +48,7 @@ export default function Navbar() {
         </Link>
         <div className="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest">
           <NavLink to="/info">展覽資訊</NavLink>
-          <NavLink to="/works">組別介紹</NavLink>
+          <NavLink to="/works">參展作品</NavLink>
           <NavLink to="/contact">意見回饋</NavLink>
           <Link
             to="/booking"
