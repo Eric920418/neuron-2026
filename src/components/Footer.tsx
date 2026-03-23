@@ -10,7 +10,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
           <div>
-            <h3 className="text-2xl font-bold mb-6">神經元 2026</h3>
+            <h3 className="text-2xl font-bold mb-6">
+              神經元 元智大學第29屆畢業展
+            </h3>
             <p className="text-gray-400 max-w-sm">
               資傳系是理性框架與感性溫度的交匯。當結構遇上細節，創意便在神經元的訊號轉譯間誕生，建構出一張共鳴與創新交織的思維網絡。
             </p>

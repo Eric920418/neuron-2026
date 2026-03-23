@@ -25,6 +25,7 @@ export default function InteractiveNetwork({ specialty, onNext }: { specialty: s
   const [aiText, setAiText] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
   const [animationReady, setAnimationReady] = useState(false);
+  const aiDoneRef = useRef(false);
 
   // 3.5 秒後動畫就緒
   useEffect(() => {
