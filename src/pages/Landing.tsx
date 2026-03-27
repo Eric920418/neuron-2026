@@ -210,6 +210,10 @@ export default function Landing() {
       startY = e.touches[0].clientY;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
     const handleTouchEnd = (e: TouchEvent) => {
       const deltaY = startY - e.changedTouches[0].clientY;
       if (deltaY < 30 || cooldownRef.current) return;
@@ -225,9 +229,11 @@ export default function Landing() {
     };
 
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [phase, revealNext]);
@@ -241,7 +247,7 @@ export default function Landing() {
   const narrativeComplete = revealedCount >= NARRATIVE_SEQUENCE.length;
 
   return (
-    <div className="w-full h-screen bg-black relative overflow-hidden">
+    <div className="w-full h-screen bg-black relative overflow-hidden touch-none">
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 8] }}>
           <Scene phase={phase} />

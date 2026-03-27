@@ -246,7 +246,7 @@ export default function GallerySection() {
           position: 'relative',
         }} className="gallery-carousel-grid">
 
-          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '8px' }}>
+          <div className="gallery-image-panel" style={{ position: 'relative', overflow: 'hidden', borderRadius: '8px' }}>
             {prev && (
               <div
                 key={`prev-${prevIdx}`}
@@ -525,6 +525,10 @@ export default function GallerySection() {
         @media (max-width: 768px) {
           .gallery-carousel-grid {
             grid-template-columns: 1fr !important;
+            min-height: auto !important;
+          }
+          .gallery-image-panel {
+            aspect-ratio: 16/10;
           }
         }
         .gallery-thumbs::-webkit-scrollbar {

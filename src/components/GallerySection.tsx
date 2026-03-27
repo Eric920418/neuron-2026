@@ -185,6 +185,7 @@ export default function GallerySection() {
 
           {/* Image panel */}
           <div
+            className="gallery-image-panel"
             style={{ position: 'relative', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer' }}
             onClick={() => navigate(`/works/${current.slug}`)}
           >
@@ -355,7 +356,8 @@ export default function GallerySection() {
           to { width: 100%; }
         }
         @media (max-width: 768px) {
-          .gallery-carousel-grid { grid-template-columns: 1fr !important; }
+          .gallery-carousel-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
+          .gallery-image-panel { aspect-ratio: 16/10; }
         }
         .gallery-thumbs::-webkit-scrollbar { height: 2px; }
         .gallery-thumbs::-webkit-scrollbar-track { background: #111; }

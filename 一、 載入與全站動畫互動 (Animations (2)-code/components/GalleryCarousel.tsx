@@ -82,15 +82,15 @@ export default function GalleryCarousel() {
     <section
       style={{
         background: '#000',
-        padding: '80px 0 120px',
+        padding: 'clamp(40px, 10vw, 80px) 0 clamp(60px, 10vw, 120px)',
         borderTop: '1px solid rgba(255,255,255,0.05)',
         overflow: 'hidden',
       }}
       data-animate="reveal-on-scroll"
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 80px' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(16px, 6vw, 80px)' }}>
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '16px' }}>
           <div>
             <p style={{
               fontFamily: 'Space Grotesk, sans-serif',
@@ -105,7 +105,7 @@ export default function GalleryCarousel() {
             <h2
               className="font-display"
               style={{
-                fontSize: '56px',
+                fontSize: 'clamp(32px, 5vw, 56px)',
                 fontWeight: 400,
                 color: '#fff',
                 lineHeight: 1.1,
@@ -172,7 +172,7 @@ export default function GalleryCarousel() {
         </div>
 
         {/* Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div className="gallery-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
           {visibleWorks.map((work, idx) => (
             <div
               key={work.id}
@@ -273,6 +273,15 @@ export default function GalleryCarousel() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .gallery-cards-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
+          .gallery-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
 
       {/* Zoom modal */}
       {zoomed !== null && (

@@ -297,7 +297,7 @@ export default function HeroSection({ onComplete }: Props) {
             </h1>
           </div>
 
-          <div style={{ position: 'relative', width: '420px' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '420px' }}>
             <input
               type="text"
               value={inputValue}
