@@ -57,6 +57,7 @@ export default function Navbar() {
           <NavLink to="/info">展覽資訊</NavLink>
           <NavLink to="/works">參展作品</NavLink>
           <NavLink to="/contact">意見回饋</NavLink>
+          <NavLink to="/progress">預約進度</NavLink>
           <Link
             to="/booking"
             className="relative px-5 py-2 text-black font-bold tracking-widest uppercase text-sm bg-[var(--color-neon)] rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,204,0.4)] hover:scale-105 active:scale-95"
@@ -100,6 +101,7 @@ export default function Navbar() {
           <NavLink to="/info">展覽資訊</NavLink>
           <NavLink to="/works">參展作品</NavLink>
           <NavLink to="/contact">意見回饋</NavLink>
+          <NavLink to="/progress">預約進度</NavLink>
           <Link
             to="/booking"
             className="relative px-5 py-2 text-black font-bold tracking-widest uppercase text-sm bg-[var(--color-neon)] rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,204,0.4)] hover:scale-105 active:scale-95"

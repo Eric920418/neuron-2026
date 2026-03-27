@@ -21,6 +21,7 @@ const Info = lazy(() => import('./pages/Info'));
 const Works = lazy(() => import('./pages/Works'));
 const WorkDetail = lazy(() => import('./pages/WorkDetail'));
 const Booking = lazy(() => import('./pages/Booking'));
+const Progress = lazy(() => import('./pages/Progress'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 function PageFallback() {
@@ -49,6 +50,7 @@ function AnimatedRoutes() {
         <Route path="/works" element={<PageTransition><Suspense fallback={<PageFallback />}><Works /></Suspense></PageTransition>} />
         <Route path="/works/:slug" element={<PageTransition><Suspense fallback={<PageFallback />}><WorkDetail /></Suspense></PageTransition>} />
         <Route path="/booking" element={<PageTransition><Suspense fallback={<PageFallback />}><Booking /></Suspense></PageTransition>} />
+        <Route path="/progress" element={<PageTransition><Suspense fallback={<PageFallback />}><Progress /></Suspense></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Suspense fallback={<PageFallback />}><Contact /></Suspense></PageTransition>} />
       </Routes>
     </AnimatePresence>
