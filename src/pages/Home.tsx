@@ -183,7 +183,7 @@ export default function Home() {
               <h3 className="text-sm tracking-widest text-gray-500 text-center mb-8">
                 {group.category}
               </h3>
-              <div className="flex flex-wrap justify-center items-center gap-10">
+              <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
                 {group.items.map((item) => (
                   <div
                     key={item.name}

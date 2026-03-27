@@ -144,7 +144,7 @@ export default function Works() {
         {loading && (
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
             gap: '24px',
           }}>
             {[1, 2, 3, 4, 5, 6].map(i => (
@@ -185,7 +185,7 @@ export default function Works() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
               gap: '24px',
               opacity: animating ? 0 : 1,
               transform: animating ? 'translateY(8px)' : 'none',

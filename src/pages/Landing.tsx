@@ -201,6 +201,37 @@ export default function Landing() {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [phase, revealNext]);
 
+  // 手機觸控滑動推進敘事
+  useEffect(() => {
+    if (phase !== 'narrative') return;
+    let startY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const deltaY = startY - e.changedTouches[0].clientY;
+      if (deltaY < 30 || cooldownRef.current) return;
+
+      if (revealedCountRef.current >= NARRATIVE_SEQUENCE.length) {
+        setPhase('input');
+        return;
+      }
+
+      cooldownRef.current = true;
+      revealNext();
+      setTimeout(() => { cooldownRef.current = false; }, 600);
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [phase, revealNext]);
+
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && specialty.trim()) {
       setPhase('network');
@@ -258,7 +289,7 @@ export default function Landing() {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute bottom-12 text-white/30 text-xs tracking-widest"
               >
-                ↓ 滾動繼續
+                ↓ 滑動繼續
               </motion.div>
             )}
 
@@ -282,7 +313,7 @@ export default function Landing() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
             transition={{ duration: 0.8 }}
-            className="z-10 absolute inset-0 flex flex-col items-center justify-center"
+            className="z-10 absolute inset-0 flex flex-col items-center justify-center px-6"
           >
             <p className="text-gray-400 mb-4 tracking-widest text-sm">你能告訴我，你擅長做什麼嗎？</p>
             <input
@@ -291,7 +322,7 @@ export default function Landing() {
               onChange={(e) => setSpecialty(e.target.value)}
               onKeyDown={handleEnter}
               placeholder="例如：互動設計"
-              className="bg-transparent border-b border-white/30 text-white text-3xl text-center focus:outline-none focus:border-[#00FFCC] transition-colors pb-2 w-96 placeholder:text-white/10"
+              className="bg-transparent border-b border-white/30 text-white text-3xl text-center focus:outline-none focus:border-[#00FFCC] transition-colors pb-2 w-full max-w-96 placeholder:text-white/10"
               autoFocus
             />
           </motion.div>

@@ -91,7 +91,7 @@ export default function WorkDetail() {
   return (
     <div style={{ background: '#000', minHeight: '100vh', paddingTop: '64px' }}>
       {/* Hero */}
-      <div style={{
+      <div className="work-hero" style={{
         width: '100%',
         aspectRatio: '21/9',
         background: work.color,
@@ -345,7 +345,7 @@ export default function WorkDetail() {
             </p>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(240px, 100%), 1fr))',
               gap: '8px',
             }}>
               {work.images.filter(img => img.url).map(img => (
@@ -551,6 +551,9 @@ export default function WorkDetail() {
       <style>{`
         @media (max-width: 768px) {
           .work-meta-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          .work-hero { aspect-ratio: 16/9 !important; }
         }
       `}</style>
     </div>
