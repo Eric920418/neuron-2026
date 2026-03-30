@@ -64,8 +64,8 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white pt-24">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Canvas camera={{ position: [0, 0, 1] }}>
+        <div className="absolute inset-0 z-0 touch-none">
+          <Canvas camera={{ position: [0, 0, 1] }} style={{ touchAction: 'none' }}>
             <Suspense fallback={null}>
               <NeuralBackground specialty={specialty} />
             </Suspense>
