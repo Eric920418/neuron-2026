@@ -7,8 +7,8 @@
     "remotePatterns": [
       {
         "protocol": "https",
-        "hostname": "gradexhibit.tech",
-        "pathname": "/**"
+        "hostname": "**.public.blob.vercel-storage.com",
+        "pathname": "/uploads/**"
       }
     ]
   },
