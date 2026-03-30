@@ -232,6 +232,7 @@ export default function Works() {
                       alt={work.title}
                       containerClassName="w-full h-full"
                       imgClassName="w-full h-full object-cover"
+                      preset="card"
                     />
                   ) : (
                     <div style={{

@@ -43,6 +43,12 @@
 
 - **路由級代碼分割**: 除 Landing 外所有頁面使用 React.lazy + Suspense 動態載入
 - **圖片延遲載入**: LazyImage 元件（IntersectionObserver + 200px rootMargin + 瀏覽器原生 loading/decoding/fetchPriority）
+- **圖片最佳化**: 透過 Vercel Image Optimization API (`/_vercel/image`) 實現：
+  - 自動格式協商（AVIF / WebP），依瀏覽器支援度選擇最佳格式
+  - 響應式圖片（`srcset` + `sizes`），依裝置寬度載入適當尺寸
+  - 遠端圖片代理：API 回傳的作品圖片經由 Vercel CDN 快取 30 天
+  - 圖片品質分級：縮圖 q=50、卡片/輪播 q=75、Hero q=90
+- **快取策略**: 靜態資源 1 年 immutable、最佳化圖片 30 天、API 回應 5 分鐘 + stale-while-revalidate
 - **Three.js 動態載入**: NeuralBackground、InteractiveNetwork 按需載入
 - **Bundle 分割**: Three.js / Framer Motion / d3-force 獨立打包為 vendor chunks
 

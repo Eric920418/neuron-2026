@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { fetchTeamsPublic, type Work } from '../data/works'
 import LazyImage from '../components/LazyImage'
+import { IMAGE_PRESETS, buildSrcSet, getOptimizedImageUrl } from '../utils/image'
 
 export default function WorkDetail() {
   const { slug } = useParams()
@@ -26,6 +27,21 @@ export default function WorkDetail() {
       .catch(err => setError(err.message || '無法載入作品'))
       .finally(() => setLoading(false))
   }, [slug])
+
+  useEffect(() => {
+    if (!work?.images[0]?.url) return
+    const heroUrl = work.images[0].url
+    const preset = IMAGE_PRESETS.hero
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = getOptimizedImageUrl(heroUrl, 1200, 90)
+    link.setAttribute('imagesrcset', buildSrcSet(heroUrl, preset.widths, 90))
+    link.setAttribute('imagesizes', preset.sizes)
+    link.fetchPriority = 'high'
+    document.head.appendChild(link)
+    return () => { document.head.removeChild(link) }
+  }, [work])
 
   if (loading) {
     return (
@@ -107,6 +123,7 @@ export default function WorkDetail() {
             alt={work.title}
             containerClassName="w-full h-full"
             imgClassName="w-full h-full object-cover"
+            preset="hero"
             priority
           />
         ) : (
@@ -360,6 +377,7 @@ export default function WorkDetail() {
                     alt={img.caption}
                     containerClassName="w-full h-full"
                     imgClassName="w-full h-full object-cover"
+                    preset="gallery"
                   />
                 </div>
               ))}

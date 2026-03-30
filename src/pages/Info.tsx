@@ -78,6 +78,8 @@ export default function Info() {
                 alt="YZU Campus"
                 containerClassName="w-full h-full"
                 imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                preset="hero"
+                priority
               />
             </div>
             <div className="space-y-8">
@@ -146,6 +148,7 @@ export default function Info() {
                 alt="Songshan Park"
                 containerClassName="w-full h-full"
                 imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                preset="hero"
               />
             </div>
           </div>

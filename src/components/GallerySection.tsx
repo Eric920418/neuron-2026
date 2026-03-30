@@ -332,7 +332,7 @@ export default function GallerySection() {
                 transition: 'opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease',
               }}>
               {item.images[0]?.url ? (
-                <LazyImage src={item.images[0].url} alt={item.title} containerClassName="w-full h-full" imgClassName="w-full h-full object-cover" />
+                <LazyImage src={item.images[0].url} alt={item.title} containerClassName="w-full h-full" imgClassName="w-full h-full object-cover" preset="thumbnail" />
               ) : (
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'rgba(102,140,141,0.3)', border: '1px solid rgba(102,140,141,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -375,6 +375,7 @@ function WorkImage({ work }: { work: Work }) {
         alt={work.title}
         containerClassName="w-full h-full"
         imgClassName="w-full h-full object-cover"
+        preset="carousel"
         priority
       />
     )
