@@ -7,7 +7,6 @@ import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
@@ -61,13 +60,11 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <SmoothScroll>
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-[var(--color-neon)] selection:text-black">
-          <Navbar />
-          <AnimatedRoutes />
-          <Footer />
-        </div>
-      </SmoothScroll>
+      <div className="bg-black min-h-screen text-white font-sans selection:bg-[var(--color-neon)] selection:text-black">
+        <Navbar />
+        <AnimatedRoutes />
+        <Footer />
+      </div>
     </Router>
   );
 }
