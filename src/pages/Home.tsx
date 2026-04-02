@@ -15,6 +15,7 @@ import logoElephant from '../assets/sponsors/大象杯.png';
 import logoWemo from '../assets/sponsors/wemo.png';
 import logoBcc from "../assets/sponsors/image (1).webp";
 import llll from "../assets/sponsors/858c5a49ec9c548b.webp";
+import logoCadina from "../assets/sponsors/卡迪那.png";
 
 const NeuralBackground = lazy(() => import('../components/NeuralBackground'));
 
@@ -49,6 +50,7 @@ const partnerGroups = [
       { name: "華視文教基金會", logo: logoCts },
       { name: "WeMo", logo: logoWemo, large: true },
       { name: "大象杯", logo: logoElephant, large: true },
+      { name: "卡迪那", logo: logoCadina, large: true },
     ],
   },
 ];
