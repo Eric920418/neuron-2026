@@ -42,6 +42,7 @@ function Scene({ phase }: { phase: string }) {
 
   const targetProgress = (phase === 'narrative' || phase === 'input') ? 0 : (phase === 'network' ? 0.8 : 1);
   const currentProgress = useRef(0);
+  const _startPos = useRef(new THREE.Vector3());
 
   const nodesData = useMemo(() => {
     const data = [];
@@ -76,7 +77,7 @@ function Scene({ phase }: { phase: string }) {
     if (surroundingNodesRef.current) {
       surroundingNodesRef.current.children.forEach((child, i) => {
         const targetPos = nodesData[i];
-        const startPos = targetPos.clone().multiplyScalar(2);
+        const startPos = _startPos.current.copy(targetPos).multiplyScalar(2);
         child.position.lerpVectors(startPos, targetPos, phaseAProgress);
 
         const material = (child as THREE.Mesh).material as THREE.MeshStandardMaterial;

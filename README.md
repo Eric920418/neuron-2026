@@ -54,7 +54,11 @@
 - **快取策略**: 靜態資源 1 年 immutable、字型 1 年 immutable、最佳化圖片 30 天、API 回應 5 分鐘 + stale-while-revalidate
 - **Three.js 動態載入**: LandingScene、NeuralBackground、InteractiveNetwork 按需載入
 - **Bundle 分割**: Three.js / Framer Motion / d3-force 獨立打包為 vendor chunks
-- **預載優化**: Input 階段預取 InteractiveNetwork chunk，加速 network 階段轉場
+- **預載優化**: Input 階段預取 InteractiveNetwork 與 Home 頁面 chunk，加速轉場
+- **Three.js GC 優化**: NeuralBackground / LandingScene 的 Vector3 物件使用 ref 快取，避免每幀重新分配
+- **Resource Hints**: dns-prefetch MiniMax API、preconnect 後端 API
+- **Passive Scroll**: Navbar 滾動監聽使用 passive flag，避免行動裝置卡頓
+- **贊助商圖片懶載入**: Home 頁底部的合作單位 logo 使用 `loading="lazy"`
 
 ## 環境變數
 

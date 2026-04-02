@@ -195,6 +195,8 @@ export default function Home() {
                       <img
                         src={item.logo}
                         alt={item.name}
+                        loading="lazy"
+                        decoding="async"
                         className={`${item.extraLarge ? "h-48" : item.large ? "h-24" : item.small ? "h-9" : "h-14"} w-auto object-contain opacity-60 hover:opacity-100 transition-opacity`}
                       />
                     ) : (

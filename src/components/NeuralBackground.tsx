@@ -9,6 +9,10 @@ export default function NeuralBackground({ specialty }: { specialty: string }) {
   const linesGeometryRef = useRef<any>(null);
   const textGroupRef = useRef<any>(null);
   const textDivRef = useRef<HTMLDivElement>(null);
+  const _mousePos = useRef(new THREE.Vector3());
+  const _worldMouse = useRef(new THREE.Vector3());
+  const _localMouse = useRef(new THREE.Vector3());
+  const _nearbyParticles = useRef<Array<{ index: number; px: number; py: number; pz: number; distSq: number }>>([]);
 
   const count = 3000;
   const maxLines = 300;
@@ -38,13 +42,13 @@ export default function NeuralBackground({ specialty }: { specialty: string }) {
     groupRef.current.rotation.x -= delta / 10;
     groupRef.current.rotation.y -= delta / 15;
 
-    const mousePos = new THREE.Vector3(state.pointer.x, state.pointer.y, 0.5);
+    const mousePos = _mousePos.current.set(state.pointer.x, state.pointer.y, 0.5);
     mousePos.unproject(state.camera);
     const dir = mousePos.sub(state.camera.position).normalize();
     const distance = -state.camera.position.z / dir.z;
-    const worldMouse = state.camera.position.clone().add(dir.multiplyScalar(distance));
+    const worldMouse = _worldMouse.current.copy(state.camera.position).add(dir.multiplyScalar(distance));
 
-    const localMouse = worldMouse.clone();
+    const localMouse = _localMouse.current.copy(worldMouse);
     groupRef.current.worldToLocal(localMouse);
 
     if (textGroupRef.current) {
@@ -58,7 +62,8 @@ export default function NeuralBackground({ specialty }: { specialty: string }) {
     const lineRadiusSq = (interactionRadius * 1.5) * (interactionRadius * 1.5);
     
     let lineCount = 0;
-    const nearbyParticles = [];
+    const nearbyParticles = _nearbyParticles.current;
+    nearbyParticles.length = 0;
 
     for (let i = 0; i < count; i++) {
       const ix = i * 3, iy = i * 3 + 1, iz = i * 3 + 2;

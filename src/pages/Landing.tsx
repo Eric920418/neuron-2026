@@ -39,10 +39,11 @@ export default function Landing() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Input 階段預載 InteractiveNetwork
+  // Input 階段預載 InteractiveNetwork 與 Home 頁面
   useEffect(() => {
     if (phase === 'input') {
       import('../components/InteractiveNetwork');
+      import('../pages/Home');
     }
   }, [phase]);
 

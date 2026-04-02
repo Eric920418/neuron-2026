@@ -217,16 +217,18 @@ export default function Info() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg overflow-hidden">
               <img
-                src="/地圖_校內展.png"
+                src="/地圖_校內展.webp"
                 alt="校內展場地圖 — 元智大學五館三樓 / 六館玻璃屋"
                 className="w-full h-auto"
+                loading="lazy"
               />
             </div>
             <div className="bg-white rounded-lg overflow-hidden">
               <img
-                src="/地圖_校外展.png"
+                src="/地圖_校外展.webp"
                 alt="校外展場地圖 — 松菸文創園區・二號倉庫"
                 className="w-full h-auto"
+                loading="lazy"
               />
             </div>
           </div>
