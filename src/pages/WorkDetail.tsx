@@ -374,15 +374,15 @@ export default function WorkDetail() {
               作品圖片
             </p>
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(min(240px, 100%), 1fr))',
-              gap: '8px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px',
             }}>
               {work.images.filter(img => img.url).map(img => (
                 <div key={img.id} style={{
-                  aspectRatio: '16/9',
+                  width: '100%',
                   overflow: 'hidden',
-                  borderRadius: '4px',
+                  borderRadius: '6px',
                   background: work.color,
                 }}>
                   {isVideo(img.url!) ? (
