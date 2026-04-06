@@ -141,7 +141,7 @@ export default function GallerySection() {
             lineHeight: 1,
             letterSpacing: '-0.02em',
           }}>
-            精選作品
+            參展作品
           </h2>
         </div>
 
@@ -369,6 +369,18 @@ export default function GallerySection() {
 
 function WorkImage({ work }: { work: Work }) {
   if (work.images[0]?.url) {
+    if (/\.(mp4|webm|mov|ogg)(\?.*)?$/i.test(work.images[0].url)) {
+      return (
+        <video
+          src={work.images[0].url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      )
+    }
     return (
       <LazyImage
         src={work.images[0].url}

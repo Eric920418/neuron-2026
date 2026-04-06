@@ -104,6 +104,8 @@ export default function WorkDetail() {
     )
   }
 
+  const isVideo = (url: string) => /\.(mp4|webm|mov|ogg)(\?.*)?$/i.test(url)
+
   return (
     <div style={{ background: '#000', minHeight: '100vh', paddingTop: '64px' }}>
       {/* Hero */}
@@ -118,14 +120,25 @@ export default function WorkDetail() {
         overflow: 'hidden',
       }}>
         {work.images[0]?.url ? (
-          <LazyImage
-            src={work.images[0].url}
-            alt={work.title}
-            containerClassName="w-full h-full"
-            imgClassName="w-full h-full object-cover"
-            preset="hero"
-            priority
-          />
+          isVideo(work.images[0].url) ? (
+            <video
+              src={work.images[0].url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ) : (
+            <LazyImage
+              src={work.images[0].url}
+              alt={work.title}
+              containerClassName="w-full h-full"
+              imgClassName="w-full h-full object-cover"
+              preset="hero"
+              priority
+            />
+          )
         ) : (
           <div style={{
             display: 'flex',
@@ -372,13 +385,23 @@ export default function WorkDetail() {
                   borderRadius: '4px',
                   background: work.color,
                 }}>
-                  <LazyImage
-                    src={img.url}
-                    alt={img.caption}
-                    containerClassName="w-full h-full"
-                    imgClassName="w-full h-full object-cover"
-                    preset="gallery"
-                  />
+                  {isVideo(img.url!) ? (
+                    <video
+                      src={img.url}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <LazyImage
+                      src={img.url!}
+                      alt={img.caption}
+                      containerClassName="w-full h-full"
+                      imgClassName="w-full h-full object-cover"
+                      preset="gallery"
+                    />
+                  )}
                 </div>
               ))}
             </div>

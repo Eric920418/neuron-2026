@@ -227,13 +227,23 @@ export default function Works() {
                   overflow: 'hidden',
                 }}>
                   {work.images[0]?.url ? (
-                    <LazyImage
-                      src={work.images[0].url}
-                      alt={work.title}
-                      containerClassName="w-full h-full"
-                      imgClassName="w-full h-full object-cover"
-                      preset="card"
-                    />
+                    /\.(mp4|webm|mov|ogg)(\?.*)?$/i.test(work.images[0].url) ? (
+                      <video
+                        src={work.images[0].url}
+                        muted
+                        playsInline
+                        preload="metadata"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    ) : (
+                      <LazyImage
+                        src={work.images[0].url}
+                        alt={work.title}
+                        containerClassName="w-full h-full"
+                        imgClassName="w-full h-full object-cover"
+                        preset="card"
+                      />
+                    )
                   ) : (
                     <div style={{
                       display: 'flex',

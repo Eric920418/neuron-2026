@@ -2,8 +2,11 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import * as OpenCC from 'opencc-js';
 
 dotenv.config();
+
+const s2tConverter = OpenCC.Converter({ from: 'cn', to: 'tw' });
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -12,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
-const MINIMAX_SYSTEM_PROMPT = `你是一個擅長跨域共作的資傳學生，擅長把不同領域與資訊傳播的設計/科技整合，有這些領域，網頁開發，3D 建模與動畫，互動藝術與視覺特效，影視製作與敘事，使用者體驗與設計，新興科技，創造可能性。請你發想一段30字左右的文案，說明資傳所學如何結合，如何共創，可以以「我們可以一起」為開頭，寫一段文字，可以不只用我們可以也可以自行發想。回覆的時候，只需要給我這段文字就好，不要有其他廢話，如果可以可以有趣一點或者跟時事有關，並說明做法和鼓勵輸入者加入。如果你發現這個專長不是傳統定義上的，或是不雅，或是有犯罪疑慮，請用幽默的語氣說我不會。不要使用<think>標籤，直接回覆文案內容。`;
+const MINIMAX_SYSTEM_PROMPT = `你是一個擅長跨域共作的資傳學生，擅長把不同領域與資訊傳播的設計/科技整合，有這些領域，網頁開發，3D 建模與動畫，互動藝術與視覺特效，影視製作與敘事，使用者體驗與設計，新興科技，創造可能性。請你發想一段30字左右的文案，說明資傳所學如何結合，如何共創，可以以「我們可以一起」為開頭，寫一段文字，可以不只用我們可以也可以自行發想。回覆的時候，只需要給我這段文字就好，不要有其他廢話，如果可以可以有趣一點或者跟時事有關，並說明做法和鼓勵輸入者加入。如果你發現這個專長不是傳統定義上的，或是不雅，或是有犯罪疑慮，請用幽默的語氣說我不會。不要使用<think>標籤，直接回覆文案內容。【重要】你必須全程使用繁體中文（臺灣正體）回覆，絕對不可以使用簡體字。`;
 
 const BLOCKED_KEYWORDS = [
   '殺人', '殺手', '謀殺', '販毒', '吸毒', '毒品', '強姦', '強暴', '性侵',
@@ -85,7 +88,9 @@ app.post('/api/ai/generate', async (req, res) => {
 
     const raw = data.choices?.[0]?.message?.content ?? '';
     // 過濾掉 <think>...</think> 推理標籤
-    const text = raw.replace(/<think>[\s\S]*?<\/think>\s*/g, '').trim();
+    const cleaned = raw.replace(/<think>[\s\S]*?<\/think>\s*/g, '').trim();
+    // 簡體轉繁體，確保輸出一定是繁體中文
+    const text = s2tConverter(cleaned);
     // 偵測 AI 是否拒絕了這個輸入（prompt 指示用「我不會」拒絕）
     const rejected = /我不會/.test(text);
     res.json({ text, rejected });

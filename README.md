@@ -11,6 +11,7 @@
 - **樣式**: Tailwind CSS 4.1 + Inline Styles
 - **字體**: LINE Seed TW（本地 WOFF2，Regular/Bold 兩字重）
 - **AI 文案生成**: MiniMax API (MiniMax-M2.7) — Landing 頁面根據使用者專長動態生成跨域共創文案
+- **繁體中文保證**: opencc-js 簡轉繁後處理，確保 AI 生成內容一律為臺灣正體
 
 ## 展覽資訊
 
@@ -46,10 +47,11 @@
 - **3D 效能調校**: Stars 粒子從 5000 降至 2500、Sphere 網格段數從 16x16 降至 8x8
 - **路由級代碼分割**: 除 Landing 外所有頁面使用 React.lazy + Suspense 動態載入
 - **圖片延遲載入**: LazyImage 元件（IntersectionObserver + 200px rootMargin + 瀏覽器原生 loading/decoding/fetchPriority）
+- **媒體渲染**: 自動偵測 URL 副檔名，影片（mp4/webm/mov）使用 `<video>`、圖片使用 LazyImage + Vercel Image Optimization
 - **圖片最佳化**: 透過 Vercel Image Optimization API (`/_vercel/image`) 實現：
   - 自動格式協商（AVIF / WebP），依瀏覽器支援度選擇最佳格式
   - 響應式圖片（`srcset` + `sizes`），依裝置寬度載入適當尺寸
-  - 遠端圖片代理：API 回傳的作品圖片經由 Vercel CDN 快取 30 天
+  - 遠端圖片代理：API 回傳的作品圖片經由 Vercel CDN 快取 30 天（允許所有 blob storage 路徑）
   - 圖片品質分級：縮圖 q=50、卡片/輪播 q=75、Hero q=90
 - **快取策略**: 靜態資源 1 年 immutable、字型 1 年 immutable、最佳化圖片 30 天、API 回應 5 分鐘 + stale-while-revalidate
 - **Three.js 動態載入**: LandingScene、NeuralBackground、InteractiveNetwork 按需載入

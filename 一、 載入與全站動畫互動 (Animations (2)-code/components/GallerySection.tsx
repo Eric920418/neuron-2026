@@ -125,55 +125,65 @@ export default function GallerySection() {
       id="gallery"
       ref={sectionRef}
       style={{
-        background: '#000',
-        padding: 'clamp(80px, 12vw, 160px) 0',
-        borderTop: '1px solid rgba(255,255,255,0.04)',
-        overflow: 'hidden',
+        background: "#000",
+        padding: "clamp(80px, 12vw, 160px) 0",
+        borderTop: "1px solid rgba(255,255,255,0.04)",
+        overflow: "hidden",
       }}
     >
-      <div style={{
-        padding: '0 clamp(20px, 6vw, 80px)',
-        marginBottom: 'clamp(40px, 5vw, 64px)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        flexWrap: 'wrap',
-        gap: '24px',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'none' : 'translateY(20px)',
-        transition: 'opacity 0.7s ease, transform 0.7s ease',
-      }}>
+      <div
+        style={{
+          padding: "0 clamp(20px, 6vw, 80px)",
+          marginBottom: "clamp(40px, 5vw, 64px)",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          flexWrap: "wrap",
+          gap: "24px",
+          opacity: visible ? 1 : 0,
+          transform: visible ? "none" : "translateY(20px)",
+          transition: "opacity 0.7s ease, transform 0.7s ease",
+        }}
+      >
         <div>
-          <p style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontSize: '11px',
-            letterSpacing: '0.5em',
-            color: 'rgba(57,255,20,0.5)',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+          <p
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              fontSize: "11px",
+              letterSpacing: "0.5em",
+              color: "rgba(57,255,20,0.5)",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
             Selected Works
           </p>
-          <h2 className="font-display" style={{
-            fontSize: 'clamp(36px, 5vw, 64px)',
-            fontWeight: 400,
-            color: '#fff',
-            lineHeight: 1,
-            letterSpacing: '-0.02em',
-          }}>
-            精選作品
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 400,
+              color: "#fff",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            參展作品
           </h2>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontSize: '12px',
-            color: 'rgba(255,255,255,0.25)',
-            letterSpacing: '0.15em',
-            fontVariantNumeric: 'tabular-nums',
-          }}>
-            {String(activeIdx + 1).padStart(2, '0')} / {String(galleryItems.length).padStart(2, '0')}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <span
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              fontSize: "12px",
+              color: "rgba(255,255,255,0.25)",
+              letterSpacing: "0.15em",
+              fontVariantNumeric: "tabular-nums",
+            }}
+          >
+            {String(activeIdx + 1).padStart(2, "0")} /{" "}
+            {String(galleryItems.length).padStart(2, "0")}
           </span>
           <button
             onClick={goPrev}
@@ -181,22 +191,29 @@ export default function GallerySection() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: 'transparent',
-              color: 'rgba(255,255,255,0.55)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'border-color 0.2s ease, color 0.2s ease',
+              width: "36px",
+              height: "36px",
+              borderRadius: "50%",
+              border: "1px solid rgba(255,255,255,0.12)",
+              background: "transparent",
+              color: "rgba(255,255,255,0.55)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "border-color 0.2s ease, color 0.2s ease",
             }}
             onFocus={() => setPaused(true)}
             onBlur={() => setPaused(false)}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
           </button>
@@ -206,22 +223,29 @@ export default function GallerySection() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: 'transparent',
-              color: 'rgba(255,255,255,0.55)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'border-color 0.2s ease, color 0.2s ease',
+              width: "36px",
+              height: "36px",
+              borderRadius: "50%",
+              border: "1px solid rgba(255,255,255,0.12)",
+              background: "transparent",
+              color: "rgba(255,255,255,0.55)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "border-color 0.2s ease, color 0.2s ease",
             }}
             onFocus={() => setPaused(true)}
             onBlur={() => setPaused(false)}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
@@ -230,36 +254,45 @@ export default function GallerySection() {
 
       <div
         style={{
-          padding: '0 clamp(20px, 6vw, 80px)',
+          padding: "0 clamp(20px, 6vw, 80px)",
           opacity: visible ? 1 : 0,
-          transition: 'opacity 0.7s ease 0.15s',
+          transition: "opacity 0.7s ease 0.15s",
         }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 'clamp(24px, 4vw, 56px)',
-          alignItems: 'stretch',
-          minHeight: 'clamp(320px, 45vw, 520px)',
-          position: 'relative',
-        }} className="gallery-carousel-grid">
-
-          <div className="gallery-image-panel" style={{ position: 'relative', overflow: 'hidden', borderRadius: '8px' }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "clamp(24px, 4vw, 56px)",
+            alignItems: "stretch",
+            minHeight: "clamp(320px, 45vw, 520px)",
+            position: "relative",
+          }}
+          className="gallery-carousel-grid"
+        >
+          <div
+            className="gallery-image-panel"
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "8px",
+            }}
+          >
             {prev && (
               <div
                 key={`prev-${prevIdx}`}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   inset: 0,
                   background: prev.color,
-                  borderRadius: '8px',
+                  borderRadius: "8px",
                   opacity: transitioning ? 0 : 1,
                   transition: `opacity ${TRANSITION_DURATION}ms ease`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                   zIndex: 1,
                 }}
               >
@@ -270,178 +303,200 @@ export default function GallerySection() {
             <div
               key={`curr-${activeIdx}`}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 inset: 0,
                 background: current?.color,
-                borderRadius: '8px',
+                borderRadius: "8px",
                 opacity: transitioning ? 0 : 1,
                 transition: `opacity ${TRANSITION_DURATION}ms ease`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 zIndex: 2,
               }}
             >
               <ImagePlaceholder item={current} />
             </div>
 
-            <div style={{
-              width: '100%',
-              height: '100%',
-              background: current?.color,
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              visibility: 'hidden',
-            }}>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                background: current?.color,
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                visibility: "hidden",
+              }}
+            >
               <ImagePlaceholder item={current} />
             </div>
 
-            <div style={{
-              position: 'absolute',
-              top: '16px',
-              left: '16px',
-              zIndex: 10,
-              padding: '5px 12px',
-              background: 'rgba(0,0,0,0.65)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '100px',
-              border: `1px solid ${current?.accentColor}40`,
-              transition: `border-color ${TRANSITION_DURATION}ms ease`,
-            }}>
-              <span style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '10px',
-                color: current?.accentColor,
-                letterSpacing: '0.12em',
-                transition: `color ${TRANSITION_DURATION}ms ease`,
-              }}>
+            <div
+              style={{
+                position: "absolute",
+                top: "16px",
+                left: "16px",
+                zIndex: 10,
+                padding: "5px 12px",
+                background: "rgba(0,0,0,0.65)",
+                backdropFilter: "blur(8px)",
+                borderRadius: "100px",
+                border: `1px solid ${current?.accentColor}40`,
+                transition: `border-color ${TRANSITION_DURATION}ms ease`,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "10px",
+                  color: current?.accentColor,
+                  letterSpacing: "0.12em",
+                  transition: `color ${TRANSITION_DURATION}ms ease`,
+                }}
+              >
                 {current?.domain}
               </span>
             </div>
           </div>
 
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: 'clamp(16px, 2vw, 32px) 0',
-          }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              padding: "clamp(16px, 2vw, 32px) 0",
+            }}
+          >
             <div>
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.3em',
-                color: `${current?.accentColor}70`,
-                textTransform: 'uppercase',
-                marginBottom: '20px',
-                transition: `color ${TRANSITION_DURATION}ms ease`,
-              }}>
+              <p
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "11px",
+                  letterSpacing: "0.3em",
+                  color: `${current?.accentColor}70`,
+                  textTransform: "uppercase",
+                  marginBottom: "20px",
+                  transition: `color ${TRANSITION_DURATION}ms ease`,
+                }}
+              >
                 {current?.domainEn} · {current?.year}
               </p>
 
               <h3
                 className="font-display"
                 style={{
-                  fontSize: 'clamp(28px, 4vw, 52px)',
+                  fontSize: "clamp(28px, 4vw, 52px)",
                   fontWeight: 400,
-                  color: '#fff',
+                  color: "#fff",
                   lineHeight: 1.05,
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
+                  letterSpacing: "-0.02em",
+                  marginBottom: "20px",
                   opacity: transitioning ? 0 : 1,
-                  transform: transitioning ? 'translateY(8px)' : 'none',
+                  transform: transitioning ? "translateY(8px)" : "none",
                   transition: `opacity ${TRANSITION_DURATION}ms ease, transform ${TRANSITION_DURATION}ms ease`,
                 }}
               >
                 {current?.title}
               </h3>
 
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(13px, 1.4vw, 15px)',
-                color: 'rgba(255,255,255,0.45)',
-                lineHeight: 1.8,
-                maxWidth: '400px',
-                opacity: transitioning ? 0 : 1,
-                transform: transitioning ? 'translateY(6px)' : 'none',
-                transition: `opacity ${TRANSITION_DURATION}ms ease 0.05s, transform ${TRANSITION_DURATION}ms ease 0.05s`,
-              }}>
+              <p
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "clamp(13px, 1.4vw, 15px)",
+                  color: "rgba(255,255,255,0.45)",
+                  lineHeight: 1.8,
+                  maxWidth: "400px",
+                  opacity: transitioning ? 0 : 1,
+                  transform: transitioning ? "translateY(6px)" : "none",
+                  transition: `opacity ${TRANSITION_DURATION}ms ease 0.05s, transform ${TRANSITION_DURATION}ms ease 0.05s`,
+                }}
+              >
                 {current?.desc}
               </p>
             </div>
 
             <div>
-              <div style={{
-                display: 'flex',
-                gap: '8px',
-                marginBottom: '20px',
-                flexWrap: 'wrap',
-              }}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "8px",
+                  marginBottom: "20px",
+                  flexWrap: "wrap",
+                }}
+              >
                 {galleryItems.map((item, idx) => (
                   <button
                     key={item.id}
                     onClick={() => goTo(idx)}
                     aria-label={`切換至 ${item.title}`}
-                    aria-current={idx === activeIdx ? 'true' : undefined}
+                    aria-current={idx === activeIdx ? "true" : undefined}
                     style={{
-                      width: idx === activeIdx ? '28px' : '6px',
-                      height: '6px',
-                      borderRadius: '3px',
-                      background: idx === activeIdx
-                        ? current?.accentColor
-                        : 'rgba(255,255,255,0.15)',
-                      border: 'none',
-                      cursor: 'pointer',
+                      width: idx === activeIdx ? "28px" : "6px",
+                      height: "6px",
+                      borderRadius: "3px",
+                      background:
+                        idx === activeIdx
+                          ? current?.accentColor
+                          : "rgba(255,255,255,0.15)",
+                      border: "none",
+                      cursor: "pointer",
                       padding: 0,
-                      transition: 'width 0.3s ease, background 0.3s ease',
+                      transition: "width 0.3s ease, background 0.3s ease",
                     }}
                   />
                 ))}
               </div>
 
-              <div style={{
-                width: '100%',
-                height: '1px',
-                background: 'rgba(255,255,255,0.06)',
-                borderRadius: '1px',
-                overflow: 'hidden',
-              }}>
+              <div
+                style={{
+                  width: "100%",
+                  height: "1px",
+                  background: "rgba(255,255,255,0.06)",
+                  borderRadius: "1px",
+                  overflow: "hidden",
+                }}
+              >
                 <div
                   key={`progress-${activeIdx}`}
                   style={{
-                    height: '100%',
+                    height: "100%",
                     background: current?.accentColor,
-                    borderRadius: '1px',
+                    borderRadius: "1px",
                     animation: paused
-                      ? 'none'
+                      ? "none"
                       : `gallery-progress ${SLIDE_DURATION}ms linear forwards`,
                     opacity: paused ? 0.3 : 1,
                   }}
                 />
               </div>
 
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '10px',
-                color: 'rgba(255,255,255,0.18)',
-                letterSpacing: '0.1em',
-                marginTop: '10px',
-              }}>
-                {paused ? '已暫停' : '自動播放中'}
+              <p
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "10px",
+                  color: "rgba(255,255,255,0.18)",
+                  letterSpacing: "0.1em",
+                  marginTop: "10px",
+                }}
+              >
+                {paused ? "已暫停" : "自動播放中"}
               </p>
             </div>
           </div>
         </div>
 
-        <div style={{
-          display: 'flex',
-          gap: '12px',
-          marginTop: 'clamp(20px, 3vw, 36px)',
-          overflowX: 'auto',
-          paddingBottom: '4px',
-        }} className="gallery-thumbs">
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+            marginTop: "clamp(20px, 3vw, 36px)",
+            overflowX: "auto",
+            paddingBottom: "4px",
+          }}
+          className="gallery-thumbs"
+        >
           {galleryItems.map((item, idx) => (
             <button
               key={item.id}
@@ -451,64 +506,76 @@ export default function GallerySection() {
               onMouseLeave={() => setPaused(false)}
               style={{
                 flexShrink: 0,
-                width: 'clamp(80px, 12vw, 120px)',
-                aspectRatio: '4/3',
+                width: "clamp(80px, 12vw, 120px)",
+                aspectRatio: "4/3",
                 background: item.color,
-                border: `1px solid ${idx === activeIdx ? item.accentColor + '60' : 'rgba(255,255,255,0.06)'}`,
-                borderRadius: '6px',
-                cursor: 'pointer',
+                border: `1px solid ${idx === activeIdx ? item.accentColor + "60" : "rgba(255,255,255,0.06)"}`,
+                borderRadius: "6px",
+                cursor: "pointer",
                 padding: 0,
-                position: 'relative',
-                overflow: 'hidden',
+                position: "relative",
+                overflow: "hidden",
                 opacity: idx === activeIdx ? 1 : 0.45,
-                transform: idx === activeIdx ? 'scale(1)' : 'scale(0.96)',
-                transition: 'opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease',
+                transform: idx === activeIdx ? "scale(1)" : "scale(0.96)",
+                transition:
+                  "opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease",
               }}
             >
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <div style={{
-                  width: '16px',
-                  height: '16px',
-                  borderRadius: '50%',
-                  background: `${item.accentColor}30`,
-                  border: `1px solid ${item.accentColor}50`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                  <div style={{
-                    width: '5px',
-                    height: '5px',
-                    borderRadius: '50%',
-                    background: item.accentColor,
-                    opacity: 0.8,
-                  }} />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                    borderRadius: "50%",
+                    background: `${item.accentColor}30`,
+                    border: `1px solid ${item.accentColor}50`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "5px",
+                      height: "5px",
+                      borderRadius: "50%",
+                      background: item.accentColor,
+                      opacity: 0.8,
+                    }}
+                  />
                 </div>
               </div>
 
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: '6px 8px',
-                background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
-              }}>
-                <p style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '9px',
-                  color: 'rgba(255,255,255,0.7)',
-                  letterSpacing: '0.04em',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                }}>
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: "6px 8px",
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.7), transparent)",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "9px",
+                    color: "rgba(255,255,255,0.7)",
+                    letterSpacing: "0.04em",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
                   {item.title}
                 </p>
               </div>
@@ -543,7 +610,7 @@ export default function GallerySection() {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 function ImagePlaceholder({ item }: { item: typeof galleryItems[0] }) {
