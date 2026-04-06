@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, MapPin, Calendar, Clock } from 'lucide-react';
 import LazyImage from '../components/LazyImage';
-import songshanImg from '../assets/songshan.webp';
-import yzuImg from '../assets/yzu.webp';
+// import songshanImg from '../assets/songshan.webp';
+// import yzuImg from '../assets/yzu.webp';
 
 const rules = [
   {
@@ -74,7 +74,7 @@ export default function Info() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="aspect-[4/3] bg-white/5 overflow-hidden">
               <LazyImage
-                src={yzuImg}
+                src="地圖_校內展.webp"
                 alt="YZU Campus"
                 containerClassName="w-full h-full"
                 imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
@@ -144,7 +144,7 @@ export default function Info() {
             </div>
             <div className="order-1 md:order-2 aspect-[4/3] bg-white/5 overflow-hidden">
               <LazyImage
-                src={songshanImg}
+                src="地圖_校外展.webp"
                 alt="Songshan Park"
                 containerClassName="w-full h-full"
                 imgClassName="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
