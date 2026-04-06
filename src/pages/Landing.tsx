@@ -140,6 +140,18 @@ export default function Landing() {
         )}
       </div>
 
+      {phase !== 'network' && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.6 }}
+          onClick={() => navigate('/home')}
+          className="absolute top-6 right-6 z-50 text-white/40 hover:text-white/80 text-sm tracking-widest transition-colors cursor-pointer"
+        >
+          跳過 →
+        </motion.button>
+      )}
+
       <AnimatePresence mode="wait">
         {phase === 'narrative' && (
           <motion.div
