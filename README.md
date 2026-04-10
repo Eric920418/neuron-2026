@@ -26,7 +26,7 @@
 |------|------|------|
 | `/` | Landing | 互動落地頁 — 滾動敘事 → 輸入專長 |
 | `/home` | Home | 展覽首頁 — Hero、概念、分類、精選作品輪播、合作單位 |
-| `/info` | Info | 展覽資訊 — 場地、規則 |
+| `/info` | Info | 展覽資訊 — 場地、Google 地圖、展場地圖（`/展區地圖01.webp`、`/展區地圖02.webp`）、觀展規範 |
 | `/works` | Works | 作品列表 — 篩選、卡片導航至詳情頁 |
 | `/works/:slug` | WorkDetail | 單一作品詳情 — 獨立頁面，從 API 取得資料 |
 | `/booking` | Booking | 4 步驟預約流程 |
