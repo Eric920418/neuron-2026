@@ -1,4 +1,4 @@
-export type Domain = 'all' | 'interactive' | 'game' | 'marketing' | 'film'
+export type Domain = 'all' | 'interactive' | 'game' | 'marketing' | 'film' | 'animation'
 
 export interface Work {
   id: number
@@ -55,6 +55,7 @@ const TEAM_TYPE_TO_DOMAIN: Record<string, Exclude<Domain, 'all'>> = {
   '遊戲': 'game',
   '行銷': 'marketing',
   '影視': 'film',
+  '動畫': 'animation',
 }
 
 // domain 對應顏色（統一 teal）
@@ -63,6 +64,7 @@ const DOMAIN_COLORS: Record<string, { color: string; accentColor: string }> = {
   game:        { color: 'rgba(102,140,141,0.10)', accentColor: 'rgb(102,140,141)' },
   marketing:   { color: 'rgba(102,140,141,0.08)', accentColor: 'rgb(102,140,141)' },
   film:        { color: 'rgba(102,140,141,0.08)', accentColor: 'rgb(102,140,141)' },
+  animation:   { color: 'rgba(102,140,141,0.08)', accentColor: 'rgb(102,140,141)' },
 }
 
 export function teamToWork(team: TeamFromAPI, idx: number): Work {
@@ -116,6 +118,7 @@ export const filters: { key: Domain; label: string }[] = [
   { key: 'game', label: '遊戲' },
   { key: 'marketing', label: '行銷' },
   { key: 'film', label: '影視' },
+  { key: 'animation', label: '動畫' },
 ]
 
 export const works: Work[] = [

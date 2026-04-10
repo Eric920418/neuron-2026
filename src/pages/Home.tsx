@@ -23,7 +23,8 @@ const categories = [
   { id: "interactive", title: "互動設計", desc: ["突觸之間的連結，", "在回應與反應之中，讓訊號被感知、被改變。"] ,href: "/works?filter=interactive" },
   { id: "game", title: "遊戲設計", desc: ["神經訊號的傳遞路徑，", "在不同的路徑選擇中，創造不同的結果。"] ,href: "/works?filter=game" },
   { id: "marketing", title: "行銷企劃", desc: ["訊號的放大與擴散，", "在不同的傳遞路徑中，讓一個想法被傳出去，也被更多人接收。"] ,href: "/works?filter=marketing" },
-  { id: "film", title: "影視動畫", desc: ["訊號轉化成影像與聲音，", "把抽象的感受，變成可以被看見的故事。"] ,href: "/works?filter=film" },
+  { id: "film", title: "影視", desc: ["訊號轉化成影像與聲音，", "把抽象的感受，變成可以被看見的故事。"] ,href: "/works?filter=film" },
+  { id: "animation", title: "動畫", desc: ["訊號化為流動的線條與色彩，", "在一幀一幀之間，讓想像擁有呼吸的節奏。"] ,href: "/works?filter=animation" },
 ];
 
 const partnerGroups = [
@@ -127,8 +128,8 @@ export default function Home() {
           <div className="text-gray-400 leading-relaxed text-lg font-light">
             <p className="mb-6 px-0 lg:px-32 text-center text-sm lg:text-lg" >
               跨域、連結，一直都在發生。 神經元就像一座橋，
-              在訊號之間流動，讓理性跟感性慢慢接在一起。 這次展覽分成四個展區：
-              互動設計、遊戲設計、行銷企劃、影視動畫。 每個作品都是一個點，
+              在訊號之間流動，讓理性跟感性慢慢接在一起。 這次展覽分成五個展區：
+              互動設計、遊戲設計、行銷企劃、影視、動畫。 每個作品都是一個點，
               在連結之中，慢慢拼出屬於我們資傳的樣子。 創意，也就在這之中發生。
             </p>
           </div>
@@ -148,7 +149,7 @@ export default function Home() {
         />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {categories.map((cat) => (
               <div
                 key={cat.id}

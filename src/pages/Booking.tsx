@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
 type ExhibitionType = 'outdoor' | 'indoor' | null
-type Domain = '互動' | '遊戲' | '行銷' | '影視' | null
+type Domain = '互動' | '遊戲' | '行銷' | '影視' | '動畫' | null
 
-const DOMAINS = ['互動', '遊戲', '行銷', '影視'] as const
+const DOMAINS = ['互動', '遊戲', '行銷', '影視', '動畫'] as const
 
 const OUTDOOR_DATES = [
   { label: '05/08 (五)', value: '2026-05-08' },
@@ -23,6 +23,7 @@ const TEAM_TYPE_TO_DOMAIN: Record<string, Domain> = {
   '遊戲': '遊戲',
   '行銷': '行銷',
   '影視': '影視',
+  '動畫': '動畫',
 }
 
 interface AvailableTeam {
@@ -480,7 +481,7 @@ export default function Booking() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
+                gridTemplateColumns: "repeat(5, 1fr)",
                 gap: "2px",
               }}
               className="booking-domain-grid"
