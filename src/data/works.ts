@@ -17,6 +17,7 @@ export interface Work {
   images: Array<{ id: string; caption: string; url?: string }>
   video: { id: string; caption: string }
   members: string[]
+  instagramUrl: string | null
 }
 
 // API 回傳的組別格式
@@ -27,6 +28,7 @@ export interface TeamFromAPI {
   teamType: string | null
   description: string | null
   advisor: string | null
+  instagramUrl: string | null
   displayOrder: number
   members: Array<{ id: string; name: string; role: string | null }>
   artworks: Array<{
@@ -99,6 +101,7 @@ export function teamToWork(team: TeamFromAPI, idx: number): Work {
       : team._count.members > 0
         ? [`共 ${team._count.members} 位成員`]
         : [],
+    instagramUrl: team.instagramUrl ?? null,
   }
 }
 

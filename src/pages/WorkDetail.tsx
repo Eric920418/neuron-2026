@@ -550,6 +550,64 @@ export default function WorkDetail() {
               </div>
             </div>
           </div>
+
+          {work.instagramUrl && (
+            <a
+              href={work.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '32px',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '10px',
+                background: 'rgba(255,255,255,0.02)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px',
+                textDecoration: 'none',
+                transition: 'border-color 0.2s ease, background 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'rgba(102,140,141,0.4)'
+                e.currentTarget.style.background = 'rgba(102,140,141,0.05)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
+                e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+              }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(102,140,141,0.8)" strokeWidth="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="rgba(102,140,141,0.8)" stroke="none" />
+              </svg>
+              <div>
+                <p style={{
+                  fontFamily: '"LINE Seed TW", sans-serif',
+                  fontWeight: 400,
+                  fontSize: '10px',
+                  letterSpacing: '0.4em',
+                  color: 'rgba(255,255,255,0.2)',
+                  textTransform: 'uppercase',
+                  marginBottom: '6px',
+                }}>
+                  Instagram
+                </p>
+                <p style={{
+                  fontFamily: '"LINE Seed TW", sans-serif',
+                  fontWeight: 400,
+                  fontSize: '14px',
+                  color: 'rgba(102,140,141,0.85)',
+                  letterSpacing: '0.02em',
+                }}>
+                  {work.instagramUrl.replace(/^https?:\/\/(www\.)?instagram\.com\//, '@').replace(/\/$/, '')}
+                </p>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2" style={{ marginLeft: 'auto' }}>
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </a>
+          )}
         </div>
 
         {/* Back button */}
