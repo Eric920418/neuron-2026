@@ -215,7 +215,7 @@ export default function Info() {
         <div className="mb-32">
           <h2 className="text-2xl font-bold mb-8">展場地圖</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden">
+            <div className="bg-transparent rounded-lg overflow-hidden">
               <img
                 src="/展區地圖01.webp"
                 alt="校內展場地圖 — 六館一樓平面與動線指引"
@@ -223,7 +223,7 @@ export default function Info() {
                 loading="lazy"
               />
             </div>
-            <div className="bg-white rounded-lg overflow-hidden">
+            <div className="bg-transparent rounded-lg overflow-hidden">
               <img
                 src="/展區地圖02.webp"
                 alt="校內展場地圖 — 六館一樓 / 五館三樓 展區概覽"
