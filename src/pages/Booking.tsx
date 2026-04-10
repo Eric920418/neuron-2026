@@ -13,59 +13,44 @@ const TEAM_TYPE_TO_DOMAIN: Record<string, Domain> = {
   '動畫': '動畫',
 }
 
-interface AvailableTeam {
+interface TeamPublic {
   id: string
   name: string
   slug: string
   teamType: string | null
   description: string | null
-  artworkTitle: string | null
   bookingUrl: string | null
-  exhibition: {
+  artworks: Array<{
     id: string
-    name: string
-    year: number
-    slug: string
-  }
-  config: {
-    slotDurationMinutes: number
-    maxConcurrentCapacity: number
-    dailyStartTime: string
-    dailyEndTime: string
-  }
-  queueStats: {
-    waiting: number
-    estimatedWaitMinutes: number
-  }
+    title: string
+    concept: string | null
+    conceptShort: string | null
+  }>
 }
 
 const API_URL = import.meta.env.VITE_API_URL ?? '/api'
 
 export default function Booking() {
   const [selectedDomain, setSelectedDomain] = useState<Domain>(null)
-  const [selectedTeam, setSelectedTeam] = useState<AvailableTeam | null>(null)
+  const [selectedTeam, setSelectedTeam] = useState<TeamPublic | null>(null)
 
   // API state
-  const [teams, setTeams] = useState<AvailableTeam[]>([])
+  const [teams, setTeams] = useState<TeamPublic[]>([])
   const [teamsLoading, setTeamsLoading] = useState(false)
   const [teamsError, setTeamsError] = useState<string | null>(null)
 
-  // 進入頁面時載入所有可用組別（同時拉校外展 + 校內展）
+  // 進入頁面時從 /teams/public 載入所有組別
   useEffect(() => {
     setTeamsLoading(true)
     setTeamsError(null)
 
-    const today = new Date().toISOString().split('T')[0]
-    Promise.all([
-      fetch(`${API_URL}/reservations/available-teams?date=${today}&venueType=OUTDOOR`).then(r => r.json()),
-      fetch(`${API_URL}/reservations/available-teams?date=${today}&venueType=INDOOR`).then(r => r.json()),
-    ])
-      .then(([outdoorJson, indoorJson]) => {
-        const outdoorTeams = outdoorJson.success ? (outdoorJson.data.teams ?? []) : []
-        const indoorTeams = indoorJson.success ? (indoorJson.data.teams ?? []) : []
-        setTeams([...outdoorTeams, ...indoorTeams])
-        if (!outdoorJson.success && !indoorJson.success) {
-          setTeamsError(outdoorJson.error ?? indoorJson.error ?? '無法載入組別')
+    fetch(`${API_URL}/teams/public`)
+      .then(r => r.json())
+      .then(json => {
+        if (json.success && json.data.teams?.length > 0) {
+          setTeams(json.data.teams)
+        } else {
+          setTeamsError('暫無組別資料')
         }
       })
       .catch(() => setTeamsError('無法連線，請稍後再試'))
@@ -247,6 +232,7 @@ export default function Booking() {
             >
               {domainTeams.map((team) => {
                 const isSelected = selectedTeam?.id === team.id;
+                const artworkTitle = team.artworks?.[0]?.title;
                 return (
                   <button
                     key={team.id}
@@ -311,7 +297,7 @@ export default function Booking() {
                         transition: "color 0.2s ease",
                       }}
                     >
-                      {team.artworkTitle ?? team.name}
+                      {artworkTitle ?? team.name}
                     </p>
                     {team.description && (
                       <p
@@ -320,37 +306,11 @@ export default function Booking() {
                           fontSize: "12px",
                           color: "rgba(255,255,255,0.3)",
                           lineHeight: 1.5,
-                          marginBottom: "8px",
                         }}
                       >
                         {team.description}
                       </p>
                     )}
-                    {/* Queue status */}
-                    <div style={{ display: "flex", gap: "12px" }}>
-                      <span
-                        style={{
-                          fontFamily: "LINE Seed TW, sans-serif",
-                          fontSize: "11px",
-                          color: "rgba(1,255,204,0.5)",
-                          letterSpacing: "0.04em",
-                        }}
-                      >
-                        等待中：{team.queueStats.waiting} 組
-                      </span>
-                      {team.queueStats.estimatedWaitMinutes > 0 && (
-                        <span
-                          style={{
-                            fontFamily: "LINE Seed TW, sans-serif",
-                            fontSize: "11px",
-                            color: "rgba(255,255,255,0.2)",
-                            letterSpacing: "0.04em",
-                          }}
-                        >
-                          預估 {team.queueStats.estimatedWaitMinutes} 分鐘
-                        </span>
-                      )}
-                    </div>
                   </button>
                 );
               })}
