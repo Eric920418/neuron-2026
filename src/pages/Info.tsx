@@ -93,7 +93,7 @@ export default function Info() {
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-white" />
-                  <span>2026.04.13 (日) - 04.17 (四)</span>
+                  <span>2026.04.13 (一) - 04.17 (五)</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Clock className="w-5 h-5 text-white" />
