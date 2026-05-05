@@ -61,6 +61,7 @@
 - **Three.js GC 優化**: NeuralBackground / LandingScene 的 Vector3 物件使用 ref 快取，避免每幀重新分配
 - **Resource Hints**: dns-prefetch MiniMax API、preconnect 後端 API
 - **Passive Scroll**: Navbar 滾動監聽使用 passive flag，避免行動裝置卡頓
+- **手機版 Hero 觸控穿透**: Home 頁 NeuralBackground Canvas 在手機（< md 斷點）設 `pointer-events: none` + `touch-action: pan-y`，觸控事件穿透至下方頁面，避免光點跟隨手指造成下滑卡死；桌面版維持滑鼠互動
 - **贊助商圖片懶載入**: Home 頁底部的合作單位 logo 使用 `loading="lazy"`
 
 ## 環境變數
